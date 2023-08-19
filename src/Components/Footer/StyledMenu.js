@@ -8,12 +8,13 @@ flex-direction: row;
 justify-content: space-between;
 align-items: flex-end;
 
+/* background-color: aqua; */
 position: fixed;
   bottom: 0;
 `
 
 export const StyledDivSides = styled.div`
-background-color: white;
+background-color: green;
 height: 66.65px;
 width: 30vw;
 `
@@ -28,7 +29,7 @@ z-index: 2;
 export const StyledCircle1 = styled.div`
 position: absolute;
 bottom: -11.2px;
-right: 70px;
+right: 7%;
 background-color: white;
 height: 4.875rem;
 width:  4.875rem;
@@ -39,7 +40,7 @@ margin-top: 10px;
 export const StyledCircle2 = styled.div`
 position: absolute;
 bottom: -11.6px;
-left: 70px;
+left: 7%;
 background-color: white;
 height:  4.875rem;
 width:  4.875rem;
@@ -62,4 +63,9 @@ margin-top: 10px;
 
 z-index: 2;
 
+`
+
+export const StyledDivFixed = styled.div`
+width: 300px;
+position: relative;
 `
