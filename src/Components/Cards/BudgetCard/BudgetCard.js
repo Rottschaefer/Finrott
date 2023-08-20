@@ -1,9 +1,9 @@
-import { ProgressBar } from "../../ProgressBar/ProgressBar";
+import { ProgressBar } from "../../ProgressBar/ProgressBar.js";
 import {
   StyledBudgetCard,
   StyledBudgetNumber,
   StyledBudgetType,
-} from "./StyledBudgetCard";
+} from "./StyledBudgetCard.js";
 
 const budget = {
   spent: 77,
@@ -11,7 +11,6 @@ const budget = {
 };
 
 export const BudgetCard = ({ expense }) => {
-  console.log(expense);
   return (
     <StyledBudgetCard>
       <StyledBudgetType>{expense.expenseName}</StyledBudgetType>

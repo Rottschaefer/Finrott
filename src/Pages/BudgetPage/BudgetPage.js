@@ -1,11 +1,12 @@
-import { data } from "../../Assets/DataToTest";
-import { BudgetCard } from "../../Components/Cards/BudgetCard/BudgetCard";
+import { data } from "../../Assets/DataToTest.js";
+import { BudgetCard } from "../../Components/Cards/BudgetCard/BudgetCard.js";
+import { getUsers, signUp } from "../../Requests/userRequests.js";
 import {
   StyledBudgetCardConteiner,
   StyledBudgetPage,
   StyledIncome,
   StyledIncomeText,
-} from "./StyledBudgetPage";
+} from "./StyledBudgetPage.js";
 
 export const BudgetPage = () => {
   return (
