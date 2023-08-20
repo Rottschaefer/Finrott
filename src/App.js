@@ -1,12 +1,12 @@
-import { Router } from "./Routes/Router";
-import GlobalStyle from "./globalStyles";
+import { Router } from "./Routes/Router.js";
+import GlobalStyle from "./globalStyles.js";
 
 function App() {
   return (
     <>
-    <GlobalStyle/>
-    <Router/>
-    </> 
+      <GlobalStyle />
+      <Router />
+    </>
   );
 }
 
