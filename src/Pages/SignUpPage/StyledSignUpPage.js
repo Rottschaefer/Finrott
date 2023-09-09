@@ -2,19 +2,17 @@ import styled from "styled-components";
 
 export const StyledSignUpPage = styled.main`
   display: flex;
-  justify-content: center;
-  /* width: 100vw; */
-  /* max-width: 465px; */
-  /* max-height: 100vh; */
-  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+  height: 100vh;
   opacity: ${(props) => (props.fade ? "1" : "0")};
 
   transition: all 1s;
 `;
 
 export const StyledTitle = styled.p`
-  font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 33px;
@@ -31,7 +29,6 @@ export const StyledSignUpForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 194px;
 `;
 
 export const StyledSignUpInput = styled.input`
@@ -54,15 +51,14 @@ export const StyledSignUpInput = styled.input`
 
 export const StyledWarning = styled.p`
   text-align: center;
-  font-family: "Noto Sans";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 14px;
   line-height: 19px;
 
   width: 78vw;
   max-width: 363px;
-  color: ${(props) => props.color};
+  color: red;
   margin-bottom: ${(props) => (props.margin ? props.margin : "17px")};
 `;
 
@@ -86,7 +82,6 @@ export const StyledLabel = styled.p`
   width: 72vw;
   max-width: 373px;
 
-  font-family: "Noto Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -106,9 +101,10 @@ export const StyledContinueButton = styled.button`
   width: 78vw;
   max-width: 365px;
   height: 51px;
-  border-radius: 27px;
+  border-radius: 20px;
   border: none;
-  background-image: linear-gradient(to right, #ff6489, #f9b24e);
+  /* background-image: linear-gradient(to right, #ff6489, #f9b24e); */
+  background-color: black;
   font-family: "Noto Sans", sans-serif;
   font-size: 18px;
   line-height: 25px;
