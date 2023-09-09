@@ -1,12 +1,7 @@
 import axios from "axios";
+import { BASE_URL } from "../constants.js";
 
-const path = "http://localhost:3003/users";
-
-// const body = {
-//   name: "Teste02",
-//   email: "teste02@gmail.com",
-//   password: "12345",
-// };
+const path = `${BASE_URL}/users`;
 
 export const signUp = async (body) => {
   let output;
@@ -19,7 +14,8 @@ export const signUp = async (body) => {
       }
     })
     .catch((error) => {
-      console.log(error.response);
+      console.log("Signup error:", error.response);
+      throw new Error(error);
     });
 
   return output;

@@ -57,49 +57,47 @@ export const SignUpPage = () => {
 
         await signUp(body);
 
+        console.log("here");
+
         goToBudgetPage(navigate);
       }
     } catch (error) {
-      setErrorMessage(error.response.data[0].message);
+      setErrorMessage(error);
     }
   };
 
   return (
-    <>
-      <StyledSignUpPage fade={fade}>
-        <StyledTitle>Olá, boas vindas ao Finrott ;)</StyledTitle>
-        <StyledSignUpForm>
-          <StyledSignUpInput
-            onChange={handleName}
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Apelido"
-          />
-          <StyledSignUpInput
-            onChange={handleEmail}
-            type="text"
-            id="email"
-            name="email"
-            placeholder="E-mail"
-          />
-          <StyledSignUpInput
-            onChange={handlePassword}
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Senha"
-          />
-        </StyledSignUpForm>
-        {badRequest && (
-          <StyledWarning color="red" margin="-10px">
-            {errorMessage}
-          </StyledWarning>
-        )}
-        <StyledContinueButton onClick={createNewUser} isLoading={isLoading}>
-          {isLoading ? "Só um instante..." : "Cadastrar"}
-        </StyledContinueButton>
-      </StyledSignUpPage>
-    </>
+    <StyledSignUpPage fade={fade}>
+      <StyledTitle>Olá, boas vindas ao Finrott ;)</StyledTitle>
+      <StyledSignUpForm>
+        <StyledSignUpInput
+          onChange={handleName}
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Apelido"
+        />
+        <StyledSignUpInput
+          onChange={handleEmail}
+          type="text"
+          id="email"
+          name="email"
+          placeholder="E-mail"
+        />
+        <StyledSignUpInput
+          onChange={handlePassword}
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Senha"
+        />
+      </StyledSignUpForm>
+      {badRequest && (
+        <StyledWarning margin="-10px">{errorMessage}</StyledWarning>
+      )}
+      <StyledContinueButton onClick={createNewUser} isLoading={isLoading}>
+        {isLoading ? "Só um instante..." : "Cadastrar"}
+      </StyledContinueButton>
+    </StyledSignUpPage>
   );
 };

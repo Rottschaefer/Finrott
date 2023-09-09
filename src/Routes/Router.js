@@ -5,12 +5,12 @@ import { SignUpPage } from "../Pages/SignUpPage/SignUpPage.js";
 
 export const Router = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* <Route index element={<HomePage />} /> */}
-        <Route path="budget" element={<BudgetPage />} />
-        <Route path="signup" element={<SignUpPage />} />
-      </Routes>
-    </BrowserRouter>
+    // <BrowserRouter>
+    <Routes>
+      {/* <Route index element={<HomePage />} /> */}
+      <Route path="budget" element={<BudgetPage />} />
+      <Route path="signup" element={<SignUpPage />} />
+    </Routes>
+    // </BrowserRouter>
   );
 };
