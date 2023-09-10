@@ -12,6 +12,15 @@ export const handlers = [
     return res(ctx.status(200), ctx.json({ token: "token-mock-fulano" }));
   }),
 
+  rest.post("http://localhost:3003/users/login", (req, res, ctx) => {
+    if (req.email === "teste@gmail.com" && req.password === "123456") {
+      return res(ctx.status(200), ctx.json({ token: "token-mock-fulano" }));
+    }
+    if (req.password !== "123456") {
+      return res(ctx.status(400), ctx.json({ message: "senha inválida" }));
+    }
+  }),
+
   // rest.get("http://localhost:3030/toppings", (req, res, ctx) => {
   //   return res(
   //     ctx.json([

@@ -1,5 +1,5 @@
-import { logRoles, render, screen } from "@testing-library/react";
-import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 import App from "../App";
@@ -24,10 +24,10 @@ test("Execute the signup flow correctly", async () => {
   const signUpButton = screen.getByRole("button");
 
   await act(async () => {
-    await userEvent.type(nameInput, "Teste");
-    await userEvent.type(emailInput, "teste@gmail.com");
-    await userEvent.type(passwordInput, "123456");
-    userEvent.click(signUpButton);
+    await user.type(nameInput, "Teste");
+    await user.type(emailInput, "teste@gmail.com");
+    await user.type(passwordInput, "123456");
+    user.click(signUpButton);
   });
 
   const budgetText = await screen.findByText(/Quanto posso gastar:/i);

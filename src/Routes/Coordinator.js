@@ -6,8 +6,8 @@ export const goToLogInPage = (navigate) => {
   navigate("/");
 };
 
-export const goToBudgetPage = (navigate) => {
-  navigate("/budget");
+export const goToBudgetPage = (navigate, id) => {
+  navigate(`/budget/${id}`);
 };
 
 export const goToCommentsPage = (navigate, id) => {
