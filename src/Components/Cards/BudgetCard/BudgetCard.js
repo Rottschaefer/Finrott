@@ -13,7 +13,7 @@ const budget = {
 export const BudgetCard = ({ expense }) => {
   return (
     <StyledBudgetCard>
-      <StyledBudgetType>{expense.expenseName}</StyledBudgetType>
+      <StyledBudgetType>{expense.name}</StyledBudgetType>
       <StyledBudgetNumber>
         R${expense.spent} / R${expense.toSpend}
       </StyledBudgetNumber>

@@ -57,8 +57,6 @@ export const SignUpPage = () => {
 
         await signUp(body);
 
-        console.log("here");
-
         goToBudgetPage(navigate);
       }
     } catch (error) {

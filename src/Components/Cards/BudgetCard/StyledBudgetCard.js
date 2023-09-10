@@ -8,8 +8,8 @@ export const StyledBudgetCard = styled.div`
   width: 25vw;
   height: 200px;
   min-width: 280px;
-  border-radius: 15px;
-  box-shadow: 2px 2px 30px black;
+  border-radius: 10px;
+  /* box-shadow: 2px 2px 30px black; */
   font-family: "Montserrat", sans-serif;
   background-color: white;
 `;

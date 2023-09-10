@@ -1,83 +1,126 @@
-import { useEffect, useState } from "react"
-import { LabenuLogo } from "../../Components/LabenuLogo/LabenuLogo"
-import { useNavigate } from "react-router-dom"
-
-import { StyledContinueButton, StyledDiv, StyledErrorMessage, StyledForm, StyledInput, StyledLoginPage, StyledSignUpButton, StyledSubTitle, StyledTitle } from "./StyledLoginPage"
-import { goToSignUpPage } from "../../Routes/coordinator"
-import { useRequestData } from "../../Hooks/UseRequestData"
-import { PATH } from "../../Assets/constants"
+import { useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { logIn } from "../../Requests/userRequests.js";
+import {
+  StyledContinueButton,
+  StyledDiv,
+  StyledErrorMessage,
+  StyledForm,
+  StyledInput,
+  StyledLoginPage,
+  StyledSignUpButton,
+  StyledSubTitle,
+  StyledTitle,
+} from "./StyledLoginPage.js";
+import { goToBudgetPage, goToSignUpPage } from "../../Routes/Coordinator.js";
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
+  const [fade, setFade] = useState(false);
 
-    const [fade, setFade] = useState(false)
+  useEffect(() => {
+    setFade(true);
+  }, []);
+  //Fade-in quando trocar pra esta página
 
-    useEffect(() => {
-        setFade(true)
-    }, [])
-    //Fade-in quando trocar pra esta página
+  //Controle de inputs abaixo
+  const [email, setEmail] = useState(undefined);
+  const [password, setPassword] = useState(undefined);
 
-    //Controle de inputs abaixo
-    const [email, setEmail] = useState(undefined)
-    const [password, setPassword] = useState(undefined)
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  };
 
-    const handleEmail = (event) => {
-        setEmail(event.target.value)
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const [badRequest, setBadRequest] = useState(false); //Estado que define se aparecerá uma mensagem de erro ou não
+  const [errorMessage, setErrorMessage] = useState(""); //Mensagem de erro que irá aparecer
+  const [isLoading, setIsLoading] = useState(false); //Estado que define a animação de carregando no botão
+
+  const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
+  const [loadingTimes, setLoadingTimes] = useState(0); //Estado para fazer com que a mensagem de erro não seja mostrada caso não tenha token no local storage
+
+  useEffect(() => {
+    setLoadingTimes(1);
+    if (token) {
+      handleLogIn();
     }
+  }, []);
 
-    const handlePassword = (event) => {
-        setPassword(event.target.value)
-    }
+  const handleLogIn = async () => {
+    try {
+      let payload;
+      if (token) {
+        const body = { token };
 
-    //Requisição de LogIn abaixo
+        payload = await logIn(body);
+        console.log(payload);
 
-    const [badRequest, setBadRequest] = useState(false) //Estado que define se aparecerá uma mensagem de erro ou não
-    const [errorMessage, setErrorMessage] = useState("")//Mensagem de erro que irá aparecer
-    const [isLoading, setIsLoading] = useState(false)//Estado que define a animação de carregando no botão
+        goToBudgetPage(navigate, payload.id);
+      } else {
+        if (!password || !email) {
+          setBadRequest(true);
+          setErrorMessage(
+            "É preciso preencher todos os campos para se cadastrar"
+          );
+        } else {
+          setBadRequest(false);
+          setIsLoading(true);
+          const body = { email, password, token };
 
-    const path = `${PATH}/users/login`
-    const { logInData } = useRequestData(path)
+          payload = await logIn(body);
 
-    const [token, setToken] = useState(undefined)
-    const [loadingTimes, setLoadingTimes] = useState(0)//Estado para fazer com que a mensagem de erro não seja mostrada caso não tenha token no local storage 
-    
+          console.log(payload);
 
-    useEffect( () => {
-        setLoadingTimes(1)
-        handleLogIn()
-    }, []) 
-
-    
-
-
-    const handleLogIn = () => {
-        if(loadingTimes > 0){
-        setIsLoading(true)
+          goToBudgetPage(navigate, payload.id);
         }
-        console.log(isLoading)
-        const body = ({ email, password, token })
-       logInData(body, setIsLoading, setErrorMessage, setBadRequest, loadingTimes)
+      }
+    } catch (error) {
+      console.log(error);
+      setBadRequest(true);
+      setErrorMessage(error.message);
     }
+  };
 
+  return (
+    <StyledLoginPage fade={fade}>
+      <StyledTitle>FinRott</StyledTitle>
+      <StyledSubTitle>
+        O projeto de controle das suas finanças :)
+      </StyledSubTitle>
 
-
-    return (
-        <StyledLoginPage fade={fade}>
-            <LabenuLogo size="9vw" time="4000" />
-            <StyledTitle>LabEddit</StyledTitle>
-            <StyledSubTitle>O projeto de rede social da Labenu</StyledSubTitle>
-
-            <StyledForm>
-                <StyledInput onChange={handleEmail} type="text" id="email" name="email" placeholder="E-mail" />
-                <StyledInput onChange={handlePassword} type="password" id="password" name="password" placeholder="Senha" />
-            </StyledForm>
-            {badRequest && <StyledErrorMessage>{errorMessage}</StyledErrorMessage>}
-            <StyledContinueButton onClick={handleLogIn} onTouchStart={handleLogIn} isLoading={isLoading}>{isLoading ? "Só um instante" : "Continuar"}</StyledContinueButton>
-            <StyledDiv />
-            <StyledSignUpButton onClick={() => goToSignUpPage(navigate)}>Crie uma conta!</StyledSignUpButton>
-        </StyledLoginPage>
-
-    )
-}
-
+      <StyledForm>
+        <StyledInput
+          onChange={handleEmail}
+          type="text"
+          id="email"
+          name="email"
+          placeholder="E-mail"
+        />
+        <StyledInput
+          onChange={handlePassword}
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Senha"
+        />
+      </StyledForm>
+      {badRequest && <StyledErrorMessage>{errorMessage}</StyledErrorMessage>}
+      <StyledContinueButton
+        onClick={handleLogIn}
+        onTouchStart={handleLogIn}
+        isLoading={isLoading}
+      >
+        {isLoading ? "Só um instante" : "Entrar"}
+      </StyledContinueButton>
+      <StyledDiv />
+      <StyledSignUpButton onClick={() => goToSignUpPage(navigate)}>
+        Crie uma conta!
+      </StyledSignUpButton>
+    </StyledLoginPage>
+  );
+};

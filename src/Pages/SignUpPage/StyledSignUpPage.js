@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledSignUpPage = styled.main`
   display: flex;
-  justify-content: flex-start;
+  justify-content: CENTER;
   align-items: center;
   flex-direction: column;
   margin-top: 30px;
