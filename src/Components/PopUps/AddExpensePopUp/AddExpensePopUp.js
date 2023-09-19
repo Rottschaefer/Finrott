@@ -8,7 +8,7 @@ import {
 } from "./StyledAddExpensePopUp.js";
 import { addExpense } from "../../../Requests/expenseRequests.js";
 
-export const AddExpensePopUp = ({ setAddExpense }) => {
+export const AddExpensePopUp = ({ setAddExpense, handleExpenses }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const [state, setState] = useState({
@@ -37,6 +37,8 @@ export const AddExpensePopUp = ({ setAddExpense }) => {
           toSpend: Number(state.toSpend),
         };
         await addExpense(body);
+        await handleExpenses();
+        setAddExpense(false);
       }
     } catch (error) {
       // setErrorMessage(error.message);

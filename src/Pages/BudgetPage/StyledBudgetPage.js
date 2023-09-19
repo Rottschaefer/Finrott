@@ -52,6 +52,8 @@ export const StyledNewExpense = styled.button`
   background-color: white;
   border: none;
   border-radius: 10px;
+
+  cursor: pointer;
 `;
 
 export const StyledFadeforPopUp = styled.div`

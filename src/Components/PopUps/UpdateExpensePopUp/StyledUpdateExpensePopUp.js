@@ -3,14 +3,17 @@ import { AiOutlineClose } from "react-icons/ai";
 
 const color = "#5e2129";
 
-export const StyledAddExpensePopUp = styled.div`
+export const StyledUpdateExpensePopUp = styled.div`
   position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 40vh;
+  min-height: auto;
   height: auto;
   width: 70vw;
   background-color: white;
@@ -52,7 +55,7 @@ export const StyledInput = styled.textarea`
   }
 `;
 
-export const StyledAddButton = styled.button`
+export const StyledUpdateButton = styled.button`
   cursor: pointer;
   width: 80%;
   height: 3rem;
@@ -66,4 +69,13 @@ export const StyledAddButton = styled.button`
   opacity: ${(props) => (props.isLoading ? "0.5" : "1")};
 
   transition: all 1s;
+`;
+
+export const StyledFadeforPopUp = styled.div`
+  position: absolute;
+  background-color: black;
+  opacity: 0.6;
+  height: 200vh;
+  width: 100vw;
+  z-index: 1;
 `;
