@@ -1,4 +1,5 @@
 import { rest } from "msw";
+import { BASE_URL } from "../constants";
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -13,12 +14,41 @@ export const handlers = [
   }),
 
   rest.post("http://localhost:3003/users/login", (req, res, ctx) => {
-    if (req.email === "teste@gmail.com" && req.password === "123456") {
-      return res(ctx.status(200), ctx.json({ token: "token-mock-fulano" }));
-    }
-    if (req.password !== "123456") {
-      return res(ctx.status(400), ctx.json({ message: "senha inválida" }));
-    }
+    return res(
+      ctx.status(200),
+      ctx.json({
+        token: "token-mock-fulano",
+        payload: { id: "id-fulano", name: "Teste", role: "NORMAL" },
+      })
+    );
+  }),
+
+  rest.get(`${BASE_URL}/expenses`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([
+        {
+          creatorId: "ebbc47b8-1c17-4017-a02c-b92d5bdac488",
+          name: "Mobilidade",
+          createdAt: "2023-09-10 22:45:24",
+          spent: 10,
+          toSpend: 200,
+          updatedAt: "2023-09-10 22:45:24",
+        },
+      ])
+    );
+  }),
+
+  rest.post(`${BASE_URL}/expenses`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        token: req.headers.authorization,
+        name: "Teste AddExpense",
+        spent: 1400,
+        toSpend: 20000,
+      })
+    );
   }),
 
   // rest.get("http://localhost:3030/toppings", (req, res, ctx) => {

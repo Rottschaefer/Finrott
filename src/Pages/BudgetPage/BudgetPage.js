@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { data } from "../../Assets/DataToTest.js";
 import { BudgetCard } from "../../Components/Cards/BudgetCard/BudgetCard.js";
-import { getUsers } from "../../Requests/userRequests.js";
 import {
   StyledBudgetCardConteiner,
   StyledBudgetPage,
@@ -16,6 +14,7 @@ import { AddExpensePopUp } from "../../Components/PopUps/AddExpensePopUp/AddExpe
 export const BudgetPage = () => {
   const [expenses, setExpenses] = useState([]);
   const [addExpense, setAddExpense] = useState(false);
+
   useEffect(() => {
     handleExpenses();
   }, []);
@@ -25,7 +24,6 @@ export const BudgetPage = () => {
       const output = await getExpenses();
 
       setExpenses(output);
-      console.log(expenses);
     } catch (error) {
       console.log(error);
     }
@@ -43,14 +41,25 @@ export const BudgetPage = () => {
         <StyledIncomeText>Quanto posso gastar:</StyledIncomeText>
         <StyledIncomeText>R$1500</StyledIncomeText>
       </StyledIncome>
-      <StyledBudgetCardConteiner>
-        {expenses.map((expense) => {
-          return <BudgetCard key={expense.id} expense={expense} />;
-        })}
-      </StyledBudgetCardConteiner>
+      {expenses && (
+        <StyledBudgetCardConteiner>
+          {expenses.map((expense) => {
+            return (
+              <BudgetCard
+                key={expense.id}
+                expense={expense}
+                setAddExpense={setAddExpense}
+              />
+            );
+          })}
+        </StyledBudgetCardConteiner>
+      )}
       {addExpense && (
         <>
-          <AddExpensePopUp setAddExpense={setAddExpense} />
+          <AddExpensePopUp
+            setAddExpense={setAddExpense}
+            handleExpenses={handleExpenses}
+          />
           <StyledFadeforPopUp />
         </>
       )}

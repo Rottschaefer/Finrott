@@ -58,7 +58,6 @@ export const LoginPage = () => {
         const body = { token };
 
         payload = await logIn(body);
-        console.log(payload);
 
         goToBudgetPage(navigate, payload.id);
       } else {
@@ -74,13 +73,10 @@ export const LoginPage = () => {
 
           payload = await logIn(body);
 
-          console.log(payload);
-
           goToBudgetPage(navigate, payload.id);
         }
       }
     } catch (error) {
-      console.log(error);
       setBadRequest(true);
       setErrorMessage(error.message);
     }
