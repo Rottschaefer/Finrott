@@ -5,7 +5,7 @@ const path = `${BASE_URL}/users`;
 export const signUp = async (body) => {
   let output;
   await axios
-    .post(`${path}/signup`, body)
+    .post(`${path}`, body)
     .then((response) => {
       if (response.data.token) {
         localStorage.setItem("token", JSON.stringify(response.data.token));
@@ -22,15 +22,17 @@ export const signUp = async (body) => {
 export const logIn = async (body) => {
   let output;
   await axios
-    .post(`${path}/login`, body)
+    .post(`${BASE_URL}/auth/login`, body)
     .then((response) => {
+      console.log(response);
       if (response.data.token) {
         localStorage.setItem("token", JSON.stringify(response.data.token));
       }
-      output = response.data.payload;
+
+      output = response.data;
     })
     .catch((error) => {
-      throw new Error(error.response.data);
+      throw new Error(error);
     });
 
   return output;

@@ -9,7 +9,7 @@ import {
 } from "./StyledSignUpPage.js";
 import { useNavigate } from "react-router-dom";
 import { signUp } from "../../Requests/userRequests.js";
-import { goToBudgetPage } from "../../Routes/Coordinator.js";
+import { goToSummaryPage } from "../../Routes/Coordinator.js";
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
@@ -27,9 +27,9 @@ export const SignUpPage = () => {
   const [errorMessage, setErrorMessage] = useState(""); //Mensagem de erro que irá aparecer
 
   //Controle dos inputs abaixo
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState("teste3");
+  const [email, setEmail] = useState("teste3@gmail.com");
+  const [password, setPassword] = useState("12345");
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -53,14 +53,15 @@ export const SignUpPage = () => {
       } else {
         setBadRequest(false);
         setIsLoading(true);
-        const body = { name, password, email };
+        const body = { user: { name, password, email } };
 
         await signUp(body);
 
-        goToBudgetPage(navigate);
+        goToSummaryPage(navigate);
       }
     } catch (error) {
-      setErrorMessage(error);
+      setBadRequest(true);
+      setErrorMessage(error.message);
     }
   };
 
