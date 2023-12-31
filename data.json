@@ -1,0 +1,97 @@
+item: Object { id: "3cf00ad0-e5e3-4365-9507-fe617e853ec3", status: "UPDATED", executionStatus: "PARTIAL_SUCCESS", … }
+​​
+clientUserId: null
+​​
+connector: Object { id: 208, name: "Santander", primaryColor: "cc0000", … }
+​​
+consecutiveFailedLoginAttempts: 0
+​​
+createdAt: Date Wed Dec 27 2023 14:26:41 GMT-0300 (Brasilia Standard Time)
+​​
+error: null
+​​
+executionStatus: "PARTIAL_SUCCESS"
+​​
+id: "3cf00ad0-e5e3-4365-9507-fe617e853ec3"
+​​
+lastUpdatedAt: Date Wed Dec 27 2023 14:26:59 GMT-0300 (Brasilia Standard Time)
+​​
+nextAutoSyncAt: null
+​​
+parameter: null
+​​
+products: Array(12) [ "ACCOUNTS", "CREDIT_CARDS", "TRANSACTIONS", … ]
+​​​
+0: "ACCOUNTS"
+​​​
+1: "CREDIT_CARDS"
+​​​
+2: "TRANSACTIONS"
+​​​
+3: "INVESTMENTS"
+​​​
+4: "IDENTITY"
+​​​
+5: "INVESTMENTS_TRANSACTIONS"
+​​​
+6: "PAYMENT_DATA"
+​​​
+7: "BROKERAGE_NOTE"
+​​​
+8: "OPPORTUNITIES"
+​​​
+9: "PORTFOLIO"
+​​​
+10: "INCOME_REPORTS"
+​​​
+11: "LOANS"
+​​​
+length: 12
+​​​
+<prototype>: Array []
+​​
+status: "UPDATED"
+​​
+statusDetail: Object { loans: {…}, accounts: {…}, identity: {…}, … }
+​​​
+accounts: Object { warnings: [], isUpdated: true, lastUpdatedAt: Date Wed Dec 27 2023 14:26:59 GMT-0300 (Brasilia Standard Time) }
+​​​
+creditCards: Object { warnings: [], isUpdated: false, lastUpdatedAt: null }
+​​​
+identity: Object { warnings: [], isUpdated: true, lastUpdatedAt: Date Wed Dec 27 2023 14:26:59 GMT-0300 (Brasilia Standard Time) }
+​​​
+incomeReports: null
+​​​
+investmentTransactions: null
+​​​
+investments: Object { warnings: [], isUpdated: true, lastUpdatedAt: Date Wed Dec 27 2023 14:26:59 GMT-0300 (Brasilia Standard Time) }
+​​​
+loans: Object { warnings: [], isUpdated: true, lastUpdatedAt: Date Wed Dec 27 2023 14:26:59 GMT-0300 (Brasilia Standard Time) }
+​​​
+opportunities: null
+​​​
+paymentData: null
+​​​
+portfolio: null
+​​​
+transactions: Object { warnings: [], isUpdated: true, lastUpdatedAt: Date Wed Dec 27 2023 14:26:59 GMT-0300 (Brasilia Standard Time) }
+​​​​
+isUpdated: true
+​​​​
+lastUpdatedAt: Date Wed Dec 27 2023 14:26:59 GMT-0300 (Brasilia Standard Time)
+​​​​
+warnings: Array []
+​​​​
+<prototype>: Object { … }
+​​​
+<prototype>: Object { … }
+​​
+updatedAt: Date Wed Dec 27 2023 14:26:59 GMT-0300 (Brasilia Standard Time)
+​​
+userAction: null
+​​
+webhookUrl: null
+​​
+<prototype>: Object { … }
+​
+<prototype>: Object { … 

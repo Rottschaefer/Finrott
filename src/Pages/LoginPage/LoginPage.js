@@ -13,7 +13,7 @@ import {
   StyledSubTitle,
   StyledTitle,
 } from "./StyledLoginPage.js";
-import { goToBudgetPage, goToSignUpPage } from "../../Routes/Coordinator.js";
+import { goToSignUpPage, goToSummaryPage } from "../../Routes/Coordinator.js";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -26,8 +26,8 @@ export const LoginPage = () => {
   //Fade-in quando trocar pra esta página
 
   //Controle de inputs abaixo
-  const [email, setEmail] = useState(undefined);
-  const [password, setPassword] = useState(undefined);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -55,11 +55,11 @@ export const LoginPage = () => {
     try {
       let payload;
       if (token) {
-        const body = { token };
+        const body = { auth: { email, password } };
 
         payload = await logIn(body);
 
-        goToBudgetPage(navigate, payload.id);
+        goToSummaryPage(navigate, payload.id);
       } else {
         if (!password || !email) {
           setBadRequest(true);
@@ -69,11 +69,11 @@ export const LoginPage = () => {
         } else {
           setBadRequest(false);
           setIsLoading(true);
-          const body = { email, password, token };
+          const body = { auth: { email, password } };
 
           payload = await logIn(body);
 
-          goToBudgetPage(navigate, payload.id);
+          goToSummaryPage(navigate, payload.id);
         }
       }
     } catch (error) {

@@ -1,17 +1,47 @@
-// import { StyledCircle1, StyledCircle2, StyledCircleCenter, StyledDivCenter, StyledDivFixed, StyledDivSides, StyledMenu } from "./StyledMenu"
+import { useState } from "react";
+import {
+  StyledArrow,
+  StyledMenu,
+  StyledOptions,
+  StyledSeparator,
+} from "./StyledMenu";
+import { useNavigate } from "react-router-dom";
+import { goToPage } from "../../Routes/Coordinator";
 
-// export const Menu = () => {
-//     return (
-//         <StyledMenu>
-//             <p>Usa position fixed pra isso</p>
-//             <StyledDivSides />
-//             <StyledDivFixed>
-//             <StyledCircle1 />
-//             <StyledDivCenter />
-//             <StyledCircleCenter/>
-//             <StyledCircle2 />
-//             </StyledDivFixed>
-//             <StyledDivSides />
-//         </StyledMenu>
-//     )
-// }
+export const Menu = () => {
+  const navigate = useNavigate();
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleOnClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const options2 = [
+    { text: "Início", url: "/summary" },
+    { text: "Adicionar Conta", url: "/add-account" },
+  ];
+
+  const options = ["Adicionar Conta", "Sair", "OtherOption", "Orçamento"];
+  return (
+    <StyledMenu isMenuOpen={isMenuOpen}>
+      <StyledArrow onClick={handleOnClick} isMenuOpen={isMenuOpen} />
+      {isMenuOpen &&
+        options2.map((option) => {
+          return (
+            <>
+              <StyledOptions
+                onClick={() => {
+                  goToPage(navigate, option.url);
+                  handleOnClick();
+                }}
+              >
+                {option.text}
+              </StyledOptions>
+              <StyledSeparator />
+            </>
+          );
+        })}
+    </StyledMenu>
+  );
+};
