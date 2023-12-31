@@ -1,3 +1,4 @@
+import { Menu } from "./Components/Footer/Menu.js";
 import { Router } from "./Routes/Router.js";
 import GlobalStyle from "./globalStyles.js";
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <GlobalStyle />
       <Router />
+      <Menu />{" "}
     </>
   );
 }

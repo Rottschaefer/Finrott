@@ -1,8 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { PluggyConnect } from "react-pluggy-connect";
+import { StyledPluggyPage, StyledText } from "./StyledPluggyPage";
+import { useNavigate } from "react-router-dom";
+import { goToPage } from "../../Routes/Coordinator";
 
-export const PluggyTestPage = (props) => {
+export const PluggyPage = (props) => {
+  const navigate = useNavigate();
+
   const [connectToken, setConnectToken] = useState("");
 
   // localStorage.setItem(
@@ -70,7 +75,7 @@ export const PluggyTestPage = (props) => {
   };
 
   return (
-    <>
+    <StyledPluggyPage>
       {connectToken && (
         <PluggyConnect
           connectToken={connectToken}
@@ -79,6 +84,9 @@ export const PluggyTestPage = (props) => {
           onError={onError}
         />
       )}
-    </>
+      <StyledText onClick={() => goToPage(navigate, "/summary")}>
+        Voltar para o Início
+      </StyledText>
+    </StyledPluggyPage>
   );
 };

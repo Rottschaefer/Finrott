@@ -8,7 +8,9 @@ export const AccountCard = (props) => {
   return (
     <StyledAccountCard color={props.color}>
       <StyledCardTitle>{props.bankName}</StyledCardTitle>
-      <StyledBalance>{props.balance}</StyledBalance>
+      {props.balance !== null && (
+        <StyledBalance>{`Saldo: R$${props.balance}`}</StyledBalance>
+      )}
     </StyledAccountCard>
   );
 };

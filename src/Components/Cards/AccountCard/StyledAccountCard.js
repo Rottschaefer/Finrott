@@ -6,8 +6,9 @@ export const StyledAccountCard = styled.div`
   align-items: center;
   justify-content: center;
   width: 85vw;
-  height: 30vh;
-  background-color: ${(props) => props.color};
+  min-height: 25vh;
+  background-color: ${(props) =>
+    props.color.includes("#") ? props.color : `#${props.color}`};
   border-radius: 30px;
 `;
 

@@ -13,3 +13,7 @@ export const goToSummaryPage = (navigate, id) => {
 export const goToCommentsPage = (navigate, id) => {
   navigate(`/feed/${id}`);
 };
+
+export const goToPage = (navigate, path) => {
+  navigate(path);
+};

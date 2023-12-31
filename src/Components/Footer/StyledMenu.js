@@ -1,71 +1,39 @@
 import styled from "styled-components";
-
+import { FiArrowUpCircle } from "react-icons/fi";
 export const StyledMenu = styled.nav`
-position: relative;
-width: 100vw;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: flex-end;
+  background-color: gray;
+  height: ${(props) => (props.isMenuOpen ? "100vh" : "10vh")};
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: ${(props) =>
+    props.isMenuOpen ? "flex-start" : "center"}; */
+  justify-content: center;
+  align-items: center;
 
-/* background-color: aqua; */
-position: fixed;
+  /* background-color: aqua; */
+  position: fixed;
   bottom: 0;
-`
 
-export const StyledDivSides = styled.div`
-background-color: green;
-height: 66.65px;
-width: 30vw;
-`
+  transition: all 1s;
+`;
 
-export const StyledDivCenter = styled.div`
-background-color: white;
-height: 6.5vh;
-width: 40vw;
-z-index: 2;
-`
+export const StyledArrow = styled(FiArrowUpCircle)`
+  rotate: ${(props) => (props.isMenuOpen ? "180deg" : "0deg")};
+  height: 3rem;
+  width: auto;
 
-export const StyledCircle1 = styled.div`
-position: absolute;
-bottom: -11.2px;
-right: 7%;
-background-color: white;
-height: 4.875rem;
-width:  4.875rem;
-border-radius: 50%;
-margin-top: 10px;
-`
+  transition: all 1s;
+`;
 
-export const StyledCircle2 = styled.div`
-position: absolute;
-bottom: -11.6px;
-left: 7%;
-background-color: white;
-height:  4.875rem;
-width:  4.875rem;
-border-radius: 50%;
-margin-top: 10px;
-`
+export const StyledOptions = styled.h1`
+  color: white;
+  padding: 10px;
+`;
 
-export const StyledCircleCenter = styled.div`
-margin: auto;
-position: absolute;
-bottom: 27.8px; 
-left: 50%;
-transform: translateX(-50%);
-background-color:rgb(233, 233, 233);
-;
-height: 7.7rem;
-width: 7.7rem;
-border-radius: 50%;
-margin-top: 10px;
-
-z-index: 2;
-
-`
-
-export const StyledDivFixed = styled.div`
-width: 300px;
-position: relative;
-`
+export const StyledSeparator = styled.div`
+  background-color: black;
+  height: 2px;
+  width: 80vw;
+  opacity: 0.4;
+`;
