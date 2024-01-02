@@ -19,7 +19,7 @@ export const Menu = () => {
 
   const options2 = [
     { text: "Início", url: "/summary" },
-    { text: "Adicionar Conta", url: "/add-account" },
+    { text: "Conectar Conta", url: "/add-account" },
   ];
 
   const options = ["Adicionar Conta", "Sair", "OtherOption", "Orçamento"];
