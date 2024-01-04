@@ -7,7 +7,7 @@ function App() {
     <>
       <GlobalStyle />
       <Router />
-      <Menu />{" "}
+      <Menu />
     </>
   );
 }

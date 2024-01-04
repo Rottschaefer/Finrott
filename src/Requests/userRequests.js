@@ -38,6 +38,25 @@ export const logIn = async (body) => {
   return output;
 };
 
+export const logInWithToken = async (config) => {
+  let output;
+  await axios
+    .post(`${BASE_URL}/auth/login`, {}, config)
+    .then((response) => {
+      console.log(response);
+      if (response.data.token) {
+        localStorage.setItem("token", JSON.stringify(response.data.token));
+      }
+
+      output = response.data;
+    })
+    .catch((error) => {
+      throw new Error(error);
+    });
+
+  return output;
+};
+
 export const getUsers = async () => {
   let output;
   await axios

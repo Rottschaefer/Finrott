@@ -3,7 +3,7 @@ export const goToSignUpPage = (navigate) => {
 };
 
 export const goToLogInPage = (navigate) => {
-  navigate("/");
+  navigate("/login");
 };
 
 export const goToSummaryPage = (navigate, id) => {

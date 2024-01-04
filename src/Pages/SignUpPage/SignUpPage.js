@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   StyledContinueButton,
+  StyledLoginButton,
   StyledSignUpForm,
   StyledSignUpInput,
   StyledSignUpPage,
@@ -9,7 +10,7 @@ import {
 } from "./StyledSignUpPage.js";
 import { useNavigate } from "react-router-dom";
 import { signUp } from "../../Requests/userRequests.js";
-import { goToSummaryPage } from "../../Routes/Coordinator.js";
+import { goToLogInPage, goToSummaryPage } from "../../Routes/Coordinator.js";
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
@@ -27,9 +28,9 @@ export const SignUpPage = () => {
   const [errorMessage, setErrorMessage] = useState(""); //Mensagem de erro que irá aparecer
 
   //Controle dos inputs abaixo
-  const [name, setName] = useState("teste3");
-  const [email, setEmail] = useState("teste3@gmail.com");
-  const [password, setPassword] = useState("12345");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -61,13 +62,15 @@ export const SignUpPage = () => {
       }
     } catch (error) {
       setBadRequest(true);
+      setIsLoading(false);
+
       setErrorMessage(error.message);
     }
   };
 
   return (
     <StyledSignUpPage fade={fade}>
-      <StyledTitle>Olá, boas vindas ao Finrott ;)</StyledTitle>
+      <StyledTitle>Olá, vamos fazer seu cadastro?</StyledTitle>
       <StyledSignUpForm>
         <StyledSignUpInput
           onChange={handleName}
@@ -97,6 +100,9 @@ export const SignUpPage = () => {
       <StyledContinueButton onClick={createNewUser} isLoading={isLoading}>
         {isLoading ? "Só um instante..." : "Cadastrar"}
       </StyledContinueButton>
+      <StyledLoginButton onClick={() => goToLogInPage(navigate)}>
+        Já tenho uma conta :)
+      </StyledLoginButton>
     </StyledSignUpPage>
   );
 };

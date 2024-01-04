@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FiArrowUpCircle } from "react-icons/fi";
 export const StyledMenu = styled.nav`
-  background-color: gray;
+  background-color: white;
   height: ${(props) => (props.isMenuOpen ? "100vh" : "10vh")};
   width: 100vw;
   display: flex;
@@ -16,6 +16,9 @@ export const StyledMenu = styled.nav`
   bottom: 0;
 
   transition: all 1s;
+  border-start-end-radius: 10px;
+  border-start-start-radius: 10px;
+  box-shadow: 0px 35px 30px 30px darkgray;
 `;
 
 export const StyledArrow = styled(FiArrowUpCircle)`
@@ -29,6 +32,7 @@ export const StyledArrow = styled(FiArrowUpCircle)`
 export const StyledOptions = styled.h1`
   color: white;
   padding: 10px;
+  cursor: pointer;
 `;
 
 export const StyledSeparator = styled.div`

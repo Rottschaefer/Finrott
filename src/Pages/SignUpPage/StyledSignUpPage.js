@@ -13,6 +13,8 @@ export const StyledSignUpPage = styled.main`
 `;
 
 export const StyledTitle = styled.p`
+  color: white;
+  text-align: center;
   font-style: normal;
   font-weight: 700;
   font-size: 33px;
@@ -21,8 +23,6 @@ export const StyledTitle = styled.p`
   max-width: 480px;
   /* max-width: 400px; */
   margin-top: 29px;
-
-  color: #373737;
 `;
 
 export const StyledSignUpForm = styled.form`
@@ -40,9 +40,9 @@ export const StyledSignUpInput = styled.input`
   display: flex;
   flex-direction: column;
 
-  font-family: "Noto Sans";
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 16px;
   line-height: 22px;
   color: #323941;
@@ -101,9 +101,8 @@ export const StyledContinueButton = styled.button`
   width: 78vw;
   max-width: 365px;
   height: 51px;
-  border-radius: 20px;
-  border: none;
-  /* background-image: linear-gradient(to right, #ff6489, #f9b24e); */
+  border-radius: 27px;
+  border: 1px solid white;
   background-color: black;
   font-family: "Noto Sans", sans-serif;
   font-size: 18px;
@@ -111,9 +110,24 @@ export const StyledContinueButton = styled.button`
   font-weight: 700;
   color: white;
   margin-top: 28px;
-  margin-bottom: 28px;
 
   opacity: ${(props) => (props.isLoading ? "0.5" : "1")};
 
   transition: all 1s;
+`;
+
+export const StyledLoginButton = styled.button`
+  cursor: pointer;
+  width: 78vw;
+  max-width: 365px;
+  height: 51px;
+  border-radius: 27px;
+  border: 1px solid white;
+  background-color: white;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 700;
+  color: black;
+  margin-top: 18px;
 `;

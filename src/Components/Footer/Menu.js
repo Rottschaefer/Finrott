@@ -5,7 +5,7 @@ import {
   StyledOptions,
   StyledSeparator,
 } from "./StyledMenu";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { goToPage } from "../../Routes/Coordinator";
 
 export const Menu = () => {
@@ -13,35 +13,45 @@ export const Menu = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleOnClick = () => {
+  const location = useLocation();
+
+  console.log(location);
+
+  const handleOnClick = (option) => {
     setIsMenuOpen(!isMenuOpen);
+
+    if (option.text === "Sair da Conta") {
+      localStorage.clear();
+    }
+    goToPage(navigate, option.url);
   };
 
   const options2 = [
     { text: "Início", url: "/summary" },
     { text: "Conectar Conta", url: "/add-account" },
+    { text: "Sair da Conta", url: "/login" },
   ];
 
-  const options = ["Adicionar Conta", "Sair", "OtherOption", "Orçamento"];
   return (
-    <StyledMenu isMenuOpen={isMenuOpen}>
-      <StyledArrow onClick={handleOnClick} isMenuOpen={isMenuOpen} />
-      {isMenuOpen &&
-        options2.map((option) => {
-          return (
-            <>
-              <StyledOptions
-                onClick={() => {
-                  goToPage(navigate, option.url);
-                  handleOnClick();
-                }}
-              >
-                {option.text}
-              </StyledOptions>
-              <StyledSeparator />
-            </>
-          );
-        })}
-    </StyledMenu>
+    <>
+      {location.pathname !== "/signup" &&
+        location.pathname !== "/login" &&
+        location.pathname !== "/" && (
+          <StyledMenu isMenuOpen={isMenuOpen}>
+            <StyledArrow onClick={handleOnClick} isMenuOpen={isMenuOpen} />
+            {isMenuOpen &&
+              options2.map((option) => {
+                return (
+                  <>
+                    <StyledOptions onClick={() => handleOnClick(option)}>
+                      {option.text}
+                    </StyledOptions>
+                    <StyledSeparator />
+                  </>
+                );
+              })}
+          </StyledMenu>
+        )}
+    </>
   );
 };

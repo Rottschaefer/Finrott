@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { logIn } from "../../Requests/userRequests.js";
+import { logIn, logInWithToken } from "../../Requests/userRequests.js";
 import {
   StyledContinueButton,
   StyledDiv,
@@ -55,9 +55,12 @@ export const LoginPage = () => {
     try {
       let payload;
       if (token) {
-        const body = { auth: { email, password } };
-
-        payload = await logIn(body);
+        const config = {
+          headers: {
+            Authorization: token,
+          },
+        };
+        payload = await logInWithToken(config);
 
         goToSummaryPage(navigate, payload.id);
       } else {
@@ -77,6 +80,8 @@ export const LoginPage = () => {
         }
       }
     } catch (error) {
+      setIsLoading(false);
+
       setBadRequest(true);
       setErrorMessage(error.message);
     }
@@ -84,10 +89,8 @@ export const LoginPage = () => {
 
   return (
     <StyledLoginPage fade={fade}>
-      <StyledTitle>FinRott</StyledTitle>
-      <StyledSubTitle>
-        O projeto de controle das suas finanças :)
-      </StyledSubTitle>
+      <StyledTitle>Finrott_</StyledTitle>
+      <StyledSubTitle>Faça login de controle das suas finanças</StyledSubTitle>
 
       <StyledForm>
         <StyledInput
@@ -105,7 +108,9 @@ export const LoginPage = () => {
           placeholder="Senha"
         />
       </StyledForm>
-      {badRequest && <StyledErrorMessage>{errorMessage}</StyledErrorMessage>}
+      {badRequest && (
+        <StyledErrorMessage margin="-10px">{errorMessage}</StyledErrorMessage>
+      )}
       <StyledContinueButton
         onClick={handleLogIn}
         onTouchStart={handleLogIn}
@@ -113,7 +118,7 @@ export const LoginPage = () => {
       >
         {isLoading ? "Só um instante" : "Entrar"}
       </StyledContinueButton>
-      <StyledDiv />
+      {/* <StyledDiv /> */}
       <StyledSignUpButton onClick={() => goToSignUpPage(navigate)}>
         Crie uma conta!
       </StyledSignUpButton>
