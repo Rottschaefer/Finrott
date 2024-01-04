@@ -14,10 +14,11 @@ export const StyledLoginPage = styled.main`
 `;
 
 export const StyledTitle = styled.p`
+  text-align: center;
   font-size: 36px;
   font-weight: 700;
   font-family: "IBM Plex Sans", sans-serif;
-  color: #373737;
+  color: white;
   line-height: 47px;
   margin: 10px;
 `;
@@ -26,7 +27,7 @@ export const StyledSubTitle = styled.p`
   font-size: 16px;
   font-weight: 300;
   font-family: "IBM Plex Sans", sans-serif;
-  color: #000000;
+  color: white;
   line-height: 21px;
   margin: 0px;
 `;
@@ -42,8 +43,7 @@ export const StyledInput = styled.input`
   width: 78vw;
   max-width: 363px;
   height: 60px;
-  font-family: "Noto Sans", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 16px;
   line-height: 22px;
   border: 1px #d5d8de solid;
@@ -57,14 +57,15 @@ export const StyledContinueButton = styled.button`
   max-width: 365px;
   height: 51px;
   border-radius: 27px;
-  border: none;
-  background-color: ${color};
+  border: 1px solid white;
+  background-color: black;
   font-family: "Noto Sans", sans-serif;
   font-size: 18px;
   line-height: 25px;
   font-weight: 700;
   color: white;
-  margin-top: 56px;
+  margin-top: 28px;
+
   opacity: ${(props) => (props.isLoading ? "0.5" : "1")};
 
   transition: all 1s;
@@ -76,13 +77,13 @@ export const StyledSignUpButton = styled.button`
   max-width: 365px;
   height: 51px;
   border-radius: 27px;
-  border: 1px solid ${color};
+  border: 1px solid white;
   background-color: white;
   font-family: "Noto Sans", sans-serif;
   font-size: 18px;
   line-height: 25px;
   font-weight: 700;
-  color: ${color};
+  color: black;
   margin-top: 18px;
 `;
 
@@ -96,14 +97,13 @@ export const StyledDiv = styled.div`
 
 export const StyledErrorMessage = styled.p`
   text-align: center;
-  font-family: "Noto Sans";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 14px;
   line-height: 19px;
 
   width: 78vw;
   max-width: 363px;
   color: red;
-  margin-bottom: -40px;
+  margin-bottom: ${(props) => (props.margin ? props.margin : "17px")};
 `;
