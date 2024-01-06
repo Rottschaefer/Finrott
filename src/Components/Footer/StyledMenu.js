@@ -30,7 +30,7 @@ export const StyledArrow = styled(FiArrowUpCircle)`
 `;
 
 export const StyledOptions = styled.h1`
-  color: white;
+  color: black;
   padding: 10px;
   cursor: pointer;
 `;
