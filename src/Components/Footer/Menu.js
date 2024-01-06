@@ -30,6 +30,7 @@ export const Menu = () => {
     { text: "Início", url: "/summary" },
     { text: "Conectar Conta", url: "/add-account" },
     { text: "Sair da Conta", url: "/login" },
+    { text: "Despesas", url: "/expenses" },
   ];
 
   return (

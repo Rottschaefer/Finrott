@@ -7,10 +7,10 @@ export const StyledSummaryPage = styled.div`
   align-items: center;
   gap: 50px;
   width: 100vw;
-  min-height: 100vh;
+  min-height: 90vh;
   height: auto;
   overflow-y: scroll;
-  padding-bottom: 15vh;
+  padding-bottom: 1rem;
   padding-top: 5vh;
   background-color: black;
 `;
