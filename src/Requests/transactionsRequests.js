@@ -1,12 +1,16 @@
 import axios from "axios";
 import { BASE_URL } from "../constants";
 
-export const getAmountsPerCategory = async (config) => {
+export const getAmountsPerCategory = async (config, monthPage, yearPage) => {
+  console.log("searching");
   let output;
   await axios
-    .get(`${BASE_URL}/categories/transactions`, config)
+    .get(
+      `${BASE_URL}/categories/transactions?month=${monthPage}&year=${yearPage}`,
+      config
+    )
     .then((response) => {
-      //   console.log(response.data.amountsPerCategory);
+      console.log(response.data.amountsPerCategory);
       output = response.data.amountsPerCategory;
     })
     .catch((error) => {
