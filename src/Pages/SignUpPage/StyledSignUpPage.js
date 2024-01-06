@@ -5,7 +5,6 @@ export const StyledSignUpPage = styled.main`
   justify-content: CENTER;
   align-items: center;
   flex-direction: column;
-  margin-top: 30px;
   height: 100vh;
   opacity: ${(props) => (props.fade ? "1" : "0")};
 

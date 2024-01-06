@@ -34,11 +34,11 @@ export const PluggyPage = (props) => {
     setConnectToken(newConnectToken);
 
     // const body = {
-    //   pluggy_id: "537f45a0-505a-40e3-a8da-1aa0d0b8efb92d",
+    //   item_id: "08e3f5dd-5a45-4af7-8d4d-35501898638e",
     //   user_id: 1,
     // };
     // const response2 = await axios.post(
-    //   "http://localhost:3000/items",
+    //   "http://localhost:3000/accounts",
     //   body,
     //   config
     // );
@@ -74,7 +74,17 @@ export const PluggyPage = (props) => {
         bodyAccounts,
         config
       );
-      console.log(responseItems.data, responseAccounts.data);
+
+      const responseTransactions = await axios.get(
+        `${BASE_URL}/categories/transactions?accountId=${responseAccounts.data.pluggy_id}`,
+        config
+      );
+
+      console.log(
+        responseItems.data,
+        responseAccounts.data,
+        responseTransactions.data
+      );
     } catch (error) {
       console.log(error.message);
     }

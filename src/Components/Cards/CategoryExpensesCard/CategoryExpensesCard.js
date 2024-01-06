@@ -5,8 +5,6 @@ import {
   StyledImgDiv,
 } from "./StyledCategoryExpensesCard";
 
-import { FaShoppingCart } from "react-icons/fa";
-
 export const CategoryExpensesCard = ({ amount }) => {
   return (
     <StyledCategoryCard>
@@ -26,7 +24,7 @@ export const CategoryExpensesCard = ({ amount }) => {
       </StyledImgDiv>
       <StyledExpensesInfoDiv>
         <StyledExpensesInfo>{amount.category || "Outros"}</StyledExpensesInfo>
-        <StyledExpensesInfo>R${amount.sum}</StyledExpensesInfo>
+        <StyledExpensesInfo>R${amount.total_amount}</StyledExpensesInfo>
       </StyledExpensesInfoDiv>
     </StyledCategoryCard>
   );
