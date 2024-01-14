@@ -1,15 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import { goToPage } from "../../../Routes/Coordinator";
 import {
   StyledCategoryCard,
-  StyledExpensesInfo,
-  StyledExpensesInfoDiv,
+  StyledTransactionInfo,
+  StyledTransactionInfoDiv,
   StyledImgDiv,
-} from "./StyledCategoryExpensesCard";
+} from "./StyledCategoryTransactionsCard";
 
-export const CategoryExpensesCard = ({ amount, handleOnClick }) => {
+export const CategoryTransactionsCard = ({ transaction }) => {
   return (
-    <StyledCategoryCard onClick={() => handleOnClick(amount)}>
+    <StyledCategoryCard>
       <StyledImgDiv>
         <svg
           width="32"
@@ -24,10 +22,10 @@ export const CategoryExpensesCard = ({ amount, handleOnClick }) => {
           />
         </svg>
       </StyledImgDiv>
-      <StyledExpensesInfoDiv>
-        <StyledExpensesInfo>{amount.category || "Outros"}</StyledExpensesInfo>
-        <StyledExpensesInfo>R${amount.total_amount}</StyledExpensesInfo>
-      </StyledExpensesInfoDiv>
+      <StyledTransactionInfoDiv>
+        <StyledTransactionInfo>{transaction.description}</StyledTransactionInfo>
+        <StyledTransactionInfo>R${transaction.amount}</StyledTransactionInfo>
+      </StyledTransactionInfoDiv>
     </StyledCategoryCard>
   );
 };

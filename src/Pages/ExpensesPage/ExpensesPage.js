@@ -6,15 +6,22 @@ import {
   StyledExpensesPage,
   StyledMonthPicker,
   StyledMonthPickerText,
+  StyledPlus,
 } from "./StyledExpenses";
 import { getAmountsPerCategory } from "../../Requests/transactionsRequests";
 import { response } from "msw";
+import { useNavigate } from "react-router-dom";
+import { goToPage } from "../../Routes/Coordinator";
+import { AddTransactionPopUp } from "../../Components/PopUps/AddTransactionPopUp/AddTransactionPopUp";
 
 export const ExpensesPage = () => {
+  const navigate = useNavigate();
+
   const [amountsPerCategory, setAmountsPerCategory] = useState([]);
   const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
   const [monthPage, setMonthPage] = useState(new Date().getMonth() + 1);
   const [yearPage, setYearPage] = useState(new Date().getFullYear());
+  const [showAddTransactionPopUp, setShowAddTransactionPopUp] = useState(false);
 
   const fetchData = async (month, year) => {
     const config = {
@@ -48,6 +55,7 @@ export const ExpensesPage = () => {
 
   useEffect(() => {
     fetchData(monthPage, yearPage);
+    console.log(amountsPerCategory);
   }, [monthPage, yearPage]);
 
   const months = {
@@ -65,6 +73,13 @@ export const ExpensesPage = () => {
     12: "Dezembro",
   };
 
+  const handleOnClick = (amount) => {
+    goToPage(
+      navigate,
+      `/expenses/${amount.category_id}?month=${monthPage}&year=${yearPage}`
+    );
+  };
+
   return (
     <StyledExpensesPage>
       <StyledMonthPicker>
@@ -77,8 +92,21 @@ export const ExpensesPage = () => {
 
       {amountsPerCategory.length > 0 &&
         amountsPerCategory.map((amount, index) => (
-          <CategoryExpensesCard key={index} amount={amount} />
+          <CategoryExpensesCard
+            key={index}
+            amount={amount}
+            handleOnClick={handleOnClick}
+          />
         ))}
+      <StyledPlus
+        onClick={() => setShowAddTransactionPopUp(!showAddTransactionPopUp)}
+      />
+      {showAddTransactionPopUp && (
+        <AddTransactionPopUp
+          setShowAddTransactionPopUp={setShowAddTransactionPopUp}
+          token={token}
+        />
+      )}
     </StyledExpensesPage>
   );
 };
