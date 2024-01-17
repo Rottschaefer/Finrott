@@ -18,6 +18,7 @@ export const StyledAddExpensePopUp = styled.div`
   border-radius: 10px;
   padding: 1rem;
   padding-bottom: 1.5rem;
+  color: black;
 `;
 
 export const StyledCloseButton = styled(AiOutlineClose)`
@@ -26,6 +27,7 @@ export const StyledCloseButton = styled(AiOutlineClose)`
   right: 1rem;
   height: 1.5rem;
   width: 1.5rem;
+  color: black;
 
   cursor: pointer;
 `;
@@ -35,16 +37,19 @@ export const StyledTitle = styled.h3`
   font-size: 1.5rem;
 `;
 
-export const StyledInput = styled.textarea`
+export const StyledInput = styled.input`
   resize: none;
   width: 80%;
-  height: auto;
-  font-family: "Noto Sans", sans-serif;
+  height: 2rem;
   font-weight: 400;
-  line-height: 22px;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+
+  line-height: 100%;
   border: 1px #d5d8de solid;
   border-radius: 4px;
   padding-left: 16px;
+  vertical-align: center;
 
   ::placeholder {
     font-size: 0.5;
@@ -56,14 +61,36 @@ export const StyledAddButton = styled.button`
   cursor: pointer;
   width: 80%;
   height: 3rem;
-  border-radius: 20px;
+  border-radius: 10px;
   border: none;
-  background-color: ${color};
-  font-family: "Noto Sans", sans-serif;
+  background-color: black;
   font-size: 1rem;
   font-weight: 700;
   color: white;
   opacity: ${(props) => (props.isLoading ? "0.5" : "1")};
 
   transition: all 1s;
+
+  margin-top: 20px;
+`;
+
+export const StyledSelect = styled.select`
+  background-color: black;
+  color: white;
+  width: 80%;
+  height: 3rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  border: 1px black solid;
+  border-radius: 4px;
+  text-align: center;
+`;
+
+export const StyledLabel = styled.label`
+  width: 80%;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  color: black;
 `;

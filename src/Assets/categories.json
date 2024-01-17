@@ -1,0 +1,868 @@
+{
+  "total": 129,
+  "totalPages": 1,
+  "page": 1,
+  "results": [
+    {
+      "id": "01000000",
+      "description": "Income",
+      "descriptionTranslated": "Renda"
+    },
+    {
+      "id": "01010000",
+      "description": "Salary",
+      "descriptionTranslated": "Salário",
+      "parentId": "01000000",
+      "parentDescription": "Income"
+    },
+    {
+      "id": "01020000",
+      "description": "Retirement",
+      "descriptionTranslated": "Aposentadoria",
+      "parentId": "01000000",
+      "parentDescription": "Income"
+    },
+    {
+      "id": "01030000",
+      "description": "Entrepreneurial activities",
+      "descriptionTranslated": "Atividades de empreendedorismo",
+      "parentId": "01000000",
+      "parentDescription": "Income"
+    },
+    {
+      "id": "01040000",
+      "description": "Government aid",
+      "descriptionTranslated": "Auxílio do governo",
+      "parentId": "01000000",
+      "parentDescription": "Income"
+    },
+    {
+      "id": "01050000",
+      "description": "Non-recurring income",
+      "descriptionTranslated": "Renda não-recorrente",
+      "parentId": "01000000",
+      "parentDescription": "Income"
+    },
+    {
+      "id": "02000000",
+      "description": "Loans and financing",
+      "descriptionTranslated": "Empréstimos e financiamento"
+    },
+    {
+      "id": "02010000",
+      "description": "Late payment and overdraft costs",
+      "descriptionTranslated": "Atraso no pagamento e custos de cheque especial",
+      "parentId": "02000000",
+      "parentDescription": "Loans and financing"
+    },
+    {
+      "id": "02020000",
+      "description": "Interests charged",
+      "descriptionTranslated": "Juros cobrados",
+      "parentId": "02000000",
+      "parentDescription": "Loans and financing"
+    },
+    {
+      "id": "02030000",
+      "description": "Financing",
+      "descriptionTranslated": "Financiamento",
+      "parentId": "02000000",
+      "parentDescription": "Loans and financing"
+    },
+    {
+      "id": "02030001",
+      "description": "Real estate financing",
+      "descriptionTranslated": "Financiamento imobiliário",
+      "parentId": "02000000",
+      "parentDescription": "Financing"
+    },
+    {
+      "id": "02030002",
+      "description": "Vehicle financing",
+      "descriptionTranslated": "Financiamento de veículos",
+      "parentId": "02000000",
+      "parentDescription": "Financing"
+    },
+    {
+      "id": "02030003",
+      "description": "Student loan",
+      "descriptionTranslated": "Empréstimo estudantil",
+      "parentId": "02000000",
+      "parentDescription": "Financing"
+    },
+    {
+      "id": "02040000",
+      "description": "Loans",
+      "descriptionTranslated": "Empréstimos",
+      "parentId": "02000000",
+      "parentDescription": "Loans and financing"
+    },
+    {
+      "id": "03000000",
+      "description": "Investments",
+      "descriptionTranslated": "Investimentos"
+    },
+    {
+      "id": "03010000",
+      "description": "Automatic investment",
+      "descriptionTranslated": "Investimento automático",
+      "parentId": "03000000",
+      "parentDescription": "Investments"
+    },
+    {
+      "id": "03020000",
+      "description": "Fixed income",
+      "descriptionTranslated": "Renda fixa",
+      "parentId": "03000000",
+      "parentDescription": "Investments"
+    },
+    {
+      "id": "03030000",
+      "description": "Mutual funds",
+      "descriptionTranslated": "Fundos multimercado",
+      "parentId": "03000000",
+      "parentDescription": "Investments"
+    },
+    {
+      "id": "03040000",
+      "description": "Variable income",
+      "descriptionTranslated": "Renda variável",
+      "parentId": "03000000",
+      "parentDescription": "Investments"
+    },
+    {
+      "id": "03050000",
+      "description": "Margin",
+      "descriptionTranslated": "Ajuste de margem",
+      "parentId": "03000000",
+      "parentDescription": "Investments"
+    },
+    {
+      "id": "03060000",
+      "description": "Proceeds interests and dividends",
+      "descriptionTranslated": "Juros de rendimentos de dividendos",
+      "parentId": "03000000",
+      "parentDescription": "Investments"
+    },
+    {
+      "id": "03070000",
+      "description": "Pension",
+      "descriptionTranslated": "Pensão",
+      "parentId": "03000000",
+      "parentDescription": "Investments"
+    },
+    {
+      "id": "04000000",
+      "description": "Same person transfer",
+      "descriptionTranslated": "Transferência mesma titularidade"
+    },
+    {
+      "id": "04010000",
+      "description": "Same person transfer - CASH",
+      "descriptionTranslated": "Transferência mesma titularidade - Dinheiro",
+      "parentId": "04000000",
+      "parentDescription": "Same person transfer"
+    },
+    {
+      "id": "04020000",
+      "description": "Same person transfer - PIX",
+      "descriptionTranslated": "Transferência mesma titularidade - PIX",
+      "parentId": "04000000",
+      "parentDescription": "Same person transfer"
+    },
+    {
+      "id": "04030000",
+      "description": "Same person transfer - TED",
+      "descriptionTranslated": "Transferência mesma titularidade - TED",
+      "parentId": "04000000",
+      "parentDescription": "Same person transfer"
+    },
+    {
+      "id": "05000000",
+      "description": "Transfers",
+      "descriptionTranslated": "Transferências"
+    },
+    {
+      "id": "05010000",
+      "description": "Transfer - Bank Slip",
+      "descriptionTranslated": "Transferência - Boleto bancário",
+      "parentId": "05000000",
+      "parentDescription": "Transfers"
+    },
+    {
+      "id": "05020000",
+      "description": "Transfer - Cash",
+      "descriptionTranslated": "Transferência - Dinheiro",
+      "parentId": "05000000",
+      "parentDescription": "Transfers"
+    },
+    {
+      "id": "05030000",
+      "description": "Transfer - Check",
+      "descriptionTranslated": "Transferência - Cheque",
+      "parentId": "05000000",
+      "parentDescription": "Transfers"
+    },
+    {
+      "id": "05040000",
+      "description": "Transfer - DOC",
+      "descriptionTranslated": "Transferências- DOC",
+      "parentId": "05000000",
+      "parentDescription": "Transfers"
+    },
+    {
+      "id": "05050000",
+      "description": "Transfer - Foreign Exchange",
+      "descriptionTranslated": "Transferência - Câmbio",
+      "parentId": "05000000",
+      "parentDescription": "Transfers"
+    },
+    {
+      "id": "05060000",
+      "description": "Transfer - Internal",
+      "descriptionTranslated": "Transferência - Mesma instituição",
+      "parentId": "05000000",
+      "parentDescription": "Transfers"
+    },
+    {
+      "id": "05070000",
+      "description": "Transfer - PIX",
+      "descriptionTranslated": "Transferência - PIX",
+      "parentId": "05000000",
+      "parentDescription": "Transfers"
+    },
+    {
+      "id": "05080000",
+      "description": "Transfer - TED",
+      "descriptionTranslated": "Transferência - TED",
+      "parentId": "05000000",
+      "parentDescription": "Transfers"
+    },
+    {
+      "id": "05090000",
+      "description": "Third party transfers",
+      "descriptionTranslated": "Transferências para terceiros",
+      "parentId": "05000000",
+      "parentDescription": "Transfers"
+    },
+    {
+      "id": "05090001",
+      "description": "Third party transfer - Bank Slip",
+      "descriptionTranslated": "Transferência para terceiros - Boleto bancário",
+      "parentId": "05090000",
+      "parentDescription": "Third party transfers"
+    },
+    {
+      "id": "05090002",
+      "description": "Third party transfer - Debit Card",
+      "descriptionTranslated": "Transferência para terceiros - Débito",
+      "parentId": "05090000",
+      "parentDescription": "Third party transfers"
+    },
+    {
+      "id": "05090003",
+      "description": "Third party transfer - DOC",
+      "descriptionTranslated": "Transferência para terceiros - DOC",
+      "parentId": "05090000",
+      "parentDescription": "Third party transfers"
+    },
+    {
+      "id": "05090004",
+      "description": "Third party transfer - PIX",
+      "descriptionTranslated": "Transferência para terceiros - PIX",
+      "parentId": "05090000",
+      "parentDescription": "Third party transfers"
+    },
+    {
+      "id": "05090005",
+      "description": "Third party transfer - TED",
+      "descriptionTranslated": "Transferência para terceiros - TED",
+      "parentId": "05090000",
+      "parentDescription": "Third party transfers"
+    },
+    {
+      "id": "05100000",
+      "description": "Credit card payment",
+      "descriptionTranslated": "Pagamento de cartão de crédito",
+      "parentId": "05000000",
+      "parentDescription": "Transfers"
+    },
+    {
+      "id": "06000000",
+      "description": "Legal obligations",
+      "descriptionTranslated": "Obrigações legais"
+    },
+    {
+      "id": "06010000",
+      "description": "Blocked balances",
+      "descriptionTranslated": "Saldo bloqueado",
+      "parentId": "06000000",
+      "parentDescription": "Legal obligations"
+    },
+    {
+      "id": "06020000",
+      "description": "Alimony",
+      "descriptionTranslated": "Pensão alimentícia",
+      "parentId": "06000000",
+      "parentDescription": "Legal obligations"
+    },
+    {
+      "id": "07000000",
+      "description": "Services",
+      "descriptionTranslated": "Serviços"
+    },
+    {
+      "id": "07010000",
+      "description": "Telecommunications",
+      "descriptionTranslated": "Telecomunicação",
+      "parentId": "07000000",
+      "parentDescription": "Services"
+    },
+    {
+      "id": "07010001",
+      "description": "Internet",
+      "descriptionTranslated": "Internet",
+      "parentId": "07010000",
+      "parentDescription": "Telecommunications"
+    },
+    {
+      "id": "07010002",
+      "description": "Mobile",
+      "descriptionTranslated": "Celular",
+      "parentId": "07010000",
+      "parentDescription": "Telecommunications"
+    },
+    {
+      "id": "07010003",
+      "description": "TV",
+      "descriptionTranslated": "TV",
+      "parentId": "07010000",
+      "parentDescription": "Telecommunications"
+    },
+    {
+      "id": "07020000",
+      "description": "Education",
+      "descriptionTranslated": "Educação",
+      "parentId": "07000000",
+      "parentDescription": "Services"
+    },
+    {
+      "id": "07020001",
+      "description": "Online Courses",
+      "descriptionTranslated": "Cursos online",
+      "parentId": "07020000",
+      "parentDescription": "Education"
+    },
+    {
+      "id": "07020002",
+      "description": "University",
+      "descriptionTranslated": "Universidade",
+      "parentId": "07020000",
+      "parentDescription": "Education"
+    },
+    {
+      "id": "07020003",
+      "description": "School",
+      "descriptionTranslated": "Escola",
+      "parentId": "07020000",
+      "parentDescription": "Education"
+    },
+    {
+      "id": "07020004",
+      "description": "Kindergarten",
+      "descriptionTranslated": "Creche",
+      "parentId": "07020000",
+      "parentDescription": "Education"
+    },
+    {
+      "id": "07030000",
+      "description": "Wellness and fitness",
+      "descriptionTranslated": "Saúde e bem-estar",
+      "parentId": "07000000",
+      "parentDescription": "Services"
+    },
+    {
+      "id": "07030001",
+      "description": "Gyms and fitness centers",
+      "descriptionTranslated": "Academia e centros de lazer",
+      "parentId": "07030000",
+      "parentDescription": "Wellness and fitness"
+    },
+    {
+      "id": "07030002",
+      "description": "Sports practice",
+      "descriptionTranslated": "Prática de esportes",
+      "parentId": "07030000",
+      "parentDescription": "Wellness and fitness"
+    },
+    {
+      "id": "07030003",
+      "description": "Wellness",
+      "descriptionTranslated": "Bem-estar",
+      "parentId": "07030000",
+      "parentDescription": "Wellness and fitness"
+    },
+    {
+      "id": "07040000",
+      "description": "Tickets",
+      "descriptionTranslated": "Bilhetes",
+      "parentId": "07000000",
+      "parentDescription": "Services"
+    },
+    {
+      "id": "07040001",
+      "description": "Stadiums and arenas",
+      "descriptionTranslated": "Estádios e arenas",
+      "parentId": "07040000",
+      "parentDescription": "Tickets"
+    },
+    {
+      "id": "07040002",
+      "description": "Landmarks and museums",
+      "descriptionTranslated": "Museus e pontos turísticos",
+      "parentId": "07040000",
+      "parentDescription": "Tickets"
+    },
+    {
+      "id": "07040003",
+      "description": "Cinema, theater and concerts",
+      "descriptionTranslated": "Cinema, Teatro e Concertos",
+      "parentId": "07040000",
+      "parentDescription": "Tickets"
+    },
+    {
+      "id": "08000000",
+      "description": "Shopping",
+      "descriptionTranslated": "Compras"
+    },
+    {
+      "id": "08010000",
+      "description": "Online shopping",
+      "descriptionTranslated": "Compras online",
+      "parentId": "08000000",
+      "parentDescription": "Shopping"
+    },
+    {
+      "id": "08020000",
+      "description": "Electronics",
+      "descriptionTranslated": "Eletrônicos",
+      "parentId": "08000000",
+      "parentDescription": "Shopping"
+    },
+    {
+      "id": "08030000",
+      "description": "Pet supplies and vet",
+      "descriptionTranslated": "Pet Shops e veterinários",
+      "parentId": "08000000",
+      "parentDescription": "Shopping"
+    },
+    {
+      "id": "08040000",
+      "description": "Clothing",
+      "descriptionTranslated": "Vestiário",
+      "parentId": "08000000",
+      "parentDescription": "Shopping"
+    },
+    {
+      "id": "08050000",
+      "description": "Kids and toys",
+      "descriptionTranslated": "Artigos infantis",
+      "parentId": "08000000",
+      "parentDescription": "Shopping"
+    },
+    {
+      "id": "08060000",
+      "description": "Bookstore",
+      "descriptionTranslated": "Livraria",
+      "parentId": "08000000",
+      "parentDescription": "Shopping"
+    },
+    {
+      "id": "08070000",
+      "description": "Sports goods",
+      "descriptionTranslated": "Artigos esportivos",
+      "parentId": "08000000",
+      "parentDescription": "Shopping"
+    },
+    {
+      "id": "08080000",
+      "description": "Office supplies",
+      "descriptionTranslated": "Papelaria",
+      "parentId": "08000000",
+      "parentDescription": "Shopping"
+    },
+    {
+      "id": "08090000",
+      "description": "Cashback",
+      "descriptionTranslated": "Cashback",
+      "parentId": "08000000",
+      "parentDescription": "Shopping"
+    },
+    {
+      "id": "09000000",
+      "description": "Digital services",
+      "descriptionTranslated": "Serviços digitais"
+    },
+    {
+      "id": "09010000",
+      "description": "Gaming",
+      "descriptionTranslated": "Jogos e videogames",
+      "parentId": "09000000",
+      "parentDescription": "Digital services"
+    },
+    {
+      "id": "09020000",
+      "description": "Video streaming",
+      "descriptionTranslated": "Streaming de vídeo",
+      "parentId": "09000000",
+      "parentDescription": "Digital services"
+    },
+    {
+      "id": "09030000",
+      "description": "Music streaming",
+      "descriptionTranslated": "Streaming de música",
+      "parentId": "09000000",
+      "parentDescription": "Digital services"
+    },
+    {
+      "id": "10000000",
+      "description": "Groceries",
+      "descriptionTranslated": "Supermercado"
+    },
+    {
+      "id": "11000000",
+      "description": "Food and drinks",
+      "descriptionTranslated": "Alimentos e bebidas"
+    },
+    {
+      "id": "11010000",
+      "description": "Eating out",
+      "descriptionTranslated": "Restaurantes, bares e lanchonetes",
+      "parentId": "11000000",
+      "parentDescription": "Food and drinks"
+    },
+    {
+      "id": "11020000",
+      "description": "Food delivery",
+      "descriptionTranslated": "Delivery de alimentos",
+      "parentId": "11000000",
+      "parentDescription": "Food and drinks"
+    },
+    {
+      "id": "12000000",
+      "description": "Travel",
+      "descriptionTranslated": "Viagens"
+    },
+    {
+      "id": "12010000",
+      "description": "Airport and airlines",
+      "descriptionTranslated": "Aeroportos e cias. aéreas",
+      "parentId": "12000000",
+      "parentDescription": "Travel"
+    },
+    {
+      "id": "12020000",
+      "description": "Accomodation",
+      "descriptionTranslated": "Hospedagem",
+      "parentId": "12000000",
+      "parentDescription": "Travel"
+    },
+    {
+      "id": "12030000",
+      "description": "Mileage programs",
+      "descriptionTranslated": "Programas de milhagem",
+      "parentId": "12000000",
+      "parentDescription": "Travel"
+    },
+    {
+      "id": "12040000",
+      "description": "Bus tickets",
+      "descriptionTranslated": "Passagem de ônibus",
+      "parentId": "12000000",
+      "parentDescription": "Travel"
+    },
+    {
+      "id": "13000000",
+      "description": "Donations",
+      "descriptionTranslated": "Doações"
+    },
+    {
+      "id": "14000000",
+      "description": "Gambling",
+      "descriptionTranslated": "Apostas"
+    },
+    {
+      "id": "14010000",
+      "description": "Lottery",
+      "descriptionTranslated": "Loteria",
+      "parentId": "14000000",
+      "parentDescription": "Gambling"
+    },
+    {
+      "id": "14020000",
+      "description": "Online bet",
+      "descriptionTranslated": "Apostas online",
+      "parentId": "14000000",
+      "parentDescription": "Gambling"
+    },
+    {
+      "id": "15000000",
+      "description": "Taxes",
+      "descriptionTranslated": "Impostos"
+    },
+    {
+      "id": "15010000",
+      "description": "Income taxes",
+      "descriptionTranslated": "Imposto de renda",
+      "parentId": "15000000",
+      "parentDescription": "Taxes"
+    },
+    {
+      "id": "15020000",
+      "description": "Taxes on investments",
+      "descriptionTranslated": "Imposto sobre investimentos",
+      "parentId": "15000000",
+      "parentDescription": "Taxes"
+    },
+    {
+      "id": "15030000",
+      "description": "Tax on financial operations",
+      "descriptionTranslated": "Impostos sobre operações financeiras",
+      "parentId": "15000000",
+      "parentDescription": "Taxes"
+    },
+    {
+      "id": "16000000",
+      "description": "Bank fees",
+      "descriptionTranslated": "Taxas bancárias"
+    },
+    {
+      "id": "16010000",
+      "description": "Account fees",
+      "descriptionTranslated": "Taxas de conta corrente",
+      "parentId": "16000000",
+      "parentDescription": "Bank fees"
+    },
+    {
+      "id": "16020000",
+      "description": "Wire transfer fees and ATM fees",
+      "descriptionTranslated": "Taxas sobre transferências e caixa eletrônico",
+      "parentId": "16000000",
+      "parentDescription": "Bank fees"
+    },
+    {
+      "id": "16030000",
+      "description": "Credit card fees",
+      "descriptionTranslated": "Taxas de cartão de crédito",
+      "parentId": "16000000",
+      "parentDescription": "Bank fees"
+    },
+    {
+      "id": "17000000",
+      "description": "Housing",
+      "descriptionTranslated": "Moradia"
+    },
+    {
+      "id": "17010000",
+      "description": "Rent",
+      "descriptionTranslated": "Aluguel",
+      "parentId": "17000000",
+      "parentDescription": "Housing"
+    },
+    {
+      "id": "17020000",
+      "description": "Utilities",
+      "descriptionTranslated": "Serviços de utilidade pública",
+      "parentId": "17000000",
+      "parentDescription": "Housing"
+    },
+    {
+      "id": "17020001",
+      "description": "Water",
+      "descriptionTranslated": "Água",
+      "parentId": "17020000",
+      "parentDescription": "Utilities"
+    },
+    {
+      "id": "17020002",
+      "description": "Electricity",
+      "descriptionTranslated": "Eletricidade",
+      "parentId": "17020000",
+      "parentDescription": "Utilities"
+    },
+    {
+      "id": "17020003",
+      "description": "Gas",
+      "descriptionTranslated": "Gás",
+      "parentId": "17020000",
+      "parentDescription": "Utilities"
+    },
+    {
+      "id": "17030000",
+      "description": "Houseware",
+      "descriptionTranslated": "Utensílios para casa",
+      "parentId": "17000000",
+      "parentDescription": "Housing"
+    },
+    {
+      "id": "17040000",
+      "description": "Urban land and building tax",
+      "descriptionTranslated": "Impostos sobre moradia",
+      "parentId": "17000000",
+      "parentDescription": "Housing"
+    },
+    {
+      "id": "18000000",
+      "description": "Healthcare",
+      "descriptionTranslated": "Saúde"
+    },
+    {
+      "id": "18010000",
+      "description": "Dentist",
+      "descriptionTranslated": "Dentista",
+      "parentId": "18000000",
+      "parentDescription": "Healthcare"
+    },
+    {
+      "id": "18020000",
+      "description": "Pharmacy",
+      "descriptionTranslated": "Farmácia",
+      "parentId": "18000000",
+      "parentDescription": "Healthcare"
+    },
+    {
+      "id": "18030000",
+      "description": "Optometry",
+      "descriptionTranslated": "Ótica",
+      "parentId": "18000000",
+      "parentDescription": "Healthcare"
+    },
+    {
+      "id": "18040000",
+      "description": "Hospital clinics and labs",
+      "descriptionTranslated": "Hospitais, clínicas e laboratórios",
+      "parentId": "18000000",
+      "parentDescription": "Healthcare"
+    },
+    {
+      "id": "19000000",
+      "description": "Transportation",
+      "descriptionTranslated": "Transporte"
+    },
+    {
+      "id": "19010000",
+      "description": "Taxi and ride-hailing",
+      "descriptionTranslated": "Táxi e transporte privado urbano",
+      "parentId": "19000000",
+      "parentDescription": "Transportation"
+    },
+    {
+      "id": "19020000",
+      "description": "Public transportation",
+      "descriptionTranslated": "Transporte público",
+      "parentId": "19000000",
+      "parentDescription": "Transportation"
+    },
+    {
+      "id": "19030000",
+      "description": "Car rental",
+      "descriptionTranslated": "Aluguel de veículos",
+      "parentId": "19000000",
+      "parentDescription": "Transportation"
+    },
+    {
+      "id": "19040000",
+      "description": "Bicycle",
+      "descriptionTranslated": "Aluguel de bicicletas",
+      "parentId": "19000000",
+      "parentDescription": "Transportation"
+    },
+    {
+      "id": "19050000",
+      "description": "Automotive",
+      "descriptionTranslated": "Serviços automotivos",
+      "parentId": "19000000",
+      "parentDescription": "Transportation"
+    },
+    {
+      "id": "19050001",
+      "description": "Gas stations",
+      "descriptionTranslated": "Postos de gasolina",
+      "parentId": "19050000",
+      "parentDescription": "Automotive"
+    },
+    {
+      "id": "19050002",
+      "description": "Parking",
+      "descriptionTranslated": "Estacionamentos",
+      "parentId": "19050000",
+      "parentDescription": "Automotive"
+    },
+    {
+      "id": "19050003",
+      "description": "Tolls and in vehicle payment",
+      "descriptionTranslated": "Pedágios e pagamentos no veículo",
+      "parentId": "19050000",
+      "parentDescription": "Automotive"
+    },
+    {
+      "id": "19050004",
+      "description": "Vehicle ownership taxes and fees",
+      "descriptionTranslated": "Taxas e impostos sobre veículos",
+      "parentId": "19050000",
+      "parentDescription": "Automotive"
+    },
+    {
+      "id": "19050005",
+      "description": "Vehicle maintenance",
+      "descriptionTranslated": "Manutenção de veículos",
+      "parentId": "19050000",
+      "parentDescription": "Automotive"
+    },
+    {
+      "id": "19050006",
+      "description": "Traffic tickets",
+      "descriptionTranslated": "Multas de trânsito",
+      "parentId": "19050000",
+      "parentDescription": "Automotive"
+    },
+    {
+      "id": "20000000",
+      "description": "Insurance",
+      "descriptionTranslated": "Seguros"
+    },
+    {
+      "id": "200100000",
+      "description": "Life insurance",
+      "descriptionTranslated": "Seguro de vida",
+      "parentId": "20000000",
+      "parentDescription": "Insurance"
+    },
+    {
+      "id": "200200000",
+      "description": "Home insurance",
+      "descriptionTranslated": "Seguro residencial",
+      "parentId": "20000000",
+      "parentDescription": "Insurance"
+    },
+    {
+      "id": "200300000",
+      "description": "Health insurance",
+      "descriptionTranslated": "Seguro saúde",
+      "parentId": "20000000",
+      "parentDescription": "Insurance"
+    },
+    {
+      "id": "200400000",
+      "description": "Vehicle insurance",
+      "descriptionTranslated": "Seguro de veículos",
+      "parentId": "20000000",
+      "parentDescription": "Insurance"
+    },
+    {
+      "id": "21000000",
+      "description": "Leisure",
+      "descriptionTranslated": "Lazer"
+    }
+  ]
+}

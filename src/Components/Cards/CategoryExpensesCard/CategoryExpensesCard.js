@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import { goToPage } from "../../../Routes/Coordinator";
 import {
   StyledCategoryCard,
   StyledExpensesInfo,
@@ -5,9 +7,9 @@ import {
   StyledImgDiv,
 } from "./StyledCategoryExpensesCard";
 
-export const CategoryExpensesCard = ({ amount }) => {
+export const CategoryExpensesCard = ({ amount, handleOnClick }) => {
   return (
-    <StyledCategoryCard>
+    <StyledCategoryCard onClick={() => handleOnClick(amount)}>
       <StyledImgDiv>
         <svg
           width="32"

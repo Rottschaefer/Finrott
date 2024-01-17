@@ -6,17 +6,29 @@ import {
   StyledExpensesPage,
   StyledMonthPicker,
   StyledMonthPickerText,
+  StyledPlus,
+  StyledTotalText,
 } from "./StyledExpenses";
 import { getAmountsPerCategory } from "../../Requests/transactionsRequests";
 import { response } from "msw";
+import { useNavigate } from "react-router-dom";
+import { goToPage } from "../../Routes/Coordinator";
+import { AddTransactionPopUp } from "../../Components/PopUps/AddTransactionPopUp/AddTransactionPopUp";
+import { Loading } from "../../Components/Loading/Loading";
 
 export const ExpensesPage = () => {
+  const navigate = useNavigate();
+
   const [amountsPerCategory, setAmountsPerCategory] = useState([]);
   const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
   const [monthPage, setMonthPage] = useState(new Date().getMonth() + 1);
   const [yearPage, setYearPage] = useState(new Date().getFullYear());
+  const [showAddTransactionPopUp, setShowAddTransactionPopUp] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [totalMonthAmount, setTotalMonthAmount] = useState(0);
 
   const fetchData = async (month, year) => {
+    let total = 0;
     const config = {
       headers: {
         Authorization: token,
@@ -25,6 +37,15 @@ export const ExpensesPage = () => {
     const response = await getAmountsPerCategory(config, month, year);
     if (response) {
       setAmountsPerCategory(response);
+      response.map((amount, index) => {
+        total += Number(amount.total_amount);
+      });
+      setTotalMonthAmount(
+        total.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        })
+      );
     }
   };
 
@@ -48,6 +69,8 @@ export const ExpensesPage = () => {
 
   useEffect(() => {
     fetchData(monthPage, yearPage);
+    console.log(amountsPerCategory);
+    setIsLoading(false);
   }, [monthPage, yearPage]);
 
   const months = {
@@ -65,20 +88,52 @@ export const ExpensesPage = () => {
     12: "Dezembro",
   };
 
-  return (
-    <StyledExpensesPage>
-      <StyledMonthPicker>
-        <StyledArrowLeft onClick={() => handleMonthChange(-1)} />
-        <StyledMonthPickerText>
-          {`${months[monthPage]} / ${yearPage}`}
-        </StyledMonthPickerText>
-        <StyledArrowRight onClick={() => handleMonthChange(1)} />
-      </StyledMonthPicker>
+  const handleOnClick = (amount) => {
+    goToPage(
+      navigate,
+      `/expenses/${amount.category_id}?month=${monthPage}&year=${yearPage}`
+    );
+  };
 
-      {amountsPerCategory.length > 0 &&
-        amountsPerCategory.map((amount, index) => (
-          <CategoryExpensesCard key={index} amount={amount} />
-        ))}
-    </StyledExpensesPage>
+  // let totalMonthAmount = amountsPerCategory.map(
+  //   (amount) => (totalMonthAmount += amount.amount)
+  // );
+
+  return (
+    <>
+      {isLoading && <Loading />}
+      {!isLoading && (
+        <StyledExpensesPage>
+          <StyledMonthPicker>
+            <StyledArrowLeft onClick={() => handleMonthChange(-1)} />
+            <StyledMonthPickerText>
+              {`${months[monthPage]} / ${yearPage}`}
+            </StyledMonthPickerText>
+            <StyledArrowRight onClick={() => handleMonthChange(1)} />
+          </StyledMonthPicker>
+
+          {amountsPerCategory.length > 0 &&
+            amountsPerCategory.map((amount, index) => {
+              return (
+                <CategoryExpensesCard
+                  key={index}
+                  amount={amount}
+                  handleOnClick={handleOnClick}
+                />
+              );
+            })}
+          <StyledTotalText>Total: {totalMonthAmount}</StyledTotalText>
+          <StyledPlus
+            onClick={() => setShowAddTransactionPopUp(!showAddTransactionPopUp)}
+          />
+          {showAddTransactionPopUp && (
+            <AddTransactionPopUp
+              setShowAddTransactionPopUp={setShowAddTransactionPopUp}
+              token={token}
+            />
+          )}
+        </StyledExpensesPage>
+      )}
+    </>
   );
 };

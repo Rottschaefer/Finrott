@@ -15,8 +15,6 @@ export const Menu = () => {
 
   const location = useLocation();
 
-  console.log(location);
-
   const handleOnClick = (option) => {
     setIsMenuOpen(!isMenuOpen);
 

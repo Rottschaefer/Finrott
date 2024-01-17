@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import { FaPlusCircle } from "react-icons/fa";
 
 export const StyledExpensesPage = styled.div`
   padding-top: 7vh;
@@ -47,4 +48,21 @@ export const StyledMonthPickerText = styled.p`
   font-weight: 550;
   font-size: 0.9rem;
   line-height: 22px;
+`;
+
+export const StyledPlus = styled(FaPlusCircle)`
+  height: 2rem;
+  width: auto;
+  color: white;
+
+  /* transition: all 1s; */
+`;
+
+export const StyledTotalText = styled.p`
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 550;
+  font-size: 1.5rem;
+  line-height: 22px;
+  color: white;
 `;
