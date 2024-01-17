@@ -7,7 +7,7 @@ import {
   StyledLabel,
   StyledSelect,
   StyledTitle,
-} from "./StyledAddTransactionPopUp.js";
+} from "./StyledTransactionInfoPopUp.js";
 import { addExpense } from "../../../Requests/expenseRequests.js";
 import categories from "../../../Assets/categories.json";
 import {
@@ -15,15 +15,19 @@ import {
   addTransactions,
 } from "../../../Requests/transactionsRequests.js";
 
-export const AddTransactionPopUp = ({ setShowAddTransactionPopUp, token }) => {
+export const TransactionInfoPopUp = ({
+  setShowTransactionInfoPopUp,
+  token,
+  transaction,
+}) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const [state, setState] = useState({
-    description: "",
-    amount: "",
-    category: "",
+    description: transaction.description,
+    amount: transaction.amount,
+    category: transaction.category,
     category_id: "",
-    date: "",
+    date: transaction.date,
   });
 
   function handleChange(event) {
@@ -66,7 +70,7 @@ export const AddTransactionPopUp = ({ setShowAddTransactionPopUp, token }) => {
           ],
         };
         await addTransaction(config, body);
-        setShowAddTransactionPopUp(false);
+        setShowTransactionInfoPopUp(false);
       }
     } catch (error) {
       // setErrorMessage(error.message);
@@ -74,8 +78,8 @@ export const AddTransactionPopUp = ({ setShowAddTransactionPopUp, token }) => {
   };
   return (
     <StyledAddExpensePopUp>
-      <StyledTitle>O que você pagou?</StyledTitle>
-      <StyledCloseButton onClick={() => setShowAddTransactionPopUp(false)}>
+      <StyledTitle>Informações da transação</StyledTitle>
+      <StyledCloseButton onClick={() => setShowTransactionInfoPopUp(false)}>
         x
       </StyledCloseButton>
       <StyledLabel for="description">Descrição da transação</StyledLabel>
@@ -110,7 +114,7 @@ export const AddTransactionPopUp = ({ setShowAddTransactionPopUp, token }) => {
 
       {errorMessage && <p>{errorMessage}</p>}
       <StyledAddButton onClick={handleAddExpense}>
-        Adicionar Transação
+        Atualizar Transação
       </StyledAddButton>
     </StyledAddExpensePopUp>
   );

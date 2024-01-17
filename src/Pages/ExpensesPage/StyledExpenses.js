@@ -57,3 +57,12 @@ export const StyledPlus = styled(FaPlusCircle)`
 
   /* transition: all 1s; */
 `;
+
+export const StyledTotalText = styled.p`
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 550;
+  font-size: 1.5rem;
+  line-height: 22px;
+  color: white;
+`;

@@ -4,11 +4,14 @@ import { StyledTransactionsPerCategoryPage } from "./StyledTransactionsPerCatego
 import { useLocation, useNavigate } from "react-router-dom";
 import { CategoryTransactionsCard } from "../../Components/Cards/CategoryTransactionsCard/CategoryTransactionsCard";
 import { goToPage } from "../../Routes/Coordinator";
+import { TransactionInfoPopUp } from "../../Components/PopUps/TransactionInfoPopUp/TransactionInfoPopUp";
 
 export const TransactionsPerCategoryPage = () => {
   const navigate = useNavigate();
 
   const [transactionsPerCategory, setTransactionsPerCategory] = useState([]);
+  const [showTransactionInfoPopUp, setShowTransactionInfoPopUp] =
+    useState(false);
   const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
 
   const location = useLocation();
@@ -40,12 +43,13 @@ export const TransactionsPerCategoryPage = () => {
     fetchData();
   }, []);
 
-  const handleOnClick = () => {
+  const handleBackOnClick = () => {
     goToPage(navigate, `/expenses`);
   };
+
   return (
     <StyledTransactionsPerCategoryPage>
-      <h1 onClick={handleOnClick}>Voltar</h1>
+      <h1 onClick={handleBackOnClick}>Voltar</h1>
       {transactionsPerCategory.map((transaction) => {
         return <CategoryTransactionsCard transaction={transaction} />;
       })}
