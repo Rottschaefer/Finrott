@@ -6,7 +6,8 @@
     {
       "id": "01000000",
       "description": "Income",
-      "descriptionTranslated": "Renda"
+      "descriptionTranslated": "Renda",
+      "SVG": ""
     },
     {
       "id": "01010000",

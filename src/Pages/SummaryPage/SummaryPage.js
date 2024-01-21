@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AccountCard } from "../../Components/Cards/AccountCard/AccountCard";
 import { StyledSummaryPage } from "./StyledSummaryPage";
 
-export const SummaryPage = () => {
+export const AccountsPage = () => {
   const [accounts, setAccounts] = useState([]);
   const token = JSON.parse(localStorage.getItem("token"));
 

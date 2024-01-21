@@ -21,15 +21,27 @@ export const Menu = () => {
     if (option.text === "Sair da Conta") {
       localStorage.clear();
     }
+
     goToPage(navigate, option.url);
   };
 
   const options2 = [
-    { text: "Início", url: "/summary" },
-    { text: "Conectar Conta", url: "/add-account" },
+    { text: "Contas bancárias", url: "/accounts" },
+    // { text: "Conectar Conta", url: "/add-account" },
+    { text: "Transações por categoria", url: "/expenses" },
     { text: "Sair da Conta", url: "/login" },
-    { text: "Despesas", url: "/expenses" },
   ];
+
+  const MenuOptions = options2.map((option) => {
+    return (
+      <>
+        <StyledOptions onClick={() => handleOnClick(option)}>
+          {option.text}
+        </StyledOptions>
+        <StyledSeparator />
+      </>
+    );
+  });
 
   return (
     <>
@@ -38,17 +50,7 @@ export const Menu = () => {
         location.pathname !== "/" && (
           <StyledMenu isMenuOpen={isMenuOpen}>
             <StyledArrow onClick={handleOnClick} isMenuOpen={isMenuOpen} />
-            {isMenuOpen &&
-              options2.map((option) => {
-                return (
-                  <>
-                    <StyledOptions onClick={() => handleOnClick(option)}>
-                      {option.text}
-                    </StyledOptions>
-                    <StyledSeparator />
-                  </>
-                );
-              })}
+            {isMenuOpen && MenuOptions}
           </StyledMenu>
         )}
     </>
