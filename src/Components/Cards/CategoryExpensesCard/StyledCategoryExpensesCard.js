@@ -22,6 +22,12 @@ export const StyledImgDiv = styled.div`
   margin-left: 8px;
 `;
 
+export const StyledSvg = styled.svg`
+  color: green;
+  width: 100%;
+  height: 100%;
+`;
+
 export const StyledExpensesInfoDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -35,7 +41,7 @@ export const StyledExpensesInfoDiv = styled.div`
 `;
 
 export const StyledExpensesInfo = styled.p`
-  margin: 13px;
+  margin-right: 13px;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 550;

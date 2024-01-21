@@ -10,7 +10,6 @@ export const getAmountsPerCategory = async (config, monthPage, yearPage) => {
       config
     )
     .then((response) => {
-      console.log(response.data.amountsPerCategory);
       output = response.data.amountsPerCategory;
     })
     .catch((error) => {
@@ -51,8 +50,37 @@ export const addTransaction = async (config, body) => {
   await axios
     .post(`${BASE_URL}/transactions/`, body, config)
     .then((response) => {
-      console.log(response.data);
       output = response.data.transactionsPerCategory;
+    })
+    .catch((error) => {
+      console.log(error.response);
+    });
+
+  return output;
+};
+
+export const updateTransaction = async (config, body, id) => {
+  console.log("updating");
+  let output;
+  await axios
+    .put(`${BASE_URL}/transactions/${id}`, body, config)
+    .then((response) => {
+      output = response.data;
+    })
+    .catch((error) => {
+      console.log(error.response);
+    });
+
+  return output;
+};
+
+export const deleteTransaction = async (config, id) => {
+  console.log("deleting");
+  let output;
+  await axios
+    .delete(`${BASE_URL}/transactions/${id}`, config)
+    .then((response) => {
+      output = response.data;
     })
     .catch((error) => {
       console.log(error.response);

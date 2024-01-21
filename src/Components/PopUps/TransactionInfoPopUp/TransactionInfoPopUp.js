@@ -3,35 +3,37 @@ import {
   StyledAddButton,
   StyledAddExpensePopUp,
   StyledCloseButton,
+  StyledDeleteButton,
   StyledInput,
   StyledLabel,
   StyledSelect,
   StyledTitle,
 } from "./StyledTransactionInfoPopUp.js";
-import { addExpense } from "../../../Requests/expenseRequests.js";
 import categories from "../../../Assets/categories.json";
 import {
-  addTransaction,
-  addTransactions,
+  deleteTransaction,
+  updateTransaction,
 } from "../../../Requests/transactionsRequests.js";
+import { Loading } from "../../Loading/Loading.js";
 
 export const TransactionInfoPopUp = ({
   setShowTransactionInfoPopUp,
-  token,
   transaction,
 }) => {
   const [errorMessage, setErrorMessage] = useState("");
+  const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
+  const [isUpdateLoading, setIsUpdateLoading] = useState(false);
+  const [isDeleteLoading, setIsDeleteLoading] = useState(false);
 
   const [state, setState] = useState({
     description: transaction.description,
     amount: transaction.amount,
     category: transaction.category,
     category_id: "",
-    date: transaction.date,
+    date: transaction.date.split("T")[0],
   });
 
   function handleChange(event) {
-    console.log(state);
     const value = event.target.value;
 
     setState({
@@ -41,16 +43,20 @@ export const TransactionInfoPopUp = ({
     });
   }
 
-  const handleAddExpense = async () => {
+  const handleUpdateTransaction = async () => {
     try {
-      if (!state.description || !state.category || !state.amount) {
+      if (
+        !state.description ||
+        !state.category ||
+        !state.amount ||
+        !state.date
+      ) {
         setErrorMessage("Preencha todos os campos");
       } else {
+        setIsUpdateLoading(true);
         const categoryObject = categories.results.find(
           (category) => category.descriptionTranslated === state.category
         );
-
-        console.log(categoryObject.id);
 
         const config = {
           headers: {
@@ -69,11 +75,29 @@ export const TransactionInfoPopUp = ({
             },
           ],
         };
-        await addTransaction(config, body);
+        await updateTransaction(config, body, transaction.id);
+        setIsUpdateLoading(false);
         setShowTransactionInfoPopUp(false);
       }
     } catch (error) {
-      // setErrorMessage(error.message);
+      setIsUpdateLoading(false);
+      setErrorMessage(error.message);
+    }
+  };
+
+  const handleDeleteTransaction = async () => {
+    try {
+      setIsDeleteLoading(true);
+      const config = {
+        headers: {
+          Authorization: token,
+        },
+      };
+      await deleteTransaction(config, transaction.id);
+      setIsDeleteLoading(false);
+      setShowTransactionInfoPopUp(false);
+    } catch (error) {
+      setIsDeleteLoading(false);
     }
   };
   return (
@@ -113,9 +137,12 @@ export const TransactionInfoPopUp = ({
       </StyledSelect>
 
       {errorMessage && <p>{errorMessage}</p>}
-      <StyledAddButton onClick={handleAddExpense}>
-        Atualizar Transação
+      <StyledAddButton onClick={handleUpdateTransaction}>
+        {isUpdateLoading ? <Loading /> : "Atualizar Transação"}
       </StyledAddButton>
+      <StyledDeleteButton onClick={handleDeleteTransaction}>
+        {isDeleteLoading ? <Loading /> : "Deletar Transação"}
+      </StyledDeleteButton>
     </StyledAddExpensePopUp>
   );
 };

@@ -43,7 +43,6 @@ export const logInWithToken = async (config) => {
   await axios
     .post(`${BASE_URL}/auth/login`, {}, config)
     .then((response) => {
-      console.log(response);
       if (response.data.token) {
         localStorage.setItem("token", JSON.stringify(response.data.token));
       }
@@ -57,16 +56,16 @@ export const logInWithToken = async (config) => {
   return output;
 };
 
-export const getUsers = async () => {
-  let output;
-  await axios
-    .get(path)
-    .then((response) => {
-      output = response.data;
-    })
-    .catch((error) => {
-      console.log(error.response);
-    });
+// export const getUsers = async () => {
+//   let output;
+//   await axios
+//     .get(path)
+//     .then((response) => {
+//       output = response.data;
+//     })
+//     .catch((error) => {
+//       console.log(error.response);
+//     });
 
-  return output;
-};
+//   return output;
+// };

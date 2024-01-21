@@ -13,7 +13,11 @@ import {
   StyledSubTitle,
   StyledTitle,
 } from "./StyledLoginPage.js";
-import { goToSignUpPage, goToSummaryPage } from "../../Routes/Coordinator.js";
+import {
+  goToPage,
+  goToSignUpPage,
+  goToSummaryPage,
+} from "../../Routes/Coordinator.js";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -62,7 +66,7 @@ export const LoginPage = () => {
         };
         payload = await logInWithToken(config);
 
-        goToSummaryPage(navigate, payload.id);
+        goToPage(navigate, "/expenses");
       } else {
         if (!password || !email) {
           setBadRequest(true);

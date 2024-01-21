@@ -10,7 +10,6 @@ import {
   StyledTotalText,
 } from "./StyledExpenses";
 import { getAmountsPerCategory } from "../../Requests/transactionsRequests";
-import { response } from "msw";
 import { useNavigate } from "react-router-dom";
 import { goToPage } from "../../Routes/Coordinator";
 import { AddTransactionPopUp } from "../../Components/PopUps/AddTransactionPopUp/AddTransactionPopUp";
@@ -37,7 +36,7 @@ export const ExpensesPage = () => {
     const response = await getAmountsPerCategory(config, month, year);
     if (response) {
       setAmountsPerCategory(response);
-      response.map((amount, index) => {
+      response.map((amount) => {
         total += Number(amount.total_amount);
       });
       setTotalMonthAmount(
@@ -68,8 +67,10 @@ export const ExpensesPage = () => {
   };
 
   useEffect(() => {
+    if (!token) {
+      goToPage(navigate, "/login");
+    }
     fetchData(monthPage, yearPage);
-    console.log(amountsPerCategory);
     setIsLoading(false);
   }, [monthPage, yearPage]);
 
@@ -95,13 +96,20 @@ export const ExpensesPage = () => {
     );
   };
 
-  // let totalMonthAmount = amountsPerCategory.map(
-  //   (amount) => (totalMonthAmount += amount.amount)
-  // );
+  const cardsOfAmountPerCategory = amountsPerCategory.map((amount, index) => {
+    return (
+      <CategoryExpensesCard
+        key={index}
+        amount={amount}
+        handleOnClick={handleOnClick}
+      />
+    );
+  });
 
   return (
     <>
       {isLoading && <Loading />}
+
       {!isLoading && (
         <StyledExpensesPage>
           <StyledMonthPicker>
@@ -112,20 +120,14 @@ export const ExpensesPage = () => {
             <StyledArrowRight onClick={() => handleMonthChange(1)} />
           </StyledMonthPicker>
 
-          {amountsPerCategory.length > 0 &&
-            amountsPerCategory.map((amount, index) => {
-              return (
-                <CategoryExpensesCard
-                  key={index}
-                  amount={amount}
-                  handleOnClick={handleOnClick}
-                />
-              );
-            })}
+          {amountsPerCategory.length > 0 && cardsOfAmountPerCategory}
+
           <StyledTotalText>Total: {totalMonthAmount}</StyledTotalText>
+
           <StyledPlus
             onClick={() => setShowAddTransactionPopUp(!showAddTransactionPopUp)}
           />
+
           {showAddTransactionPopUp && (
             <AddTransactionPopUp
               setShowAddTransactionPopUp={setShowAddTransactionPopUp}

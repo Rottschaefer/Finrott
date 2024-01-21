@@ -74,6 +74,23 @@ export const StyledAddButton = styled.button`
   margin-top: 20px;
 `;
 
+export const StyledDeleteButton = styled.button`
+  cursor: pointer;
+  width: 80%;
+  height: 3rem;
+  border-radius: 10px;
+  border: none;
+  background-color: red;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  opacity: ${(props) => (props.isLoading ? "0.5" : "1")};
+
+  transition: all 1s;
+
+  margin-top: 10px;
+`;
+
 export const StyledSelect = styled.select`
   background-color: black;
   color: white;
