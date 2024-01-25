@@ -7,6 +7,7 @@ import {
   StyledMonthPicker,
   StyledMonthPickerText,
   StyledPlus,
+  StyledPlusDiv,
   StyledTotalText,
 } from "./StyledExpenses";
 import { getAmountsPerCategory } from "../../Requests/transactionsRequests";
@@ -132,9 +133,13 @@ export const ExpensesPage = () => {
 
           <StyledTotalText>Total: {totalMonthAmount}</StyledTotalText>
 
-          <StyledPlus
-            onClick={() => setShowAddTransactionPopUp(!showAddTransactionPopUp)}
-          />
+          <StyledPlusDiv>
+            <StyledPlus
+              onClick={() =>
+                setShowAddTransactionPopUp(!showAddTransactionPopUp)
+              }
+            />
+          </StyledPlusDiv>
 
           {showAddTransactionPopUp && (
             <AddTransactionPopUp

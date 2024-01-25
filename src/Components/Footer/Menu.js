@@ -45,14 +45,12 @@ export const Menu = () => {
 
   return (
     <>
-      {location.pathname !== "/signup" &&
-        location.pathname !== "/login" &&
-        location.pathname !== "/" && (
-          <StyledMenu isMenuOpen={isMenuOpen}>
-            <StyledArrow onClick={handleOnClick} isMenuOpen={isMenuOpen} />
-            {isMenuOpen && MenuOptions}
-          </StyledMenu>
-        )}
+      {location.pathname !== "/signup" && location.pathname !== "/login" && (
+        <StyledMenu isMenuOpen={isMenuOpen}>
+          <StyledArrow onClick={handleOnClick} isMenuOpen={isMenuOpen} />
+          {isMenuOpen && MenuOptions}
+        </StyledMenu>
+      )}
     </>
   );
 };
