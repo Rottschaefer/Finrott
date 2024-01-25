@@ -5,7 +5,8 @@ import { FaPlusCircle } from "react-icons/fa";
 
 export const StyledExpensesPage = styled.div`
   padding-top: 7vh;
-  height: 80vh;
+  min-height: 70vh;
+  height: auto;
   display: flex;
   gap: 1.5rem;
   flex-direction: column;
@@ -56,6 +57,15 @@ export const StyledPlus = styled(FaPlusCircle)`
   color: white;
 
   /* transition: all 1s; */
+`;
+
+export const StyledPlusDiv = styled.div`
+  height: 5vh;
+  padding-bottom: 20vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const StyledTotalText = styled.p`
