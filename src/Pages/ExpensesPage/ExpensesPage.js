@@ -27,24 +27,33 @@ export const ExpensesPage = () => {
   const [totalMonthAmount, setTotalMonthAmount] = useState(0);
 
   const fetchData = async (month, year) => {
-    let total = 0;
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
-    const response = await getAmountsPerCategory(config, month, year);
-    if (response) {
-      setAmountsPerCategory(response);
-      response.map((amount) => {
-        total += Number(amount.total_amount);
-      });
-      setTotalMonthAmount(
-        total.toLocaleString("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        })
-      );
+    try {
+      setIsLoading(true);
+
+      let total = 0;
+      const config = {
+        headers: {
+          Authorization: token,
+        },
+      };
+      const response = await getAmountsPerCategory(config, month, year);
+      if (response) {
+        setAmountsPerCategory(response);
+        response.map((amount) => {
+          total += Number(amount.total_amount);
+        });
+        setTotalMonthAmount(
+          total.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })
+        );
+      }
+
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error.message);
     }
   };
 
@@ -71,7 +80,6 @@ export const ExpensesPage = () => {
       goToPage(navigate, "/login");
     }
     fetchData(monthPage, yearPage);
-    setIsLoading(false);
   }, [monthPage, yearPage]);
 
   const months = {
@@ -108,7 +116,7 @@ export const ExpensesPage = () => {
 
   return (
     <>
-      {isLoading && <Loading />}
+      {isLoading && <Loading svgSize="20vw" conteinerSize="90vh" />}
 
       {!isLoading && (
         <StyledExpensesPage>
