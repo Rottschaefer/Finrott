@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { CategoryTransactionsCard } from "../../Components/Cards/CategoryTransactionsCard/CategoryTransactionsCard";
 import { goToPage } from "../../Routes/Coordinator";
 import { TransactionInfoPopUp } from "../../Components/PopUps/TransactionInfoPopUp/TransactionInfoPopUp";
+import { Loading } from "../../Components/Loading/Loading";
 
 export const TransactionsPerCategoryPage = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export const TransactionsPerCategoryPage = () => {
   const [showTransactionInfoPopUp, setShowTransactionInfoPopUp] =
     useState(false);
   const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
+  const [isLoading, setIsLoading] = useState(true);
 
   const location = useLocation();
 
@@ -23,19 +25,27 @@ export const TransactionsPerCategoryPage = () => {
   const categoryId = location.pathname.split("/")[2];
 
   const fetchData = async () => {
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
-    const response = await getTransactionsPerCategory(
-      config,
-      month,
-      year,
-      categoryId
-    );
-    if (response) {
-      setTransactionsPerCategory(response);
+    try {
+      setIsLoading(true);
+      const config = {
+        headers: {
+          Authorization: token,
+        },
+      };
+      const response = await getTransactionsPerCategory(
+        config,
+        month,
+        year,
+        categoryId
+      );
+      if (response) {
+        setTransactionsPerCategory(response);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+
+      console.log(error.message);
     }
   };
 
@@ -48,11 +58,17 @@ export const TransactionsPerCategoryPage = () => {
   };
 
   return (
-    <StyledTransactionsPerCategoryPage>
-      <h1 onClick={handleBackOnClick}>Voltar</h1>
-      {transactionsPerCategory.map((transaction) => {
-        return <CategoryTransactionsCard transaction={transaction} />;
-      })}
-    </StyledTransactionsPerCategoryPage>
+    <>
+      {isLoading && <Loading svgSize="20vw" conteinerSize="90vh" />}
+
+      {!isLoading && (
+        <StyledTransactionsPerCategoryPage>
+          <h1 onClick={handleBackOnClick}>Voltar</h1>
+          {transactionsPerCategory.map((transaction) => {
+            return <CategoryTransactionsCard transaction={transaction} />;
+          })}
+        </StyledTransactionsPerCategoryPage>
+      )}
+    </>
   );
 };

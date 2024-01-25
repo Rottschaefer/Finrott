@@ -1,9 +1,9 @@
 import { StyledLoading, StyledLoadingConteiner } from "./StyledLoading";
 
-export const Loading = () => {
+export const Loading = ({ svgSize, conteinerSize }) => {
   return (
-    <StyledLoadingConteiner>
-      <StyledLoading />
+    <StyledLoadingConteiner conteinerSize={conteinerSize}>
+      <StyledLoading svgSize={svgSize} />
     </StyledLoadingConteiner>
   );
 };

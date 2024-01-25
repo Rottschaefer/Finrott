@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { AiOutlineLoading } from "react-icons/ai";
 
 export const StyledLoading = styled(AiOutlineLoading)`
-  width: 90%;
-  height: 90%;
+  width: ${(props) => props.svgSize};
+  height: ${(props) => props.svgSize};
   color: white;
   animation: rotate infinite 1s linear;
   @keyframes rotate {
@@ -21,5 +21,5 @@ export const StyledLoadingConteiner = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 50%;
+  height: ${(props) => props.conteinerSize};
 `;
