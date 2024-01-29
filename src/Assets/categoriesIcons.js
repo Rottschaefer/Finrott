@@ -21,6 +21,7 @@ import { MdLocalPharmacy } from "react-icons/md";
 import { FaUber } from "react-icons/fa";
 import { GiLifeJacket } from "react-icons/gi";
 import { IoIosHappy } from "react-icons/io";
+import { FaClipboardList } from "react-icons/fa";
 
 export const categoriesIcons = {
   Renda: { svg: FaMoneyBillWave, color: "green" },
@@ -48,4 +49,5 @@ export const categoriesIcons = {
   "Táxi e transporte privado urbano": { svg: FaUber, color: "yellow" },
   Seguros: { svg: GiLifeJacket, color: "red" },
   Lazer: { svg: IoIosHappy, color: "purple" },
+  "Custos Fixos": { svg: FaClipboardList, color: "green" },
 };

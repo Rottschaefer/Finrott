@@ -10,7 +10,10 @@ import {
   StyledPlusDiv,
   StyledTotalText,
 } from "./StyledExpenses";
-import { getAmountsPerCategory } from "../../Requests/transactionsRequests";
+import {
+  getAmountsPerCategory,
+  getFixedTransactionsAmount,
+} from "../../Requests/transactionsRequests";
 import { useNavigate } from "react-router-dom";
 import { goToPage } from "../../Routes/Coordinator";
 import { AddTransactionPopUp } from "../../Components/PopUps/AddTransactionPopUp/AddTransactionPopUp";
@@ -20,14 +23,17 @@ export const ExpensesPage = () => {
   const navigate = useNavigate();
 
   const [amountsPerCategory, setAmountsPerCategory] = useState([]);
+  const [fixedTransactionsAmount, setFixedTransactionsAmount] = useState(0);
   const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
   const [monthPage, setMonthPage] = useState(new Date().getMonth() + 1);
   const [yearPage, setYearPage] = useState(new Date().getFullYear());
   const [showAddTransactionPopUp, setShowAddTransactionPopUp] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [totalMonthAmount, setTotalMonthAmount] = useState(0);
+  const [updatePage, setUpdatePage] = useState(false);
 
   const fetchData = async (month, year) => {
+    console.log(month, year);
     try {
       setIsLoading(true);
 
@@ -38,11 +44,22 @@ export const ExpensesPage = () => {
         },
       };
       const response = await getAmountsPerCategory(config, month, year);
+      const fixedTransactionsResponse = await getFixedTransactionsAmount(
+        config,
+        month,
+        year
+      );
+
       if (response) {
+        if (fixedTransactionsResponse) {
+          setFixedTransactionsAmount(fixedTransactionsResponse);
+        }
         setAmountsPerCategory(response);
         response.map((amount) => {
           total += Number(amount.total_amount);
         });
+
+        total += fixedTransactionsResponse;
         setTotalMonthAmount(
           total.toLocaleString("pt-BR", {
             style: "currency",
@@ -81,7 +98,7 @@ export const ExpensesPage = () => {
       goToPage(navigate, "/login");
     }
     fetchData(monthPage, yearPage);
-  }, [monthPage, yearPage]);
+  }, [monthPage, yearPage, updatePage]);
 
   const months = {
     1: "Janeiro",
@@ -105,6 +122,10 @@ export const ExpensesPage = () => {
     );
   };
 
+  const handleOnClickFixedTransactions = (amount) => {
+    goToPage(navigate, `/expenses/custos-fixos`);
+  };
+
   const cardsOfAmountPerCategory = amountsPerCategory.map((amount, index) => {
     return (
       <CategoryExpensesCard
@@ -114,6 +135,18 @@ export const ExpensesPage = () => {
       />
     );
   });
+
+  const fixedTransactionInfo = {
+    total_amount: fixedTransactionsAmount,
+    category: "Custos Fixos",
+  };
+
+  const cardOfFixedTransactionsAmount = (
+    <CategoryExpensesCard
+      amount={fixedTransactionInfo}
+      handleOnClick={handleOnClickFixedTransactions}
+    />
+  );
 
   return (
     <>
@@ -129,6 +162,8 @@ export const ExpensesPage = () => {
             <StyledArrowRight onClick={() => handleMonthChange(1)} />
           </StyledMonthPicker>
 
+          {cardOfFixedTransactionsAmount}
+
           {amountsPerCategory.length > 0 && cardsOfAmountPerCategory}
 
           <StyledTotalText>Total: {totalMonthAmount}</StyledTotalText>
@@ -143,6 +178,7 @@ export const ExpensesPage = () => {
 
           {showAddTransactionPopUp && (
             <AddTransactionPopUp
+              setUpdatePage={setUpdatePage}
               setShowAddTransactionPopUp={setShowAddTransactionPopUp}
               token={token}
             />

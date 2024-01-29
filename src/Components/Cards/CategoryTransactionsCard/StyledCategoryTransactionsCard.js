@@ -5,6 +5,7 @@ export const StyledCategoryCard = styled.div`
   align-items: center;
   background-color: white;
   height: 10vh;
+
   width: 80vw;
   border-radius: 20px;
   box-shadow: 0px 3px 8px 0px rgba(74, 85, 104, 0.07);
@@ -35,7 +36,7 @@ export const StyledTransactionInfoDiv = styled.div`
 `;
 
 export const StyledTransactionInfo = styled.p`
-  margin: 13px;
+  margin: 8px;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 550;

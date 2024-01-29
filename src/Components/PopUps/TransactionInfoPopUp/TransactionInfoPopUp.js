@@ -13,12 +13,16 @@ import categories from "../../../Assets/categories.json";
 import {
   deleteTransaction,
   updateTransaction,
+  updateFixedTransaction,
+  deleteFixedTransaction,
 } from "../../../Requests/transactionsRequests.js";
 import { Loading } from "../../Loading/Loading.js";
+import { useLocation } from "react-router-dom";
 
 export const TransactionInfoPopUp = ({
   setShowTransactionInfoPopUp,
   transaction,
+  setUpdatePage,
 }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
@@ -32,6 +36,10 @@ export const TransactionInfoPopUp = ({
     category_id: "",
     date: transaction.date.split("T")[0],
   });
+
+  const location = useLocation();
+
+  const category = location.pathname.split("/")[2];
 
   function handleChange(event) {
     const value = event.target.value;
@@ -64,7 +72,7 @@ export const TransactionInfoPopUp = ({
           },
         };
 
-        const body = {
+        let body = {
           transactions: [
             {
               description: state.description,
@@ -75,8 +83,21 @@ export const TransactionInfoPopUp = ({
             },
           ],
         };
-        await updateTransaction(config, body, transaction.id);
+
+        if (category === "custos-fixos") {
+          body = {
+            description: state.description,
+            amount: Number(state.amount),
+            category: state.category,
+            date: state.date,
+            category_id: categoryObject.id,
+          };
+          await updateFixedTransaction(config, body, transaction.id);
+        } else {
+          await updateTransaction(config, body, transaction.id);
+        }
         setIsUpdateLoading(false);
+        setUpdatePage(true);
         setShowTransactionInfoPopUp(false);
       }
     } catch (error) {
@@ -93,8 +114,14 @@ export const TransactionInfoPopUp = ({
           Authorization: token,
         },
       };
-      await deleteTransaction(config, transaction.id);
+      if (category === "custos-fixos") {
+        await deleteFixedTransaction(config, transaction.id);
+      } else {
+        await deleteTransaction(config, transaction.id);
+      }
       setIsDeleteLoading(false);
+      setUpdatePage(true);
+
       setShowTransactionInfoPopUp(false);
     } catch (error) {
       setIsDeleteLoading(false);
