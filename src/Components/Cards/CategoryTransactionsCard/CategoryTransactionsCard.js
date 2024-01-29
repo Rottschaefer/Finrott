@@ -10,12 +10,11 @@ import { categoriesIcons } from "../../../Assets/categoriesIcons";
 import { GrMoney } from "react-icons/gr";
 import styled from "styled-components";
 
-export const CategoryTransactionsCard = ({ transaction }) => {
+export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
   const [showTransactionInfoPopUp, setShowTransactionInfoPopUp] =
     useState(false);
 
   const handleCardOnClick = () => {
-    console.log("here");
     setShowTransactionInfoPopUp(true);
   };
 
@@ -45,6 +44,7 @@ export const CategoryTransactionsCard = ({ transaction }) => {
         <TransactionInfoPopUp
           transaction={transaction}
           setShowTransactionInfoPopUp={setShowTransactionInfoPopUp}
+          setUpdatePage={setUpdatePage}
         />
       )}
     </>

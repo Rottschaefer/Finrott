@@ -4,6 +4,7 @@ export const StyledCategoryCard = styled.div`
   display: flex;
   align-items: center;
   background-color: white;
+  min-height: auto;
   height: 10vh;
   width: 80vw;
   border-radius: 20px;
@@ -15,7 +16,6 @@ export const StyledImgDiv = styled.div`
   align-items: center;
   justify-content: center;
   background-color: rgba(129, 178, 202, 0.14);
-  height: 10vh;
   border-radius: 18px;
   height: 80%;
   width: 20%;

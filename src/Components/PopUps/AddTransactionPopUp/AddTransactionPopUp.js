@@ -8,15 +8,21 @@ import {
   StyledSelect,
   StyledTitle,
 } from "./StyledAddTransactionPopUp.js";
-import { addExpense } from "../../../Requests/expenseRequests.js";
 import categories from "../../../Assets/categories.json";
 import {
+  addFixedTransaction,
   addTransaction,
-  addTransactions,
 } from "../../../Requests/transactionsRequests.js";
+import { SpecialCheckBox } from "../../SpecialCheckBox/SpecialCheckBox.js";
+import { Loading } from "../../Loading/Loading.js";
 
-export const AddTransactionPopUp = ({ setShowAddTransactionPopUp, token }) => {
+export const AddTransactionPopUp = ({
+  setShowAddTransactionPopUp,
+  token,
+  setUpdatePage,
+}) => {
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const [state, setState] = useState({
     description: "",
@@ -24,6 +30,7 @@ export const AddTransactionPopUp = ({ setShowAddTransactionPopUp, token }) => {
     category: "",
     category_id: "",
     date: "",
+    is_a_fixed_transaction: false,
   });
 
   function handleChange(event) {
@@ -39,14 +46,18 @@ export const AddTransactionPopUp = ({ setShowAddTransactionPopUp, token }) => {
 
   const handleAddExpense = async () => {
     try {
-      if (!state.description || !state.category || !state.amount) {
+      if (
+        !state.description ||
+        !state.category ||
+        !state.amount ||
+        state.date === ""
+      ) {
         setErrorMessage("Preencha todos os campos");
       } else {
+        setIsLoading(true);
         const categoryObject = categories.results.find(
           (category) => category.descriptionTranslated === state.category
         );
-
-        console.log(categoryObject.id);
 
         const config = {
           headers: {
@@ -54,21 +65,37 @@ export const AddTransactionPopUp = ({ setShowAddTransactionPopUp, token }) => {
           },
         };
 
-        const body = {
-          transactions: [
-            {
-              description: state.description,
-              amount: Number(state.amount),
-              category: state.category,
-              date: state.date,
-              category_id: categoryObject.id,
-            },
-          ],
-        };
-        await addTransaction(config, body);
+        if (state.is_a_fixed_transaction) {
+          const body = {
+            description: state.description,
+            amount: Number(state.amount),
+            category: state.category,
+            date: state.date,
+            category_id: categoryObject.id,
+          };
+
+          await addFixedTransaction(config, body);
+        } else {
+          const body = {
+            transactions: [
+              {
+                description: state.description,
+                amount: Number(state.amount),
+                category: state.category,
+                date: state.date,
+                category_id: categoryObject.id,
+              },
+            ],
+          };
+          await addTransaction(config, body);
+        }
+
+        setIsLoading(false);
+        setUpdatePage(true);
         setShowAddTransactionPopUp(false);
       }
     } catch (error) {
+      setIsLoading(false);
       // setErrorMessage(error.message);
     }
   };
@@ -108,9 +135,12 @@ export const AddTransactionPopUp = ({ setShowAddTransactionPopUp, token }) => {
         ))}
       </StyledSelect>
 
+      <StyledLabel for="is_fixed">Esse é um custo fixo?</StyledLabel>
+      <SpecialCheckBox setState={setState} state={state} />
+
       {errorMessage && <p>{errorMessage}</p>}
       <StyledAddButton onClick={handleAddExpense}>
-        Adicionar Transação
+        {isLoading ? <Loading /> : " Adicionar Transação"}
       </StyledAddButton>
     </StyledAddExpensePopUp>
   );
