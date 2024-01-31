@@ -10,7 +10,11 @@ import {
 } from "./StyledSignUpPage.js";
 import { useNavigate } from "react-router-dom";
 import { signUp } from "../../Requests/userRequests.js";
-import { goToLogInPage, goToSummaryPage } from "../../Routes/Coordinator.js";
+import {
+  goToLogInPage,
+  goToPage,
+  goToSummaryPage,
+} from "../../Routes/Coordinator.js";
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
@@ -44,29 +48,71 @@ export const SignUpPage = () => {
     setPassword(event.target.value);
   };
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const isFormValid = () => {
+    if (!name || !password || !email) {
+      setBadRequest(true);
+      setErrorMessage("É preciso preencher todos os campos para se cadastrar");
+      return false;
+    } else if (name.length < 2) {
+      setBadRequest(true);
+      setErrorMessage("O seu apelido precisa ter no mínimo 2 caracteres");
+      return false;
+    } else if (!emailRegex.test(email)) {
+      setBadRequest(true);
+      setErrorMessage("Formato de e-mail inválido");
+      return false;
+    }
+    return true;
+  };
+
   const createNewUser = async () => {
     try {
-      if (!name || !password || !email) {
-        setBadRequest(true);
-        setErrorMessage(
-          "É preciso preencher todos os campos para se cadastrar"
-        );
-      } else {
-        setBadRequest(false);
-        setIsLoading(true);
-        const body = { user: { name, password, email } };
-
-        await signUp(body);
-
-        goToSummaryPage(navigate);
+      if (!isFormValid()) {
+        return;
       }
+
+      setBadRequest(false);
+      setIsLoading(true);
+
+      const body = { user: { name, password, email } };
+      await signUp(body);
+
+      goToPage(navigate, "/expenses");
     } catch (error) {
       setBadRequest(true);
       setIsLoading(false);
-
       setErrorMessage(error.message);
     }
   };
+
+  // const createNewUser = async () => {
+  //   try {
+  //     if (!name || !password || !email) {
+  //       setBadRequest(true);
+  //       setErrorMessage(
+  //         "É preciso preencher todos os campos para se cadastrar"
+  //       );
+  //     } else if (name.length < 2) {
+  //       setBadRequest(true);
+  //       setErrorMessage("O seu apelido precisa ter no mínimo 2 caracteres");
+  //     } else {
+  //       setBadRequest(false);
+  //       setIsLoading(true);
+  //       const body = { user: { name, password, email } };
+
+  //       await signUp(body);
+
+  //       goToSummaryPage(navigate);
+  //     }
+  //   } catch (error) {
+  //     setBadRequest(true);
+  //     setIsLoading(false);
+
+  //     setErrorMessage(error.message);
+  //   }
+  // };
 
   return (
     <StyledSignUpPage fade={fade}>
