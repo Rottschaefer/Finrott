@@ -13,7 +13,8 @@ export const signUp = async (body) => {
       }
     })
     .catch((error) => {
-      throw new Error(error);
+      console.log(error.response.data);
+      throw new Error(error.response.data);
     });
 
   return output;
