@@ -78,9 +78,9 @@ export const LoginPage = () => {
           setIsLoading(true);
           const body = { auth: { email, password } };
 
-          payload = await logIn(body);
+          await logIn(body);
 
-          goToSummaryPage(navigate, payload.id);
+          goToPage(navigate, "/expenses");
         }
       }
     } catch (error) {
