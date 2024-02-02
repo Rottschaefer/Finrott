@@ -1,4 +1,3 @@
-// export const BASE_URL =
-//   "https://finrott-backend-rails-0065747041b6.herokuapp.com";
+const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = apiUrl;
