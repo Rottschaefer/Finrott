@@ -4,315 +4,6 @@
   "page": 1,
   "results": [
     {
-      "id": "01000000",
-      "description": "Income",
-      "descriptionTranslated": "Renda",
-      "SVG": ""
-    },
-    {
-      "id": "01010000",
-      "description": "Salary",
-      "descriptionTranslated": "Salário",
-      "parentId": "01000000",
-      "parentDescription": "Income"
-    },
-    {
-      "id": "01020000",
-      "description": "Retirement",
-      "descriptionTranslated": "Aposentadoria",
-      "parentId": "01000000",
-      "parentDescription": "Income"
-    },
-    {
-      "id": "01030000",
-      "description": "Entrepreneurial activities",
-      "descriptionTranslated": "Atividades de empreendedorismo",
-      "parentId": "01000000",
-      "parentDescription": "Income"
-    },
-    {
-      "id": "01040000",
-      "description": "Government aid",
-      "descriptionTranslated": "Auxílio do governo",
-      "parentId": "01000000",
-      "parentDescription": "Income"
-    },
-    {
-      "id": "01050000",
-      "description": "Non-recurring income",
-      "descriptionTranslated": "Renda não-recorrente",
-      "parentId": "01000000",
-      "parentDescription": "Income"
-    },
-    {
-      "id": "02000000",
-      "description": "Loans and financing",
-      "descriptionTranslated": "Empréstimos e financiamento"
-    },
-    {
-      "id": "02010000",
-      "description": "Late payment and overdraft costs",
-      "descriptionTranslated": "Atraso no pagamento e custos de cheque especial",
-      "parentId": "02000000",
-      "parentDescription": "Loans and financing"
-    },
-    {
-      "id": "02020000",
-      "description": "Interests charged",
-      "descriptionTranslated": "Juros cobrados",
-      "parentId": "02000000",
-      "parentDescription": "Loans and financing"
-    },
-    {
-      "id": "02030000",
-      "description": "Financing",
-      "descriptionTranslated": "Financiamento",
-      "parentId": "02000000",
-      "parentDescription": "Loans and financing"
-    },
-    {
-      "id": "02030001",
-      "description": "Real estate financing",
-      "descriptionTranslated": "Financiamento imobiliário",
-      "parentId": "02000000",
-      "parentDescription": "Financing"
-    },
-    {
-      "id": "02030002",
-      "description": "Vehicle financing",
-      "descriptionTranslated": "Financiamento de veículos",
-      "parentId": "02000000",
-      "parentDescription": "Financing"
-    },
-    {
-      "id": "02030003",
-      "description": "Student loan",
-      "descriptionTranslated": "Empréstimo estudantil",
-      "parentId": "02000000",
-      "parentDescription": "Financing"
-    },
-    {
-      "id": "02040000",
-      "description": "Loans",
-      "descriptionTranslated": "Empréstimos",
-      "parentId": "02000000",
-      "parentDescription": "Loans and financing"
-    },
-    {
-      "id": "03000000",
-      "description": "Investments",
-      "descriptionTranslated": "Investimentos"
-    },
-    {
-      "id": "03010000",
-      "description": "Automatic investment",
-      "descriptionTranslated": "Investimento automático",
-      "parentId": "03000000",
-      "parentDescription": "Investments"
-    },
-    {
-      "id": "03020000",
-      "description": "Fixed income",
-      "descriptionTranslated": "Renda fixa",
-      "parentId": "03000000",
-      "parentDescription": "Investments"
-    },
-    {
-      "id": "03030000",
-      "description": "Mutual funds",
-      "descriptionTranslated": "Fundos multimercado",
-      "parentId": "03000000",
-      "parentDescription": "Investments"
-    },
-    {
-      "id": "03040000",
-      "description": "Variable income",
-      "descriptionTranslated": "Renda variável",
-      "parentId": "03000000",
-      "parentDescription": "Investments"
-    },
-    {
-      "id": "03050000",
-      "description": "Margin",
-      "descriptionTranslated": "Ajuste de margem",
-      "parentId": "03000000",
-      "parentDescription": "Investments"
-    },
-    {
-      "id": "03060000",
-      "description": "Proceeds interests and dividends",
-      "descriptionTranslated": "Juros de rendimentos de dividendos",
-      "parentId": "03000000",
-      "parentDescription": "Investments"
-    },
-    {
-      "id": "03070000",
-      "description": "Pension",
-      "descriptionTranslated": "Pensão",
-      "parentId": "03000000",
-      "parentDescription": "Investments"
-    },
-    {
-      "id": "04000000",
-      "description": "Same person transfer",
-      "descriptionTranslated": "Transferência mesma titularidade"
-    },
-    {
-      "id": "04010000",
-      "description": "Same person transfer - CASH",
-      "descriptionTranslated": "Transferência mesma titularidade - Dinheiro",
-      "parentId": "04000000",
-      "parentDescription": "Same person transfer"
-    },
-    {
-      "id": "04020000",
-      "description": "Same person transfer - PIX",
-      "descriptionTranslated": "Transferência mesma titularidade - PIX",
-      "parentId": "04000000",
-      "parentDescription": "Same person transfer"
-    },
-    {
-      "id": "04030000",
-      "description": "Same person transfer - TED",
-      "descriptionTranslated": "Transferência mesma titularidade - TED",
-      "parentId": "04000000",
-      "parentDescription": "Same person transfer"
-    },
-    {
-      "id": "05000000",
-      "description": "Transfers",
-      "descriptionTranslated": "Transferências"
-    },
-    {
-      "id": "05010000",
-      "description": "Transfer - Bank Slip",
-      "descriptionTranslated": "Transferência - Boleto bancário",
-      "parentId": "05000000",
-      "parentDescription": "Transfers"
-    },
-    {
-      "id": "05020000",
-      "description": "Transfer - Cash",
-      "descriptionTranslated": "Transferência - Dinheiro",
-      "parentId": "05000000",
-      "parentDescription": "Transfers"
-    },
-    {
-      "id": "05030000",
-      "description": "Transfer - Check",
-      "descriptionTranslated": "Transferência - Cheque",
-      "parentId": "05000000",
-      "parentDescription": "Transfers"
-    },
-    {
-      "id": "05040000",
-      "description": "Transfer - DOC",
-      "descriptionTranslated": "Transferências- DOC",
-      "parentId": "05000000",
-      "parentDescription": "Transfers"
-    },
-    {
-      "id": "05050000",
-      "description": "Transfer - Foreign Exchange",
-      "descriptionTranslated": "Transferência - Câmbio",
-      "parentId": "05000000",
-      "parentDescription": "Transfers"
-    },
-    {
-      "id": "05060000",
-      "description": "Transfer - Internal",
-      "descriptionTranslated": "Transferência - Mesma instituição",
-      "parentId": "05000000",
-      "parentDescription": "Transfers"
-    },
-    {
-      "id": "05070000",
-      "description": "Transfer - PIX",
-      "descriptionTranslated": "Transferência - PIX",
-      "parentId": "05000000",
-      "parentDescription": "Transfers"
-    },
-    {
-      "id": "05080000",
-      "description": "Transfer - TED",
-      "descriptionTranslated": "Transferência - TED",
-      "parentId": "05000000",
-      "parentDescription": "Transfers"
-    },
-    {
-      "id": "05090000",
-      "description": "Third party transfers",
-      "descriptionTranslated": "Transferências para terceiros",
-      "parentId": "05000000",
-      "parentDescription": "Transfers"
-    },
-    {
-      "id": "05090001",
-      "description": "Third party transfer - Bank Slip",
-      "descriptionTranslated": "Transferência para terceiros - Boleto bancário",
-      "parentId": "05090000",
-      "parentDescription": "Third party transfers"
-    },
-    {
-      "id": "05090002",
-      "description": "Third party transfer - Debit Card",
-      "descriptionTranslated": "Transferência para terceiros - Débito",
-      "parentId": "05090000",
-      "parentDescription": "Third party transfers"
-    },
-    {
-      "id": "05090003",
-      "description": "Third party transfer - DOC",
-      "descriptionTranslated": "Transferência para terceiros - DOC",
-      "parentId": "05090000",
-      "parentDescription": "Third party transfers"
-    },
-    {
-      "id": "05090004",
-      "description": "Third party transfer - PIX",
-      "descriptionTranslated": "Transferência para terceiros - PIX",
-      "parentId": "05090000",
-      "parentDescription": "Third party transfers"
-    },
-    {
-      "id": "05090005",
-      "description": "Third party transfer - TED",
-      "descriptionTranslated": "Transferência para terceiros - TED",
-      "parentId": "05090000",
-      "parentDescription": "Third party transfers"
-    },
-    {
-      "id": "05100000",
-      "description": "Credit card payment",
-      "descriptionTranslated": "Pagamento de cartão de crédito",
-      "parentId": "05000000",
-      "parentDescription": "Transfers"
-    },
-    {
-      "id": "06000000",
-      "description": "Legal obligations",
-      "descriptionTranslated": "Obrigações legais"
-    },
-    {
-      "id": "06010000",
-      "description": "Blocked balances",
-      "descriptionTranslated": "Saldo bloqueado",
-      "parentId": "06000000",
-      "parentDescription": "Legal obligations"
-    },
-    {
-      "id": "06020000",
-      "description": "Alimony",
-      "descriptionTranslated": "Pensão alimentícia",
-      "parentId": "06000000",
-      "parentDescription": "Legal obligations"
-    },
-    {
-      "id": "07000000",
-      "description": "Services",
-      "descriptionTranslated": "Serviços"
-    },
-    {
       "id": "07010000",
       "description": "Telecommunications",
       "descriptionTranslated": "Telecomunicação",
@@ -403,13 +94,7 @@
       "parentId": "07030000",
       "parentDescription": "Wellness and fitness"
     },
-    {
-      "id": "07040000",
-      "description": "Tickets",
-      "descriptionTranslated": "Bilhetes",
-      "parentId": "07000000",
-      "parentDescription": "Services"
-    },
+
     {
       "id": "07040001",
       "description": "Stadiums and arenas",
@@ -492,13 +177,7 @@
       "parentId": "08000000",
       "parentDescription": "Shopping"
     },
-    {
-      "id": "08090000",
-      "description": "Cashback",
-      "descriptionTranslated": "Cashback",
-      "parentId": "08000000",
-      "parentDescription": "Shopping"
-    },
+
     {
       "id": "09000000",
       "description": "Digital services",
@@ -592,20 +271,7 @@
       "description": "Gambling",
       "descriptionTranslated": "Apostas"
     },
-    {
-      "id": "14010000",
-      "description": "Lottery",
-      "descriptionTranslated": "Loteria",
-      "parentId": "14000000",
-      "parentDescription": "Gambling"
-    },
-    {
-      "id": "14020000",
-      "description": "Online bet",
-      "descriptionTranslated": "Apostas online",
-      "parentId": "14000000",
-      "parentDescription": "Gambling"
-    },
+
     {
       "id": "15000000",
       "description": "Taxes",
@@ -618,32 +284,13 @@
       "parentId": "15000000",
       "parentDescription": "Taxes"
     },
-    {
-      "id": "15020000",
-      "description": "Taxes on investments",
-      "descriptionTranslated": "Imposto sobre investimentos",
-      "parentId": "15000000",
-      "parentDescription": "Taxes"
-    },
-    {
-      "id": "15030000",
-      "description": "Tax on financial operations",
-      "descriptionTranslated": "Impostos sobre operações financeiras",
-      "parentId": "15000000",
-      "parentDescription": "Taxes"
-    },
+
     {
       "id": "16000000",
       "description": "Bank fees",
       "descriptionTranslated": "Taxas bancárias"
     },
-    {
-      "id": "16010000",
-      "description": "Account fees",
-      "descriptionTranslated": "Taxas de conta corrente",
-      "parentId": "16000000",
-      "parentDescription": "Bank fees"
-    },
+
     {
       "id": "16020000",
       "description": "Wire transfer fees and ATM fees",

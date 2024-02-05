@@ -104,6 +104,7 @@ export const getFixedTransactionsAmount = async (
     )
     .then((response) => {
       output = response.data.total_amount;
+      console.log(response.data.total_amount);
     })
     .catch((error) => {
       console.log(error.response);
