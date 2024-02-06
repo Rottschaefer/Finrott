@@ -9,11 +9,7 @@ import {
 } from "./StyledCategoryExpensesCard";
 import { GrMoney } from "react-icons/gr";
 
-export const CategoryExpensesCard = ({
-  amount,
-  handleOnClick,
-  fixedTransactionInfo,
-}) => {
+export const CategoryExpensesCard = ({ amount, handleOnClick }) => {
   const formattedValue = `R$${Number(amount.total_amount).toLocaleString(
     "pt-BR",
     {

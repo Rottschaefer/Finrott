@@ -7,8 +7,7 @@ export const StyledAccountCard = styled.div`
   justify-content: center;
   width: 85vw;
   min-height: 25vh;
-  background-color: ${(props) =>
-    props.color.includes("#") ? props.color : `#${props.color}`};
+  background-color: ${(props) => (props.color ? `#${props.color}` : "gray")};
   border-radius: 30px;
 `;
 

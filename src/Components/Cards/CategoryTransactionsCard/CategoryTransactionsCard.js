@@ -27,6 +27,15 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
     height: 30%;
     width: 30%;
   `;
+
+  const formattedValue = `R$${Number(transaction.amount).toLocaleString(
+    "pt-BR",
+    {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }
+  )}`;
+
   return (
     <>
       <StyledCategoryCard onClick={handleCardOnClick}>
@@ -37,7 +46,7 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
           <StyledTransactionInfo>
             {transaction.description}
           </StyledTransactionInfo>
-          <StyledTransactionInfo>R${transaction.amount}</StyledTransactionInfo>
+          <StyledTransactionInfo>{formattedValue}</StyledTransactionInfo>
         </StyledTransactionInfoDiv>
       </StyledCategoryCard>
       {showTransactionInfoPopUp && (

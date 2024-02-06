@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { goToPage } from "../../Routes/Coordinator";
 import { AddTransactionPopUp } from "../../Components/PopUps/AddTransactionPopUp/AddTransactionPopUp";
 import { Loading } from "../../Components/Loading/Loading";
+import { AddingPlus } from "../../Components/AddingPlus/AddingPlus";
 
 export const ExpensesPage = () => {
   const navigate = useNavigate();
@@ -168,13 +169,11 @@ export const ExpensesPage = () => {
 
           <StyledTotalText>Total: {totalMonthAmount}</StyledTotalText>
 
-          <StyledPlusDiv>
-            <StyledPlus
-              onClick={() =>
-                setShowAddTransactionPopUp(!showAddTransactionPopUp)
-              }
-            />
-          </StyledPlusDiv>
+          <AddingPlus
+            handleOnClick={() =>
+              setShowAddTransactionPopUp(!showAddTransactionPopUp)
+            }
+          />
 
           {showAddTransactionPopUp && (
             <AddTransactionPopUp

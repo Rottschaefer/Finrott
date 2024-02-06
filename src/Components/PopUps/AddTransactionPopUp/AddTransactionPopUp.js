@@ -65,27 +65,19 @@ export const AddTransactionPopUp = ({
           },
         };
 
-        if (state.is_a_fixed_transaction) {
-          const body = {
-            description: state.description,
-            amount: Number(state.amount),
-            category: state.category,
-            date: state.date,
-            category_id: categoryObject.id,
-          };
+        let body = {
+          description: state.description,
+          amount: Number(state.amount.replace(",", ".")),
+          category: state.category,
+          date: state.date,
+          category_id: categoryObject.id,
+        };
 
+        if (state.is_a_fixed_transaction) {
           await addFixedTransaction(config, body);
         } else {
-          const body = {
-            transactions: [
-              {
-                description: state.description,
-                amount: Number(state.amount),
-                category: state.category,
-                date: state.date,
-                category_id: categoryObject.id,
-              },
-            ],
+          body = {
+            transactions: [body],
           };
           await addTransaction(config, body);
         }
@@ -112,7 +104,12 @@ export const AddTransactionPopUp = ({
         onChange={handleChange}
       />
       <StyledLabel for="amount">Quanto custou?</StyledLabel>
-      <StyledInput name="amount" value={state.amount} onChange={handleChange} />
+      <StyledInput
+        name="amount"
+        type="number"
+        value={state.amount}
+        onChange={handleChange}
+      />
 
       <StyledLabel for="date">Qual a data?</StyledLabel>
       <StyledInput
