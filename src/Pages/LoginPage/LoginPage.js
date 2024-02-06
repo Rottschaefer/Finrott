@@ -99,7 +99,7 @@ export const LoginPage = () => {
       <StyledForm>
         <StyledInput
           onChange={handleEmail}
-          type="text"
+          type="email"
           id="email"
           name="email"
           placeholder="E-mail"

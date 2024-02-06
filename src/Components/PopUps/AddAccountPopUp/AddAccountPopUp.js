@@ -3,45 +3,38 @@ import {
   StyledAddButton,
   StyledAddExpensePopUp,
   StyledCloseButton,
-  StyledDeleteButton,
   StyledInput,
   StyledLabel,
   StyledSelect,
   StyledTitle,
-} from "./StyledTransactionInfoPopUp.js";
+} from "./StyledAddAccountPopUp.js";
 import categories from "../../../Assets/categories.json";
 import {
-  deleteTransaction,
-  updateTransaction,
-  updateFixedTransaction,
-  deleteFixedTransaction,
+  addFixedTransaction,
+  addTransaction,
 } from "../../../Requests/transactionsRequests.js";
+import { SpecialCheckBox } from "../../SpecialCheckBox/SpecialCheckBox.js";
 import { Loading } from "../../Loading/Loading.js";
-import { useLocation } from "react-router-dom";
 
-export const TransactionInfoPopUp = ({
-  setShowTransactionInfoPopUp,
-  transaction,
+export const AddAccountPopUp = ({
+  setShowAddAccountPopUp,
+  token,
   setUpdatePage,
 }) => {
   const [errorMessage, setErrorMessage] = useState("");
-  const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
-  const [isUpdateLoading, setIsUpdateLoading] = useState(false);
-  const [isDeleteLoading, setIsDeleteLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [state, setState] = useState({
-    description: transaction.description,
-    amount: transaction.amount,
-    category: transaction.category,
+    description: "",
+    amount: "",
+    category: "",
     category_id: "",
-    date: transaction.date.split("T")[0],
+    date: "",
+    is_a_fixed_transaction: false,
   });
 
-  const location = useLocation();
-
-  const category = location.pathname.split("/")[2];
-
   function handleChange(event) {
+    console.log(state);
     const value = event.target.value;
 
     setState({
@@ -51,17 +44,17 @@ export const TransactionInfoPopUp = ({
     });
   }
 
-  const handleUpdateTransaction = async () => {
+  const handleAddExpense = async () => {
     try {
       if (
         !state.description ||
         !state.category ||
         !state.amount ||
-        !state.date
+        state.date === ""
       ) {
         setErrorMessage("Preencha todos os campos");
       } else {
-        setIsUpdateLoading(true);
+        setIsLoading(true);
         const categoryObject = categories.results.find(
           (category) => category.descriptionTranslated === state.category
         );
@@ -80,47 +73,27 @@ export const TransactionInfoPopUp = ({
           category_id: categoryObject.id,
         };
 
-        if (category === "custos-fixos") {
-          await updateFixedTransaction(config, body, transaction.id);
+        if (state.is_a_fixed_transaction) {
+          await addFixedTransaction(config, body);
         } else {
-          body = { transactions: { body } };
-          await updateTransaction(config, body, transaction.id);
+          body = {
+            transactions: [body],
+          };
+          await addTransaction(config, body);
         }
-        setIsUpdateLoading(false);
+
+        setIsLoading(false);
         setUpdatePage(true);
-        setShowTransactionInfoPopUp(false);
+        setShowAddAccountPopUp(false);
       }
     } catch (error) {
-      setIsUpdateLoading(false);
-      setErrorMessage(error.message);
-    }
-  };
-
-  const handleDeleteTransaction = async () => {
-    try {
-      setIsDeleteLoading(true);
-      const config = {
-        headers: {
-          Authorization: token,
-        },
-      };
-      if (category === "custos-fixos") {
-        await deleteFixedTransaction(config, transaction.id);
-      } else {
-        await deleteTransaction(config, transaction.id);
-      }
-      setIsDeleteLoading(false);
-      setUpdatePage(true);
-
-      setShowTransactionInfoPopUp(false);
-    } catch (error) {
-      setIsDeleteLoading(false);
+      setIsLoading(false);
     }
   };
   return (
     <StyledAddExpensePopUp>
-      <StyledTitle>Informações da transação</StyledTitle>
-      <StyledCloseButton onClick={() => setShowTransactionInfoPopUp(false)}>
+      <StyledTitle>O que você pagou?</StyledTitle>
+      <StyledCloseButton onClick={() => setShowAddAccountPopUp(false)}>
         x
       </StyledCloseButton>
       <StyledLabel for="description">Descrição da transação</StyledLabel>
@@ -130,7 +103,12 @@ export const TransactionInfoPopUp = ({
         onChange={handleChange}
       />
       <StyledLabel for="amount">Quanto custou?</StyledLabel>
-      <StyledInput name="amount" value={state.amount} onChange={handleChange} />
+      <StyledInput
+        name="amount"
+        type="number"
+        value={state.amount}
+        onChange={handleChange}
+      />
 
       <StyledLabel for="date">Qual a data?</StyledLabel>
       <StyledInput
@@ -153,13 +131,13 @@ export const TransactionInfoPopUp = ({
         ))}
       </StyledSelect>
 
+      <StyledLabel for="is_fixed">Esse é um custo fixo?</StyledLabel>
+      <SpecialCheckBox setState={setState} state={state} />
+
       {errorMessage && <p>{errorMessage}</p>}
-      <StyledAddButton onClick={handleUpdateTransaction}>
-        {isUpdateLoading ? <Loading /> : "Atualizar Transação"}
+      <StyledAddButton onClick={handleAddExpense}>
+        {isLoading ? <Loading /> : " Adicionar Transação"}
       </StyledAddButton>
-      <StyledDeleteButton onClick={handleDeleteTransaction}>
-        {isDeleteLoading ? <Loading /> : "Deletar Transação"}
-      </StyledDeleteButton>
     </StyledAddExpensePopUp>
   );
 };
