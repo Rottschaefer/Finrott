@@ -4,6 +4,8 @@ import {
   StyledTransactionInfo,
   StyledTransactionInfoDiv,
   StyledImgDiv,
+  StyledFrontSide,
+  StyledBackSide,
 } from "./StyledCategoryTransactionsCard";
 import { TransactionInfoPopUp } from "../../PopUps/TransactionInfoPopUp/TransactionInfoPopUp";
 import { categoriesIcons } from "../../../Assets/categoriesIcons";
@@ -14,8 +16,11 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
   const [showTransactionInfoPopUp, setShowTransactionInfoPopUp] =
     useState(false);
 
+  const [flipCard, setFlipCard] = useState(false);
+
   const handleCardOnClick = () => {
-    setShowTransactionInfoPopUp(true);
+    setFlipCard(!flipCard);
+    // setShowTransactionInfoPopUp(true);
   };
 
   const CategoryIcon = categoriesIcons[`${transaction.category}`]
@@ -37,18 +42,24 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
   )}`;
 
   return (
-    <>
-      <StyledCategoryCard onClick={handleCardOnClick}>
-        <StyledImgDiv>
-          <StyledIcon />
-        </StyledImgDiv>
-        <StyledTransactionInfoDiv>
-          <StyledTransactionInfo>
-            {transaction.description}
-          </StyledTransactionInfo>
-          <StyledTransactionInfo>{formattedValue}</StyledTransactionInfo>
-        </StyledTransactionInfoDiv>
+    <div>
+      <StyledCategoryCard flipCard={flipCard} onClick={handleCardOnClick}>
+        <StyledFrontSide>
+          <StyledImgDiv>
+            <StyledIcon />
+          </StyledImgDiv>
+          <StyledTransactionInfoDiv>
+            <StyledTransactionInfo>
+              {transaction.description}
+            </StyledTransactionInfo>
+            <StyledTransactionInfo>{formattedValue}</StyledTransactionInfo>
+          </StyledTransactionInfoDiv>
+        </StyledFrontSide>
+        <StyledBackSide>
+          <h1>Back of the Card</h1>
+        </StyledBackSide>
       </StyledCategoryCard>
+
       {showTransactionInfoPopUp && (
         <TransactionInfoPopUp
           transaction={transaction}
@@ -56,6 +67,6 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
           setUpdatePage={setUpdatePage}
         />
       )}
-    </>
+    </div>
   );
 };
