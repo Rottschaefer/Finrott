@@ -5,4 +5,5 @@ export const StyledPlus = styled(FaPlusCircle)`
   height: 2rem;
   width: auto;
   color: white;
+  margin-bottom: 20vh;
 `;
