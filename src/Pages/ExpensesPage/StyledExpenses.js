@@ -4,8 +4,7 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 
 export const StyledExpensesPage = styled.div`
   padding-top: 7vh;
-  min-height: 70vh;
-  height: auto;
+  height: 80vh;
   display: flex;
   gap: 1.5rem;
   flex-direction: column;
