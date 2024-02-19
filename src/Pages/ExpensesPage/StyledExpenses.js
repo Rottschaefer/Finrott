@@ -12,6 +12,7 @@ export const StyledExpensesPage = styled.div`
   align-items: center;
   justify-content: start;
   overflow-y: scroll;
+  background-color: rgb(0, 204, 195, 0.05);
 `;
 
 export const StyledMonthPicker = styled.div`

@@ -4,6 +4,12 @@ import {
   StyledTransactionInfo,
   StyledTransactionInfoDiv,
   StyledImgDiv,
+  StyledFrontSide,
+  StyledBackSide,
+  StyledBackSideInfo,
+  StyledBackSideInfoText,
+  StyledBackSideImageDiv,
+  StyledEditImage,
 } from "./StyledCategoryTransactionsCard";
 import { TransactionInfoPopUp } from "../../PopUps/TransactionInfoPopUp/TransactionInfoPopUp";
 import { categoriesIcons } from "../../../Assets/categoriesIcons";
@@ -14,7 +20,15 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
   const [showTransactionInfoPopUp, setShowTransactionInfoPopUp] =
     useState(false);
 
+  const [flipCard, setFlipCard] = useState(false);
+  const [changeInfo, setChangeInfo] = useState(false);
+
   const handleCardOnClick = () => {
+    setFlipCard(!flipCard);
+  };
+
+  const handleEditOnClick = (e) => {
+    e.stopPropagation();
     setShowTransactionInfoPopUp(true);
   };
 
@@ -36,19 +50,39 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
     }
   )}`;
 
+  const formattedDate = new Intl.DateTimeFormat("pt-BR", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).format(new Date(transaction.date));
+
   return (
-    <>
-      <StyledCategoryCard onClick={handleCardOnClick}>
-        <StyledImgDiv>
-          <StyledIcon />
-        </StyledImgDiv>
-        <StyledTransactionInfoDiv>
-          <StyledTransactionInfo>
-            {transaction.description}
-          </StyledTransactionInfo>
-          <StyledTransactionInfo>{formattedValue}</StyledTransactionInfo>
-        </StyledTransactionInfoDiv>
+    <div>
+      <StyledCategoryCard flipCard={flipCard} onClick={handleCardOnClick}>
+        <StyledFrontSide flipCard={flipCard}>
+          <StyledImgDiv>
+            <StyledIcon />
+          </StyledImgDiv>
+          <StyledTransactionInfoDiv>
+            <StyledTransactionInfo>
+              {transaction.description}
+            </StyledTransactionInfo>
+            <StyledTransactionInfo>{formattedValue}</StyledTransactionInfo>
+          </StyledTransactionInfoDiv>
+        </StyledFrontSide>
+        <StyledBackSide flipCard={flipCard}>
+          <StyledBackSideInfo>
+            <StyledBackSideInfoText>{formattedDate}</StyledBackSideInfoText>
+            <StyledBackSideInfoText>
+              {transaction.category}
+            </StyledBackSideInfoText>
+          </StyledBackSideInfo>
+          <StyledBackSideImageDiv onClick={(e) => handleEditOnClick(e)}>
+            <StyledEditImage />
+          </StyledBackSideImageDiv>
+        </StyledBackSide>
       </StyledCategoryCard>
+
       {showTransactionInfoPopUp && (
         <TransactionInfoPopUp
           transaction={transaction}
@@ -56,6 +90,6 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
           setUpdatePage={setUpdatePage}
         />
       )}
-    </>
+    </div>
   );
 };
