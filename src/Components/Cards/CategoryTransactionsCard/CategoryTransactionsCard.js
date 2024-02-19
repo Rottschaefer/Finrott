@@ -6,6 +6,10 @@ import {
   StyledImgDiv,
   StyledFrontSide,
   StyledBackSide,
+  StyledBackSideInfo,
+  StyledBackSideInfoText,
+  StyledBackSideImageDiv,
+  StyledEditImage,
 } from "./StyledCategoryTransactionsCard";
 import { TransactionInfoPopUp } from "../../PopUps/TransactionInfoPopUp/TransactionInfoPopUp";
 import { categoriesIcons } from "../../../Assets/categoriesIcons";
@@ -17,10 +21,15 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
     useState(false);
 
   const [flipCard, setFlipCard] = useState(false);
+  const [changeInfo, setChangeInfo] = useState(false);
 
   const handleCardOnClick = () => {
     setFlipCard(!flipCard);
-    // setShowTransactionInfoPopUp(true);
+  };
+
+  const handleEditOnClick = (e) => {
+    e.stopPropagation();
+    setShowTransactionInfoPopUp(true);
   };
 
   const CategoryIcon = categoriesIcons[`${transaction.category}`]
@@ -41,10 +50,16 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
     }
   )}`;
 
+  const formattedDate = new Intl.DateTimeFormat("pt-BR", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).format(new Date(transaction.date));
+
   return (
     <div>
       <StyledCategoryCard flipCard={flipCard} onClick={handleCardOnClick}>
-        <StyledFrontSide>
+        <StyledFrontSide flipCard={flipCard}>
           <StyledImgDiv>
             <StyledIcon />
           </StyledImgDiv>
@@ -55,8 +70,16 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
             <StyledTransactionInfo>{formattedValue}</StyledTransactionInfo>
           </StyledTransactionInfoDiv>
         </StyledFrontSide>
-        <StyledBackSide>
-          <h1>Back of the Card</h1>
+        <StyledBackSide flipCard={flipCard}>
+          <StyledBackSideInfo>
+            <StyledBackSideInfoText>{formattedDate}</StyledBackSideInfoText>
+            <StyledBackSideInfoText>
+              {transaction.category}
+            </StyledBackSideInfoText>
+          </StyledBackSideInfo>
+          <StyledBackSideImageDiv onClick={(e) => handleEditOnClick(e)}>
+            <StyledEditImage />
+          </StyledBackSideImageDiv>
         </StyledBackSide>
       </StyledCategoryCard>
 

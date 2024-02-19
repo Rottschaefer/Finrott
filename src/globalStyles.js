@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import backgroundImage from "./Assets/background_compressed.jpeg";
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -8,6 +9,9 @@ body {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     font-size: 62.5%;
+    background-size: 120%;
+    background-image:url(${backgroundImage});
+
   }
 `;
 
