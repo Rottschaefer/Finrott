@@ -5,6 +5,9 @@ const color = "#5e2129";
 
 export const StyledAddExpensePopUp = styled.div`
   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   gap: 0.5rem;
   flex-direction: column;

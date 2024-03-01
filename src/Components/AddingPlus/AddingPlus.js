@@ -1,5 +1,9 @@
-import { StyledPlus } from "./StyledAddingPlus";
+import { StyledPlus, StyledPlusDiv } from "./StyledAddingPlus";
 
 export const AddingPlus = ({ handleOnClick }) => {
-  return <StyledPlus onClick={handleOnClick} />;
+  return (
+    <StyledPlusDiv>
+      <StyledPlus onClick={handleOnClick} />
+    </StyledPlusDiv>
+  );
 };
