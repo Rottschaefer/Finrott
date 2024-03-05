@@ -54,15 +54,16 @@ export const StyledBackSide = styled(StyledSides)`
 export const StyledBackSideInfo = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: space-around;
 
   height: 80%;
-  width: 20%;
-  margin-left: 60px;
+  width: 50%;
+  margin-left: 30px;
 `;
 
 export const StyledBackSideInfoText = styled.h2`
+  width: auto;
   margin: 0px;
 `;
 
