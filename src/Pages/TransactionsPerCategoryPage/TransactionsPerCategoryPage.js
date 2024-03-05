@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { CategoryTransactionsCard } from "../../Components/Cards/CategoryTransactionsCard/CategoryTransactionsCard";
 import { goToPage } from "../../Routes/Coordinator";
 import { Loading } from "../../Components/Loading/Loading";
+import FadeIn from "react-fade-in/lib/FadeIn";
 
 export const TransactionsPerCategoryPage = () => {
   const navigate = useNavigate();
@@ -68,12 +69,13 @@ export const TransactionsPerCategoryPage = () => {
   };
 
   return (
-    <>
+    <FadeIn>
       {isLoading && <Loading svgSize="20vw" conteinerSize="90vh" />}
 
       {!isLoading && (
         <StyledTransactionsPerCategoryPage>
           <h1 onClick={handleBackOnClick}>Voltar</h1>
+
           {transactionsPerCategory.map((transaction) => {
             return (
               <CategoryTransactionsCard
@@ -84,6 +86,6 @@ export const TransactionsPerCategoryPage = () => {
           })}
         </StyledTransactionsPerCategoryPage>
       )}
-    </>
+    </FadeIn>
   );
 };

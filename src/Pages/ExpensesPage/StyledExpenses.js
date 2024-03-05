@@ -3,6 +3,7 @@ import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 
 export const StyledExpensesPage = styled.div`
+  opacity: ${(props) => (props.fadeIn ? 1 : 0)};
   padding-top: 7vh;
   height: 83vh;
   display: flex;
@@ -12,6 +13,7 @@ export const StyledExpensesPage = styled.div`
   justify-content: start;
   overflow-y: scroll;
   background-color: rgb(0, 204, 195, 0.05);
+  transition: all 1s;
 `;
 
 export const StyledMonthPicker = styled.div`

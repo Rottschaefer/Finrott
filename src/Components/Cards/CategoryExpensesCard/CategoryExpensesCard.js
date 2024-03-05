@@ -8,6 +8,7 @@ import {
   StyledSvg,
 } from "./StyledCategoryExpensesCard";
 import { GrMoney } from "react-icons/gr";
+import FadeIn from "react-fade-in/lib/FadeIn";
 
 export const CategoryExpensesCard = ({ amount, handleOnClick }) => {
   const formattedValue = `R$${Number(amount.total_amount).toLocaleString(
@@ -29,6 +30,7 @@ export const CategoryExpensesCard = ({ amount, handleOnClick }) => {
   `;
 
   return (
+    // <FadeIn>
     <StyledCategoryCard onClick={() => handleOnClick(amount)}>
       <StyledImgDiv>
         <StyledIcon />
@@ -38,5 +40,6 @@ export const CategoryExpensesCard = ({ amount, handleOnClick }) => {
         <StyledExpensesInfo>{formattedValue}</StyledExpensesInfo>
       </StyledExpensesInfoDiv>
     </StyledCategoryCard>
+    // </FadeIn>
   );
 };

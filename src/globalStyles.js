@@ -12,6 +12,7 @@ body {
     background-size: 120%;
     background-image:url(${backgroundImage});
 
+
   }
 `;
 

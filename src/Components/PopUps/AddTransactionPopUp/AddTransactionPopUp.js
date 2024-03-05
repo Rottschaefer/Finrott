@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   StyledAddButton,
-  StyledAddExpensePopUp,
   StyledCloseButton,
   StyledInput,
   StyledLabel,
@@ -15,6 +14,7 @@ import {
 } from "../../../Requests/transactionsRequests.js";
 import { SpecialCheckBox } from "../../SpecialCheckBox/SpecialCheckBox.js";
 import { Loading } from "../../Loading/Loading.js";
+import { RootPopUp } from "../RootPopUp/RootPopUp.js";
 
 export const AddTransactionPopUp = ({
   setShowAddTransactionPopUp,
@@ -92,7 +92,7 @@ export const AddTransactionPopUp = ({
     }
   };
   return (
-    <StyledAddExpensePopUp>
+    <RootPopUp closePopUp={setShowAddTransactionPopUp}>
       <StyledTitle>O que você pagou?</StyledTitle>
       <StyledCloseButton onClick={() => setShowAddTransactionPopUp(false)}>
         x
@@ -139,6 +139,6 @@ export const AddTransactionPopUp = ({
       <StyledAddButton onClick={handleAddExpense}>
         {isLoading ? <Loading /> : " Adicionar Transação"}
       </StyledAddButton>
-    </StyledAddExpensePopUp>
+    </RootPopUp>
   );
 };

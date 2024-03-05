@@ -19,6 +19,7 @@ import { goToPage } from "../../Routes/Coordinator";
 import { AddTransactionPopUp } from "../../Components/PopUps/AddTransactionPopUp/AddTransactionPopUp";
 import { Loading } from "../../Components/Loading/Loading";
 import { AddingPlus } from "../../Components/AddingPlus/AddingPlus";
+import FadeIn from "react-fade-in/lib/FadeIn";
 
 export const ExpensesPage = () => {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ export const ExpensesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [totalMonthAmount, setTotalMonthAmount] = useState(0);
   const [updatePage, setUpdatePage] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false);
 
   const fetchData = async (month, year) => {
     console.log(month, year);
@@ -101,6 +103,12 @@ export const ExpensesPage = () => {
     fetchData(monthPage, yearPage);
   }, [monthPage, yearPage, updatePage]);
 
+  useEffect(() => {
+    // console.log(fadeIn);
+    setTimeout(() => setFadeIn(true), 500);
+    // setFadeIn(true);
+  }, []);
+
   const months = {
     1: "Janeiro",
     2: "Fevereiro",
@@ -154,7 +162,7 @@ export const ExpensesPage = () => {
       {isLoading && <Loading svgSize="20vw" conteinerSize="90vh" />}
 
       {!isLoading && (
-        <StyledExpensesPage>
+        <StyledExpensesPage fadeIn={fadeIn}>
           <StyledMonthPicker>
             <StyledArrowLeft onClick={() => handleMonthChange(-1)} />
             <StyledMonthPickerText>

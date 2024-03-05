@@ -18,6 +18,8 @@ import {
 } from "../../../Requests/transactionsRequests.js";
 import { Loading } from "../../Loading/Loading.js";
 import { useLocation } from "react-router-dom";
+import { StyledRootPopUp } from "../RootPopUp/StyledRootPopUp.js";
+import { RootPopUp } from "../RootPopUp/RootPopUp.js";
 
 export const TransactionInfoPopUp = ({
   setShowTransactionInfoPopUp,
@@ -118,7 +120,7 @@ export const TransactionInfoPopUp = ({
     }
   };
   return (
-    <StyledAddExpensePopUp>
+    <RootPopUp closePopUp={setShowTransactionInfoPopUp}>
       <StyledTitle>Informações da transação</StyledTitle>
       <StyledCloseButton onClick={() => setShowTransactionInfoPopUp(false)}>
         x
@@ -160,6 +162,6 @@ export const TransactionInfoPopUp = ({
       <StyledDeleteButton onClick={handleDeleteTransaction}>
         {isDeleteLoading ? <Loading /> : "Deletar Transação"}
       </StyledDeleteButton>
-    </StyledAddExpensePopUp>
+    </RootPopUp>
   );
 };
