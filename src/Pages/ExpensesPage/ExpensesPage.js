@@ -19,7 +19,6 @@ import { goToPage } from "../../Routes/Coordinator";
 import { AddTransactionPopUp } from "../../Components/PopUps/AddTransactionPopUp/AddTransactionPopUp";
 import { Loading } from "../../Components/Loading/Loading";
 import { AddingPlus } from "../../Components/AddingPlus/AddingPlus";
-import FadeIn from "react-fade-in/lib/FadeIn";
 
 export const ExpensesPage = () => {
   const navigate = useNavigate();
