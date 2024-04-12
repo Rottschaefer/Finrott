@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   StyledAddButton,
-  StyledAddExpensePopUp,
   StyledCloseButton,
   StyledDeleteButton,
   StyledInput,
@@ -68,6 +67,8 @@ export const TransactionInfoPopUp = ({
           (category) => category.descriptionTranslated === state.category
         );
 
+        console.log(categoryObject);
+
         const config = {
           headers: {
             Authorization: token,
@@ -85,7 +86,9 @@ export const TransactionInfoPopUp = ({
         if (category === "custos-fixos") {
           await updateFixedTransaction(config, body, transaction.id);
         } else {
-          body = { transactions: { body } };
+          body = { transactions: [body] };
+          console.log(body);
+
           await updateTransaction(config, body, transaction.id);
         }
         setIsUpdateLoading(false);
