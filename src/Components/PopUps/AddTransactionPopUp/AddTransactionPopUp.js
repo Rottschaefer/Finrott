@@ -34,7 +34,6 @@ export const AddTransactionPopUp = ({
   });
 
   function handleChange(event) {
-    console.log(state);
     const value = event.target.value;
 
     setState({
@@ -106,7 +105,7 @@ export const AddTransactionPopUp = ({
       <StyledLabel for="amount">Quanto custou?</StyledLabel>
       <StyledInput
         name="amount"
-        type="number"
+        type="text"
         value={state.amount}
         onChange={handleChange}
       />

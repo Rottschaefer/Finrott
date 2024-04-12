@@ -47,6 +47,7 @@ export const getTransactionsPerCategory = async (
 
 export const addTransaction = async (config, body) => {
   console.log("creating");
+  console.log(body);
   let output;
   await axios
     .post(`${BASE_URL}/transactions/`, body, config)
@@ -62,6 +63,7 @@ export const addTransaction = async (config, body) => {
 
 export const updateTransaction = async (config, body, id) => {
   console.log("updating");
+  console.log(body);
   let output;
   await axios
     .put(`${BASE_URL}/transactions/${id}`, body, config)
