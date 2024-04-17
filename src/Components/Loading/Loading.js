@@ -1,26 +1,9 @@
-import {
-  StyledBoatImg,
-  StyledLoading,
-  StyledLoadingConteiner,
-  StyledSeaImg,
-} from "./StyledLoading";
-import boat from "../../Assets/sailBoat.png";
-import sea from "../../Assets/sea.png";
-import { useState } from "react";
-import { useEffect } from "react";
+import { StyledLoading, StyledLoadingConteiner } from "./StyledLoading";
 
-export const Loading = ({ svgSize, conteinerSize, fadeIn }) => {
-  // const [fadeIn, setFadeIn] = useState(false);
-
-  // useEffect(() => {
-  //   setTimeout(() => setFadeIn(true), 500);
-  // }, []);
-
+export const Loading = ({ svgSize, conteinerSize }) => {
   return (
-    <StyledLoadingConteiner fadeIn={fadeIn} conteinerSize={conteinerSize}>
-      <StyledBoatImg src={boat} />
-      <StyledSeaImg src={sea} />
-      {/* <StyledLoading svgSize={svgSize} /> */}
+    <StyledLoadingConteiner conteinerSize={conteinerSize}>
+      <StyledLoading svgSize={svgSize} />
     </StyledLoadingConteiner>
   );
 };
