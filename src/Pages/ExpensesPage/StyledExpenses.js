@@ -51,16 +51,5 @@ export const StyledTotalText = styled.p`
   font-weight: 550;
   font-size: 1.5rem;
   line-height: 22px;
-  text-align: center;
   color: white;
-  width: 100%;
-`;
-
-export const StyledTotalTextDiv = styled.div`
-  width: 58vw;
-  background-color: black;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
 `;
