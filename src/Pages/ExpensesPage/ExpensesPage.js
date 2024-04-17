@@ -7,6 +7,7 @@ import {
   StyledMonthPicker,
   StyledMonthPickerText,
   StyledTotalText,
+  StyledTotalTextDiv,
 } from "./StyledExpenses";
 import {
   getAmountsPerCategory,
@@ -154,7 +155,9 @@ export const ExpensesPage = () => {
 
   return (
     <>
-      {isLoading && <Loading svgSize="20vw" conteinerSize="90vh" />}
+      {isLoading && (
+        <Loading svgSize="20vw" conteinerSize="90vh" fadeIn={fadeIn} />
+      )}
 
       {!isLoading && (
         <StyledExpensesPage fadeIn={fadeIn}>
@@ -170,7 +173,9 @@ export const ExpensesPage = () => {
 
           {amountsPerCategory.length > 0 && cardsOfAmountPerCategory}
 
-          <StyledTotalText>Total: {totalMonthAmount}</StyledTotalText>
+          <StyledTotalTextDiv>
+            <StyledTotalText>Total: {totalMonthAmount}</StyledTotalText>
+          </StyledTotalTextDiv>
 
           <AddingPlus
             handleOnClick={() =>
