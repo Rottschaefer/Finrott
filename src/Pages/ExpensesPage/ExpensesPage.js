@@ -6,8 +6,6 @@ import {
   StyledExpensesPage,
   StyledMonthPicker,
   StyledMonthPickerText,
-  StyledPlus,
-  StyledPlusDiv,
   StyledTotalText,
 } from "./StyledExpenses";
 import {
@@ -103,9 +101,7 @@ export const ExpensesPage = () => {
   }, [monthPage, yearPage, updatePage]);
 
   useEffect(() => {
-    // console.log(fadeIn);
     setTimeout(() => setFadeIn(true), 500);
-    // setFadeIn(true);
   }, []);
 
   const months = {

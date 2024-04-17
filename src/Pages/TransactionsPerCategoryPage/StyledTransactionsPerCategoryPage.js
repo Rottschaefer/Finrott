@@ -10,4 +10,19 @@ export const StyledTransactionsPerCategoryPage = styled.div`
   justify-content: start;
   overflow-y: scroll;
   color: white;
+  opacity: ${(props) => (props.fadeIn ? 1 : 0)};
+
+  transition: all 1s;
+`;
+
+export const BackButton = styled.button`
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: white;
+  border: none;
+  width: 30vw;
+  height: 50px;
+  border-radius: 10px;
+  opacity: 0.8;
 `;

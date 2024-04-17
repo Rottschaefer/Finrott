@@ -11,12 +11,6 @@ export const PluggyPage = (props) => {
 
   const [connectToken, setConnectToken] = useState("");
 
-  // localStorage.setItem(
-  //   "token",
-  //   JSON.stringify(
-  //     "eyJhbGciOiJIUzI1NiJ9.InRlc3RlMkBnbWFpbC5jb20i.2W82IpNy1000d9syE8AQ35wWVIFDi2i4j5yV0ohLohs"
-  //   )
-  // );
   const token = JSON.parse(localStorage.getItem("token"));
 
   const config = {
@@ -32,17 +26,6 @@ export const PluggyPage = (props) => {
     const newConnectToken = response.data.connectToken;
 
     setConnectToken(newConnectToken);
-
-    // const body = {
-    //   item_id: "08e3f5dd-5a45-4af7-8d4d-35501898638e",
-    //   user_id: 1,
-    // };
-    // const response2 = await axios.post(
-    //   "http://localhost:3000/accounts",
-    //   body,
-    //   config
-    // );
-    // console.log(response2.data);
   };
 
   useEffect(() => {

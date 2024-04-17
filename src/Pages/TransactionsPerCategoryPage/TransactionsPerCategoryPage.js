@@ -3,7 +3,10 @@ import {
   getFixedTransactions,
   getTransactionsPerCategory,
 } from "../../Requests/transactionsRequests";
-import { StyledTransactionsPerCategoryPage } from "./StyledTransactionsPerCategoryPage";
+import {
+  BackButton,
+  StyledTransactionsPerCategoryPage,
+} from "./StyledTransactionsPerCategoryPage";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CategoryTransactionsCard } from "../../Components/Cards/CategoryTransactionsCard/CategoryTransactionsCard";
 import { goToPage } from "../../Routes/Coordinator";
@@ -16,6 +19,7 @@ export const TransactionsPerCategoryPage = () => {
   const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
   const [isLoading, setIsLoading] = useState(true);
   const [updatePage, setUpdatePage] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false);
 
   const location = useLocation();
 
@@ -60,10 +64,13 @@ export const TransactionsPerCategoryPage = () => {
   };
 
   useEffect(() => {
+    setTimeout(() => setFadeIn(true), 500);
     fetchData();
   }, [updatePage]);
 
   const handleBackOnClick = () => {
+    setFadeIn(false);
+
     goToPage(navigate, `/expenses`);
   };
 
@@ -72,8 +79,10 @@ export const TransactionsPerCategoryPage = () => {
       {isLoading && <Loading svgSize="20vw" conteinerSize="90vh" />}
 
       {!isLoading && (
-        <StyledTransactionsPerCategoryPage>
-          <h1 onClick={handleBackOnClick}>Voltar</h1>
+        <StyledTransactionsPerCategoryPage fadeIn={fadeIn}>
+          <div>
+            <BackButton onClick={handleBackOnClick}>Voltar</BackButton>
+          </div>
 
           {transactionsPerCategory.map((transaction) => {
             return (
