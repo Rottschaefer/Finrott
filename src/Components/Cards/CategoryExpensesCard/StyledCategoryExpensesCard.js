@@ -6,7 +6,6 @@ export const StyledCategoryCard = styled.div`
   -webkit-backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
-  /* background-color: white; */
   min-height: 10vh;
   height: 10vh;
   width: 80vw;

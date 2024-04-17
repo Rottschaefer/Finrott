@@ -29,7 +29,6 @@ export const CategoryExpensesCard = ({ amount, handleOnClick }) => {
   `;
 
   return (
-    // <FadeIn>
     <StyledCategoryCard onClick={() => handleOnClick(amount)}>
       <StyledImgDiv>
         <StyledIcon />
@@ -39,6 +38,5 @@ export const CategoryExpensesCard = ({ amount, handleOnClick }) => {
         <StyledExpensesInfo>{formattedValue}</StyledExpensesInfo>
       </StyledExpensesInfoDiv>
     </StyledCategoryCard>
-    // </FadeIn>
   );
 };
