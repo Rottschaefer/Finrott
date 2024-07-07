@@ -6,14 +6,13 @@ export const StyledCategoryCard = styled.div`
   color: white;
   display: flex;
   align-items: center;
-  /* background-color: white; */
+  background-color: rgb(0 163 255 / 30%);
   height: 10vh;
 
   width: 80vw;
   border-radius: 20px;
-  box-shadow: 0px 3px 8px 0px rgba(74, 85, 104, 0.07);
+  /* box-shadow: 0px 3px 8px 0px rgba(74, 85, 104, 0.07); */
   transition: all 0.8s;
-  /* transform-style: preserve-3d; */
 
   transform-style: ${(props) => (props.flipCard ? "preserve-3d" : "")};
 

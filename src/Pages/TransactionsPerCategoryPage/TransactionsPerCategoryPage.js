@@ -11,6 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { CategoryTransactionsCard } from "../../Components/Cards/CategoryTransactionsCard/CategoryTransactionsCard";
 import { goToPage } from "../../Routes/Coordinator";
 import { Loading } from "../../Components/Loading/Loading";
+import { useCallback } from "react";
 
 export const TransactionsPerCategoryPage = () => {
   const navigate = useNavigate();
@@ -24,14 +25,14 @@ export const TransactionsPerCategoryPage = () => {
   const location = useLocation();
 
   const queryParams = new URLSearchParams(location.search);
-  const month = queryParams.get("month");
-  const year = queryParams.get("year");
+  const month = queryParams.get("month") || "fixo";
+  const year = queryParams.get("year") || "fixo";
 
   const categoryId = location.pathname.split("/")[2];
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
-      setIsLoading(true);
+      // setIsLoading(true);
       const config = {
         headers: {
           Authorization: token,
@@ -53,20 +54,36 @@ export const TransactionsPerCategoryPage = () => {
 
       if (response) {
         setTransactionsPerCategory(response);
+
+        const dataToSave = {
+          transactionsPerCategory: response,
+        };
+
+        localStorage.setItem(
+          `${month}--${year}--categoryId`,
+          JSON.stringify(dataToSave)
+        );
       }
 
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-
-      console.log(error.message);
     }
-  };
+  }, [token]);
 
   useEffect(() => {
-    setTimeout(() => setFadeIn(true), 500);
+    const localData = JSON.parse(
+      localStorage.getItem(`${month}--${year}--categoryId`)
+    );
+
+    if (localData) {
+      setTransactionsPerCategory(localData.transactionsPerCategory);
+      setIsLoading(false);
+    }
     fetchData();
-  }, [updatePage]);
+
+    setTimeout(() => setFadeIn(true), 500);
+  }, [fetchData]);
 
   const handleBackOnClick = () => {
     setFadeIn(false);

@@ -94,7 +94,7 @@ export const LoginPage = () => {
   return (
     <StyledLoginPage fade={fade}>
       <StyledTitle>Finrott_</StyledTitle>
-      <StyledSubTitle>Faça login de controle das suas finanças</StyledSubTitle>
+      <StyledSubTitle>Faça login para controlar suas finanças</StyledSubTitle>
 
       <StyledForm>
         <StyledInput

@@ -10,7 +10,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-size: 62.5%;
     background-size: 120%;
-    background-image:url(${backgroundImage});
+    /* background-image:url(${backgroundImage}); */
 
 
   }
