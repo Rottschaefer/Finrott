@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const StyledCategoryCard = styled.div`
   color: white;
+  background-color: rgb(0 163 255 / 30%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
-  /* background-color: white; */
   min-height: 10vh;
   height: 10vh;
   width: 80vw;
