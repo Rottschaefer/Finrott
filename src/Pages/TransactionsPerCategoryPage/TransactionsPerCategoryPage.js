@@ -79,6 +79,8 @@ export const TransactionsPerCategoryPage = () => {
     if (localData) {
       setTransactionsPerCategory(localData.transactionsPerCategory);
       setIsLoading(false);
+    } else {
+      setIsLoading(true);
     }
     fetchData();
 

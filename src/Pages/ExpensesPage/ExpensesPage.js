@@ -119,6 +119,8 @@ export const ExpensesPage = () => {
       setFixedTransactionsAmount(data.fixedTransactionsAmount);
       setTotalMonthAmount(data.totalMonthAmount);
       setIsLoading(false);
+    } else {
+      setIsLoading(true);
     }
     fetchData(monthPage, yearPage);
 
