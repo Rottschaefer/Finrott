@@ -17,6 +17,7 @@ import { goToPage } from "../../Routes/Coordinator";
 import { AddTransactionPopUp } from "../../Components/PopUps/AddTransactionPopUp/AddTransactionPopUp";
 import { Loading } from "../../Components/Loading/Loading";
 import { AddingPlus } from "../../Components/AddingPlus/AddingPlus";
+import { useCallback } from "react";
 
 export const ExpensesPage = () => {
   const navigate = useNavigate();
@@ -32,48 +33,58 @@ export const ExpensesPage = () => {
   const [updatePage, setUpdatePage] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
 
-  const fetchData = async (month, year) => {
-    console.log(month, year);
-    try {
-      setIsLoading(true);
-
-      let total = 0;
-      const config = {
-        headers: {
-          Authorization: token,
-        },
-      };
-      const response = await getAmountsPerCategory(config, month, year);
-      const fixedTransactionsResponse = await getFixedTransactionsAmount(
-        config,
-        month,
-        year
-      );
-
-      if (response) {
-        if (fixedTransactionsResponse) {
-          setFixedTransactionsAmount(fixedTransactionsResponse);
-        }
-        setAmountsPerCategory(response);
-        response.map((amount) => {
-          total += Number(amount.total_amount);
-        });
-
-        total += fixedTransactionsResponse;
-        setTotalMonthAmount(
-          total.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          })
+  const fetchData = useCallback(
+    async (month, year) => {
+      try {
+        let total = 0;
+        const config = {
+          headers: {
+            Authorization: token,
+          },
+        };
+        const response = await getAmountsPerCategory(config, month, year);
+        const fixedTransactionsResponse = await getFixedTransactionsAmount(
+          config,
+          month,
+          year
         );
-      }
 
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.log(error.message);
-    }
-  };
+        if (response) {
+          setAmountsPerCategory(response);
+          if (fixedTransactionsResponse) {
+            setFixedTransactionsAmount(fixedTransactionsResponse);
+          }
+          response.forEach((amount) => {
+            total += Number(amount.total_amount);
+          });
+
+          total += fixedTransactionsResponse;
+          setTotalMonthAmount(
+            total.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })
+          );
+
+          const dataToSave = {
+            amountsPerCategory: response,
+            fixedTransactionsAmount: fixedTransactionsResponse,
+            totalMonthAmount: total.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            }),
+          };
+
+          localStorage.setItem(`${month}-${year}`, JSON.stringify(dataToSave));
+        }
+
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+      }
+    },
+    [token]
+  );
 
   const handleMonthChange = async (operation) => {
     let newMonth = monthPage + operation;
@@ -81,10 +92,10 @@ export const ExpensesPage = () => {
 
     if (newMonth > 12) {
       newMonth = 1;
-      newYear = yearPage + 1;
+      newYear += 1;
     } else if (newMonth < 1) {
       newMonth = 12;
-      newYear = yearPage - 1;
+      newYear -= 1;
     }
 
     setMonthPage(newMonth);
@@ -97,12 +108,22 @@ export const ExpensesPage = () => {
     if (!token) {
       goToPage(navigate, "/login");
     }
-    fetchData(monthPage, yearPage);
-  }, [monthPage, yearPage, updatePage]);
+  }, [token, navigate]);
 
   useEffect(() => {
+    const localData = localStorage.getItem(`${monthPage}-${yearPage}`);
+
+    if (localData) {
+      const data = JSON.parse(localData);
+      setAmountsPerCategory(data.amountsPerCategory);
+      setFixedTransactionsAmount(data.fixedTransactionsAmount);
+      setTotalMonthAmount(data.totalMonthAmount);
+      setIsLoading(false);
+    }
+    fetchData(monthPage, yearPage);
+
     setTimeout(() => setFadeIn(true), 500);
-  }, []);
+  }, [fetchData, monthPage, yearPage]);
 
   const months = {
     1: "Janeiro",
