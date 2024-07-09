@@ -33,5 +33,6 @@ export const StyledRootPopUpBackground = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: black;
-  opacity: 0.8;
+  opacity: ${(props) => (props.showPopUp ? "0.8" : "0")};
+  transition: all 0.5s;
 `;

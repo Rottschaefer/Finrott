@@ -17,6 +17,7 @@ import { Loading } from "../../Loading/Loading.js";
 import { RootPopUp } from "../RootPopUp/RootPopUp.js";
 
 export const AddTransactionPopUp = ({
+  category,
   setShowAddTransactionPopUp,
   token,
   setUpdatePage,
@@ -28,7 +29,10 @@ export const AddTransactionPopUp = ({
   const [state, setState] = useState({
     description: "",
     amount: "",
-    category: "",
+    category:
+      category && category.descriptionTranslated
+        ? category.descriptionTranslated
+        : "",
     category_id: "",
     date: "",
     is_a_fixed_transaction: false,
@@ -88,7 +92,6 @@ export const AddTransactionPopUp = ({
       }
     } catch (error) {
       setIsLoading(false);
-      // setErrorMessage(error.message);
     }
   };
   return (
