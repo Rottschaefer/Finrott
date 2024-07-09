@@ -12,6 +12,9 @@ import { CategoryTransactionsCard } from "../../Components/Cards/CategoryTransac
 import { goToPage } from "../../Routes/Coordinator";
 import { Loading } from "../../Components/Loading/Loading";
 import { useCallback } from "react";
+import { AddTransactionPopUp } from "../../Components/PopUps/AddTransactionPopUp/AddTransactionPopUp";
+import { AddingPlus } from "../../Components/AddingPlus/AddingPlus";
+import categories from "../../Assets/categories.json";
 
 export const TransactionsPerCategoryPage = () => {
   const navigate = useNavigate();
@@ -20,6 +23,8 @@ export const TransactionsPerCategoryPage = () => {
   const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
   const [isLoading, setIsLoading] = useState(true);
   const [updatePage, setUpdatePage] = useState(false);
+  const [showAddTransactionPopUp, setShowAddTransactionPopUp] = useState(false);
+
   const [fadeIn, setFadeIn] = useState(false);
 
   const location = useLocation();
@@ -30,9 +35,12 @@ export const TransactionsPerCategoryPage = () => {
 
   const categoryId = location.pathname.split("/")[2];
 
+  const category = categories.results.find(
+    (category) => category.id === categoryId
+  );
+
   const fetchData = useCallback(async () => {
     try {
-      // setIsLoading(true);
       const config = {
         headers: {
           Authorization: token,
@@ -102,7 +110,6 @@ export const TransactionsPerCategoryPage = () => {
           <div>
             <BackButton onClick={handleBackOnClick}>Voltar</BackButton>
           </div>
-
           {transactionsPerCategory.map((transaction) => {
             return (
               <CategoryTransactionsCard
@@ -111,6 +118,18 @@ export const TransactionsPerCategoryPage = () => {
               />
             );
           })}
+          <AddingPlus
+            handleOnClick={() =>
+              setShowAddTransactionPopUp(!showAddTransactionPopUp)
+            }
+          />
+          <AddTransactionPopUp
+            category={category}
+            setUpdatePage={setUpdatePage}
+            showAddTransactionPopUp={showAddTransactionPopUp}
+            setShowAddTransactionPopUp={setShowAddTransactionPopUp}
+            token={token}
+          />
         </StyledTransactionsPerCategoryPage>
       )}
     </>

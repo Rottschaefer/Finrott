@@ -201,14 +201,6 @@ export const ExpensesPage = () => {
             }
           />
 
-          {/* {showAddTransactionPopUp && (
-            <AddTransactionPopUp
-              setUpdatePage={setUpdatePage}
-              showAddTransactionPopUp={showAddTransactionPopUp}
-              setShowAddTransactionPopUp={setShowAddTransactionPopUp}
-              token={token}
-            />
-          )} */}
           <AddTransactionPopUp
             setUpdatePage={setUpdatePage}
             showAddTransactionPopUp={showAddTransactionPopUp}
