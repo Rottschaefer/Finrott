@@ -20,6 +20,7 @@ export const AddTransactionPopUp = ({
   setShowAddTransactionPopUp,
   token,
   setUpdatePage,
+  showAddTransactionPopUp,
 }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -91,7 +92,10 @@ export const AddTransactionPopUp = ({
     }
   };
   return (
-    <RootPopUp closePopUp={setShowAddTransactionPopUp}>
+    <RootPopUp
+      setShowPopUp={setShowAddTransactionPopUp}
+      showPopUp={showAddTransactionPopUp}
+    >
       <StyledTitle>O que você pagou?</StyledTitle>
       <StyledCloseButton onClick={() => setShowAddTransactionPopUp(false)}>
         x

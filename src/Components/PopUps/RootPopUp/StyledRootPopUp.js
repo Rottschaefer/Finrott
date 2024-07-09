@@ -2,26 +2,30 @@ import styled from "styled-components";
 
 export const StyledRootPopUp = styled.div`
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 0%;
+  right: 0%;
   display: flex;
-  gap: 0.5rem;
+  gap: 1.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 40vh;
-  height: auto;
-  width: 70vw;
-  background-color: white;
+  visibility: ${(props) => (props.showPopUp ? "visible" : "hidden")};
+  height: ${(props) => (props.showPopUp ? "80vh" : "0vh")};
+  min-height: ${(props) => (props.showPopUp ? "auto" : "0vh")};
+  width: 100vw;
+  background-color: #000048;
   border-radius: 10px;
   z-index: 1;
-  padding: 1rem;
   padding-bottom: 1.5rem;
-  color: black;
+  color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  transition: all 0.5s;
 `;
 
 export const StyledRootPopUpBackground = styled.div`
+  visibility: ${(props) => (props.showPopUp ? "visible" : "hidden")};
   position: fixed;
   top: 0%;
   left: 0%;

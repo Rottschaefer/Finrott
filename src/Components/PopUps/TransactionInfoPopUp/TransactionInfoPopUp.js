@@ -21,6 +21,7 @@ import { StyledRootPopUp } from "../RootPopUp/StyledRootPopUp.js";
 import { RootPopUp } from "../RootPopUp/RootPopUp.js";
 
 export const TransactionInfoPopUp = ({
+  showTransactionInfoPopUp,
   setShowTransactionInfoPopUp,
   transaction,
   setUpdatePage,
@@ -115,15 +116,18 @@ export const TransactionInfoPopUp = ({
         await deleteTransaction(config, transaction.id);
       }
       setIsDeleteLoading(false);
-      setUpdatePage(true);
-
       setShowTransactionInfoPopUp(false);
+
+      setUpdatePage(true);
     } catch (error) {
       setIsDeleteLoading(false);
     }
   };
   return (
-    <RootPopUp closePopUp={setShowTransactionInfoPopUp}>
+    <RootPopUp
+      setShowPopUp={setShowTransactionInfoPopUp}
+      showPopUp={showTransactionInfoPopUp}
+    >
       <StyledTitle>Informações da transação</StyledTitle>
       <StyledCloseButton onClick={() => setShowTransactionInfoPopUp(false)}>
         x

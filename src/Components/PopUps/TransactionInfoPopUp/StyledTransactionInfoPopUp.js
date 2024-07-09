@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 const color = "#5e2129";
 
 export const StyledAddExpensePopUp = styled.div`
-  position: fixed;
+  /* position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -21,7 +21,7 @@ export const StyledAddExpensePopUp = styled.div`
   border-radius: 10px;
   padding: 1rem;
   padding-bottom: 1.5rem;
-  color: black;
+  color: black; */
 `;
 
 export const StyledCloseButton = styled(AiOutlineClose)`
@@ -30,7 +30,7 @@ export const StyledCloseButton = styled(AiOutlineClose)`
   right: 1rem;
   height: 1.5rem;
   width: 1.5rem;
-  color: black;
+  color: white;
 
   cursor: pointer;
 `;
@@ -112,5 +112,4 @@ export const StyledLabel = styled.label`
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   text-align: center;
-  color: black;
 `;

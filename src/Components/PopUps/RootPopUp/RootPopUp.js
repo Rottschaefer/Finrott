@@ -3,11 +3,14 @@ import {
   StyledRootPopUpBackground,
 } from "./StyledRootPopUp.js";
 
-export const RootPopUp = ({ children, closePopUp }) => {
+export const RootPopUp = ({ children, setShowPopUp, showPopUp }) => {
   return (
     <>
-      <StyledRootPopUp>{children}</StyledRootPopUp>
-      <StyledRootPopUpBackground onClick={() => closePopUp(false)} />
+      <StyledRootPopUp showPopUp={showPopUp}>{children}</StyledRootPopUp>
+      <StyledRootPopUpBackground
+        showPopUp={showPopUp}
+        onClick={() => setShowPopUp(false)}
+      />
     </>
   );
 };
