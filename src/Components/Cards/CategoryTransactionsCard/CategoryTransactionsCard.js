@@ -83,13 +83,20 @@ export const CategoryTransactionsCard = ({ transaction, setUpdatePage }) => {
         </StyledBackSide>
       </StyledCategoryCard>
 
-      {showTransactionInfoPopUp && (
+      {/* {showTransactionInfoPopUp && (
         <TransactionInfoPopUp
           transaction={transaction}
+          showTransactionInfoPopUp = {showTransactionInfoPopUp}
           setShowTransactionInfoPopUp={setShowTransactionInfoPopUp}
           setUpdatePage={setUpdatePage}
         />
-      )}
+      )} */}
+      <TransactionInfoPopUp
+        transaction={transaction}
+        showTransactionInfoPopUp={showTransactionInfoPopUp}
+        setShowTransactionInfoPopUp={setShowTransactionInfoPopUp}
+        setUpdatePage={setUpdatePage}
+      />
     </div>
   );
 };

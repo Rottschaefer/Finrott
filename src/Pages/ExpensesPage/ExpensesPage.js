@@ -201,13 +201,20 @@ export const ExpensesPage = () => {
             }
           />
 
-          {showAddTransactionPopUp && (
+          {/* {showAddTransactionPopUp && (
             <AddTransactionPopUp
               setUpdatePage={setUpdatePage}
+              showAddTransactionPopUp={showAddTransactionPopUp}
               setShowAddTransactionPopUp={setShowAddTransactionPopUp}
               token={token}
             />
-          )}
+          )} */}
+          <AddTransactionPopUp
+            setUpdatePage={setUpdatePage}
+            showAddTransactionPopUp={showAddTransactionPopUp}
+            setShowAddTransactionPopUp={setShowAddTransactionPopUp}
+            token={token}
+          />
         </StyledExpensesPage>
       )}
     </>
