@@ -1,20 +1,32 @@
+import React from "react";
 import { StyledCheckBox, StyledCircle } from "./StyledSpecialCheckBox";
 
 export const SpecialCheckBox = ({ setState, state }) => {
+  const isChecked = Boolean(state && state.is_a_fixed_transaction);
+
   const handleOnClick = () => {
-    console.log(state);
-    setState({
-      ...state,
-      is_a_fixed_transaction: !state.is_a_fixed_transaction,
-    });
+    setState((prev) => ({
+      ...prev,
+      is_a_fixed_transaction: !prev.is_a_fixed_transaction,
+    }));
   };
 
   return (
     <StyledCheckBox
       onClick={handleOnClick}
-      isClicked={state.is_a_fixed_transaction}
+      isClicked={isChecked}
+      role="switch"
+      aria-checked={isChecked}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleOnClick();
+        }
+      }}
+      title={isChecked ? "Custo fixo ativado" : "Custo fixo desativado"}
     >
-      <StyledCircle isClicked={state.is_a_fixed_transaction} />
+      <StyledCircle isClicked={isChecked} />
     </StyledCheckBox>
   );
 };

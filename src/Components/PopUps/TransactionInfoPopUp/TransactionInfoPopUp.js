@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   StyledAddButton,
   StyledCloseButton,
@@ -7,6 +7,7 @@ import {
   StyledLabel,
   StyledSelect,
   StyledTitle,
+  FormRow,
 } from "./StyledTransactionInfoPopUp.js";
 import categories from "../../../Assets/categories.json";
 import {
@@ -17,8 +18,19 @@ import {
 } from "../../../Requests/transactionsRequests.js";
 import { Loading } from "../../Loading/Loading.js";
 import { useLocation } from "react-router-dom";
-import { StyledRootPopUp } from "../RootPopUp/StyledRootPopUp.js";
 import { RootPopUp } from "../RootPopUp/RootPopUp.js";
+import styled from "styled-components";
+
+const ErrorText = styled.p`
+  color: #F43F5E;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  background: rgba(244, 63, 94, 0.1);
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(244, 63, 94, 0.2);
+`;
 
 export const TransactionInfoPopUp = ({
   showTransactionInfoPopUp,
@@ -27,30 +39,32 @@ export const TransactionInfoPopUp = ({
   setUpdatePage,
 }) => {
   const [errorMessage, setErrorMessage] = useState("");
-  const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
+  const [token] = useState(JSON.parse(localStorage.getItem("token")));
   const [isUpdateLoading, setIsUpdateLoading] = useState(false);
   const [isDeleteLoading, setIsDeleteLoading] = useState(false);
 
+  let initialDate = new Date().toISOString().split("T")[0];
+  if (transaction && transaction.date) {
+    initialDate = transaction.date.split("T")[0];
+  }
+
   const [state, setState] = useState({
-    description: transaction.description,
-    amount: transaction.amount,
-    category: transaction.category,
+    description: transaction ? transaction.description : "",
+    amount: transaction ? transaction.amount : "",
+    category: transaction ? transaction.category : "",
     category_id: "",
-    date: transaction.date.split("T")[0],
+    date: initialDate,
   });
 
   const location = useLocation();
-
-  const category = location.pathname.split("/")[2];
+  const categoryParam = location.pathname.split("/")[2];
 
   function handleChange(event) {
-    const value = event.target.value;
-
-    setState({
-      ...state,
-
-      [event.target.name]: value,
-    });
+    const { name, value } = event.target;
+    setState((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   }
 
   const handleUpdateTransaction = async () => {
@@ -61,114 +75,153 @@ export const TransactionInfoPopUp = ({
         !state.amount ||
         !state.date
       ) {
-        setErrorMessage("Preencha todos os campos");
-      } else {
-        setIsUpdateLoading(true);
-        const categoryObject = categories.results.find(
-          (category) => category.descriptionTranslated === state.category
-        );
-
-        console.log(categoryObject);
-
-        const config = {
-          headers: {
-            Authorization: token,
-          },
-        };
-
-        let body = {
-          description: state.description,
-          amount: Number(state.amount.replace(",", ".")),
-          category: state.category,
-          date: state.date,
-          category_id: categoryObject.id,
-        };
-
-        if (category === "custos-fixos") {
-          await updateFixedTransaction(config, body, transaction.id);
-        } else {
-          body = { transactions: [body] };
-          console.log(body);
-
-          await updateTransaction(config, body, transaction.id);
-        }
-        setIsUpdateLoading(false);
-        setUpdatePage(true);
-        setShowTransactionInfoPopUp(false);
+        setErrorMessage("Preencha todos os campos obrigatórios");
+        return;
       }
-    } catch (error) {
-      setIsUpdateLoading(false);
-      setErrorMessage(error.message);
-    }
-  };
 
-  const handleDeleteTransaction = async () => {
-    try {
-      setIsDeleteLoading(true);
+      setIsUpdateLoading(true);
+      setErrorMessage("");
+
+      const categoryObject = categories.results.find(
+        (cat) => cat.descriptionTranslated === state.category
+      );
+
       const config = {
         headers: {
           Authorization: token,
         },
       };
-      if (category === "custos-fixos") {
+
+      let body = {
+        description: state.description,
+        amount: Number(state.amount.toString().replace(",", ".")),
+        category: state.category,
+        date: state.date,
+        category_id: categoryObject ? categoryObject.id : "outros",
+      };
+
+      if (categoryParam === "custos-fixos" || transaction.is_a_fixed_transaction) {
+        await updateFixedTransaction(config, body, transaction.id);
+      } else {
+        body = { transactions: [body] };
+        await updateTransaction(config, body, transaction.id);
+      }
+
+      setIsUpdateLoading(false);
+      if (setUpdatePage) setUpdatePage((prev) => !prev);
+      setShowTransactionInfoPopUp(false);
+    } catch (error) {
+      setIsUpdateLoading(false);
+      setErrorMessage("Erro ao atualizar transação.");
+    }
+  };
+
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm("Deseja realmente excluir esta transação?");
+    if (!confirmDelete) return;
+
+    try {
+      setIsDeleteLoading(true);
+      setErrorMessage("");
+
+      const config = {
+        headers: {
+          Authorization: token,
+        },
+      };
+
+      if (categoryParam === "custos-fixos" || transaction.is_a_fixed_transaction) {
         await deleteFixedTransaction(config, transaction.id);
       } else {
         await deleteTransaction(config, transaction.id);
       }
-      setIsDeleteLoading(false);
-      setShowTransactionInfoPopUp(false);
 
-      setUpdatePage(true);
+      setIsDeleteLoading(false);
+      if (setUpdatePage) setUpdatePage((prev) => !prev);
+      setShowTransactionInfoPopUp(false);
     } catch (error) {
       setIsDeleteLoading(false);
+      setErrorMessage("Erro ao excluir transação.");
     }
   };
+
+  if (!transaction) return null;
+
   return (
     <RootPopUp
       setShowPopUp={setShowTransactionInfoPopUp}
       showPopUp={showTransactionInfoPopUp}
     >
-      <StyledTitle>Informações da transação</StyledTitle>
-      <StyledCloseButton onClick={() => setShowTransactionInfoPopUp(false)}>
-        x
-      </StyledCloseButton>
-      <StyledLabel for="description">Descrição da transação</StyledLabel>
-      <StyledInput
-        name="description"
-        value={state.description}
-        onChange={handleChange}
-      />
-      <StyledLabel for="amount">Quanto custou?</StyledLabel>
-      <StyledInput name="amount" value={state.amount} onChange={handleChange} />
+      <div style={{ position: "relative", width: "100%" }}>
+        <StyledCloseButton onClick={() => setShowTransactionInfoPopUp(false)} />
+        <StyledTitle>Editar Transação</StyledTitle>
 
-      <StyledLabel for="date">Qual a data?</StyledLabel>
-      <StyledInput
-        type="date"
-        name="date"
-        value={state.date}
-        onChange={handleChange}
-      />
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <FormRow>
+            <StyledLabel htmlFor="edit-desc">Descrição</StyledLabel>
+            <StyledInput
+              id="edit-desc"
+              name="description"
+              value={state.description}
+              onChange={handleChange}
+            />
+          </FormRow>
 
-      <StyledLabel for="category">
-        Qual a categoria dessa transação?
-      </StyledLabel>
-      <StyledSelect
-        name="category"
-        value={state.category}
-        onChange={handleChange}
-      >
-        {categories.results.map((category) => (
-          <option>{category.descriptionTranslated}</option>
-        ))}
-      </StyledSelect>
+          <FormRow>
+            <StyledLabel htmlFor="edit-amount">Valor (R$)</StyledLabel>
+            <StyledInput
+              id="edit-amount"
+              name="amount"
+              type="text"
+              value={state.amount}
+              onChange={handleChange}
+            />
+          </FormRow>
 
-      {errorMessage && <p>{errorMessage}</p>}
-      <StyledAddButton onClick={handleUpdateTransaction}>
-        {isUpdateLoading ? <Loading /> : "Atualizar Transação"}
-      </StyledAddButton>
-      <StyledDeleteButton onClick={handleDeleteTransaction}>
-        {isDeleteLoading ? <Loading /> : "Deletar Transação"}
-      </StyledDeleteButton>
+          <FormRow>
+            <StyledLabel htmlFor="edit-date">Data</StyledLabel>
+            <StyledInput
+              id="edit-date"
+              type="date"
+              name="date"
+              value={state.date}
+              onChange={handleChange}
+            />
+          </FormRow>
+
+          <FormRow>
+            <StyledLabel htmlFor="edit-category">Categoria</StyledLabel>
+            <StyledSelect
+              id="edit-category"
+              name="category"
+              value={state.category}
+              onChange={handleChange}
+            >
+              {categories.results.map((cat, idx) => (
+                <option key={cat.id || idx} value={cat.descriptionTranslated}>
+                  {cat.descriptionTranslated}
+                </option>
+              ))}
+            </StyledSelect>
+          </FormRow>
+
+          {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+
+          <StyledAddButton
+            onClick={handleUpdateTransaction}
+            isLoading={isUpdateLoading}
+          >
+            {isUpdateLoading ? <Loading /> : "Salvar Alterações"}
+          </StyledAddButton>
+
+          <StyledDeleteButton
+            onClick={handleDelete}
+            isLoading={isDeleteLoading}
+          >
+            {isDeleteLoading ? <Loading /> : "Excluir Transação"}
+          </StyledDeleteButton>
+        </div>
+      </div>
     </RootPopUp>
   );
 };

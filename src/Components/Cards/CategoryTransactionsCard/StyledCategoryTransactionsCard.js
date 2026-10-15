@@ -1,118 +1,179 @@
 import styled from "styled-components";
 import { BiSolidEdit } from "react-icons/bi";
+import { FaTrashAlt } from "react-icons/fa";
 
-export const StyledCategoryCard = styled.div`
-  position: relative;
-  color: white;
-  display: flex;
-  align-items: center;
-  background-color: rgb(0 163 255 / 30%);
-  height: 10vh;
-
-  width: 80vw;
-  border-radius: 20px;
-  /* box-shadow: 0px 3px 8px 0px rgba(74, 85, 104, 0.07); */
-  transition: all 0.8s;
-
-  transform-style: ${(props) => (props.flipCard ? "preserve-3d" : "")};
-
-  transform: ${(props) =>
-    props.flipCard ? "rotateX(180deg)" : "rotateX(0deg)"};
+export const CardPerspective = styled.div`
+  perspective: 1200px;
+  width: 100%;
+  height: 76px;
+  cursor: pointer;
 `;
 
-export const StyledSides = styled.div`
-  backdrop-filter: blur(20.2px);
-  -webkit-backdrop-filter: blur(20.2px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
+export const StyledFlipInner = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: ${(props) =>
+    props.flipCard ? "rotateY(180deg)" : "rotateY(0deg)"};
+  border-radius: 16px;
+`;
+
+export const SideBase = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 1.15rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 `;
 
-export const StyledFrontSide = styled(StyledSides)`
-  opacity: ${(props) => (props.flipCard ? 0 : 1)};
-  color: white;
-  transition: all 1.5s;
-`;
-
-export const StyledBackSide = styled(StyledSides)`
+export const StyledFrontSide = styled(SideBase)`
+  background: rgba(17, 24, 39, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   justify-content: space-between;
-  opacity: ${(props) => (props.flipCard ? 1 : 0)};
 
-  transition: all 1.5s;
-
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  transform: rotateX(180deg);
+  &:hover {
+    border-color: rgba(0, 210, 180, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
 `;
-export const StyledBackSideInfo = styled.div`
+
+export const StyledBackSide = styled(SideBase)`
+  background: linear-gradient(135deg, rgba(20, 30, 48, 0.95), rgba(15, 23, 42, 0.95));
+  border: 1px solid rgba(0, 210, 180, 0.3);
+  transform: rotateY(180deg);
+  justify-content: space-between;
+  box-shadow: 0 0 20px rgba(0, 210, 180, 0.15);
+`;
+
+export const FrontLeft = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+`;
+
+export const IconBox = styled.div`
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 12px;
+  background: ${(props) => props.bg || "rgba(0, 210, 180, 0.12)"};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: ${(props) => props.color || "var(--primary)"};
+  }
+`;
+
+export const DescriptionColumn = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: start;
-  justify-content: space-around;
-
-  height: 80%;
-  width: 50%;
-  margin-left: 30px;
+  gap: 0.2rem;
+  min-width: 0;
 `;
 
-export const StyledBackSideInfoText = styled.h2`
-  width: auto;
-  margin: 0px;
+export const TransactionDesc = styled.span`
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
-export const StyledBackSideImageDiv = styled.div`
+export const TransactionMeta = styled.span`
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 18px;
-  height: 80%;
-  width: 20%;
-  margin-right: 10px;
+  gap: 0.4rem;
 `;
 
-export const StyledEditImage = styled(BiSolidEdit)`
-  width: 45%;
-  height: 45%;
-  color: black;
-  opacity: 1;
+export const AmountText = styled.span`
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  margin-left: 0.75rem;
 `;
 
-export const StyledImgDiv = styled.div`
+export const BackInfo = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(129, 178, 202, 0.14);
-  height: 10vh;
-  border-radius: 18px;
-  height: 80%;
-  width: 20%;
-  margin-left: 8px;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
 `;
 
-export const StyledTransactionInfoDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 10vh;
-  border-radius: 18px;
-  height: 80%;
-  width: 72%;
-  margin-left: 6.5px;
-`;
-
-export const StyledTransactionInfo = styled.p`
-  margin: 8px;
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: 550;
+export const BackDate = styled.span`
+  font-family: 'Outfit', sans-serif;
   font-size: 0.9rem;
-  line-height: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+`;
+
+export const BackCategory = styled.span`
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const ActionGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+`;
+
+export const ActionButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: ${(props) =>
+    props.danger ? "rgba(244, 63, 94, 0.15)" : "rgba(0, 210, 180, 0.15)"};
+  border: 1px solid
+    ${(props) =>
+      props.danger ? "rgba(244, 63, 94, 0.3)" : "rgba(0, 210, 180, 0.3)"};
+  color: ${(props) => (props.danger ? "#F43F5E" : "var(--primary)")};
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale(1.06);
+    background: ${(props) =>
+      props.danger ? "rgba(244, 63, 94, 0.25)" : "rgba(0, 210, 180, 0.25)"};
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+export const FlipHint = styled.span`
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  margin-right: 0.25rem;
 `;

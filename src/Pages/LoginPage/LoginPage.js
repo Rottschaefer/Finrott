@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { logIn, logInWithToken } from "../../Requests/userRequests.js";
 import {
+  LoginCard,
   StyledContinueButton,
   StyledDiv,
   StyledErrorMessage,
@@ -93,39 +94,44 @@ export const LoginPage = () => {
 
   return (
     <StyledLoginPage fade={fade}>
-      <StyledTitle>Finrott_</StyledTitle>
-      <StyledSubTitle>Faça login para controlar suas finanças</StyledSubTitle>
+      <LoginCard>
+        <StyledTitle>Finrott_</StyledTitle>
+        <StyledSubTitle>Faça login para controlar suas finanças</StyledSubTitle>
 
-      <StyledForm>
-        <StyledInput
-          onChange={handleEmail}
-          type="email"
-          id="email"
-          name="email"
-          placeholder="E-mail"
-        />
-        <StyledInput
-          onChange={handlePassword}
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Senha"
-        />
-      </StyledForm>
-      {badRequest && (
-        <StyledErrorMessage margin="-10px">{errorMessage}</StyledErrorMessage>
-      )}
-      <StyledContinueButton
-        onClick={handleLogIn}
-        onTouchStart={handleLogIn}
-        isLoading={isLoading}
-      >
-        {isLoading ? "Só um instante" : "Entrar"}
-      </StyledContinueButton>
-      {/* <StyledDiv /> */}
-      <StyledSignUpButton onClick={() => goToSignUpPage(navigate)}>
-        Crie uma conta!
-      </StyledSignUpButton>
+        <StyledForm onSubmit={(e) => { e.preventDefault(); handleLogIn(); }}>
+          <StyledInput
+            onChange={handleEmail}
+            type="email"
+            id="email"
+            name="email"
+            placeholder="E-mail"
+            value={email}
+          />
+          <StyledInput
+            onChange={handlePassword}
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Senha"
+            value={password}
+          />
+
+          {badRequest && (
+            <StyledErrorMessage>{errorMessage}</StyledErrorMessage>
+          )}
+
+          <StyledContinueButton
+            type="submit"
+            isLoading={isLoading}
+          >
+            {isLoading ? "Entrando..." : "Entrar"}
+          </StyledContinueButton>
+        </StyledForm>
+
+        <StyledSignUpButton onClick={() => goToSignUpPage(navigate)}>
+          Não tem uma conta? Crie uma agora!
+        </StyledSignUpButton>
+      </LoginCard>
     </StyledLoginPage>
   );
 };

@@ -1,38 +1,57 @@
 import styled from "styled-components";
 
-export const StyledRootPopUp = styled.div`
-  position: fixed;
-  bottom: 0%;
-  right: 0%;
-  display: flex;
-  gap: 1.5rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  visibility: ${(props) => (props.showPopUp ? "visible" : "hidden")};
-  height: ${(props) => (props.showPopUp ? "80vh" : "0vh")};
-  min-height: ${(props) => (props.showPopUp ? "auto" : "0vh")};
-  width: 100vw;
-  background-color: #000048;
-  border-radius: 10px;
-  z-index: 1;
-  padding-bottom: 1.5rem;
-  color: white;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-
-  transition: all 0.5s;
-`;
-
 export const StyledRootPopUpBackground = styled.div`
   visibility: ${(props) => (props.showPopUp ? "visible" : "hidden")};
+  opacity: ${(props) => (props.showPopUp ? "1" : "0")};
   position: fixed;
-  top: 0%;
-  left: 0%;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+`;
 
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  opacity: ${(props) => (props.showPopUp ? "0.8" : "0")};
-  transition: all 0.5s;
+export const StyledRootPopUp = styled.div`
+  position: fixed;
+  visibility: ${(props) => (props.showPopUp ? "visible" : "hidden")};
+  opacity: ${(props) => (props.showPopUp ? "1" : "0")};
+  z-index: 1001;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Desktop dialog */
+  @media (min-width: 641px) {
+    top: 50%;
+    left: 50%;
+    transform: ${(props) =>
+      props.showPopUp
+        ? "translate(-50%, -50%) scale(1)"
+        : "translate(-50%, -46%) scale(0.95)"};
+    width: 90%;
+    max-width: 460px;
+    background: #111827;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 210, 180, 0.1);
+    padding: 2rem;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Mobile bottom sheet */
+  @media (max-width: 640px) {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: ${(props) =>
+      props.showPopUp ? "translateY(0)" : "translateY(100%)"};
+    background: #111827;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+    padding: 1.75rem 1.25rem 2.5rem;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
 `;

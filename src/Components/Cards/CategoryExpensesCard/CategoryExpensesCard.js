@@ -1,44 +1,69 @@
-import styled from "styled-components";
-import { categoriesIcons } from "../../../Assets/categoriesIcons";
+import React from "react";
+import { getCategoryMeta } from "../../../Assets/categoriesIcons";
 import {
   StyledCategoryCard,
-  StyledExpensesInfo,
-  StyledExpensesInfoDiv,
+  LeftSection,
   StyledImgDiv,
-  StyledSvg,
+  InfoColumn,
+  CategoryTitle,
+  CategorySubtitle,
+  RightSection,
+  FormattedAmount,
+  PercentageBadge,
+  ProgressBarWrapper,
+  ProgressBarFill,
 } from "./StyledCategoryExpensesCard";
-import { GrMoney } from "react-icons/gr";
 
-export const CategoryExpensesCard = ({ amount, handleOnClick }) => {
-  const formattedValue = `R$${Number(amount.total_amount).toLocaleString(
-    "pt-BR",
-    {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }
-  )}`;
+export const CategoryExpensesCard = ({
+  amount,
+  handleOnClick,
+  totalMonth = 0,
+  isSelected = false,
+}) => {
+  const numAmount = Number(amount.total_amount) || 0;
+  const numTotal = Number(totalMonth) || 0;
+  const percentage = numTotal > 0 ? ((numAmount / numTotal) * 100).toFixed(1) : "0";
 
-  const CategoryIcon = categoriesIcons[`${amount.category}`]
-    ? categoriesIcons[`${amount.category}`]
-    : { svg: GrMoney, color: "black" };
+  const formattedValue = numAmount.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 
-  const StyledIcon = styled(CategoryIcon.svg)`
-    color: ${CategoryIcon.color};
-    height: 30%;
-    width: 30%;
-  `;
+  const categoryName = amount.category || "Outros";
+  const meta = getCategoryMeta(categoryName);
+  const IconComponent = meta.svg;
 
   return (
-    // <FadeIn>
-    <StyledCategoryCard onClick={() => handleOnClick(amount)}>
-      <StyledImgDiv>
-        <StyledIcon />
-      </StyledImgDiv>
-      <StyledExpensesInfoDiv>
-        <StyledExpensesInfo>{amount.category || "Outros"}</StyledExpensesInfo>
-        <StyledExpensesInfo>{formattedValue}</StyledExpensesInfo>
-      </StyledExpensesInfoDiv>
+    <StyledCategoryCard
+      onClick={() => handleOnClick && handleOnClick(amount)}
+      isSelected={isSelected}
+      accentColor={meta.color}
+    >
+      <LeftSection>
+        <StyledImgDiv bg={meta.bg} iconColor={meta.color}>
+          <IconComponent />
+        </StyledImgDiv>
+        <InfoColumn>
+          <CategoryTitle>{categoryName}</CategoryTitle>
+          <CategorySubtitle>
+            {percentage}% do total do mês
+          </CategorySubtitle>
+        </InfoColumn>
+      </LeftSection>
+
+      <RightSection>
+        <FormattedAmount>{formattedValue}</FormattedAmount>
+        <PercentageBadge color={meta.color}>
+          {percentage}%
+        </PercentageBadge>
+      </RightSection>
+
+      <ProgressBarWrapper>
+        <ProgressBarFill
+          percent={Number(percentage)}
+          color={meta.color}
+        />
+      </ProgressBarWrapper>
     </StyledCategoryCard>
-    // </FadeIn>
   );
 };

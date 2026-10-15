@@ -1,56 +1,58 @@
-import { useState } from "react";
-import {
-  StyledArrow,
-  StyledMenu,
-  StyledOptions,
-  StyledSeparator,
-} from "./StyledMenu";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { goToPage } from "../../Routes/Coordinator";
+import { NavContainer, NavItem } from "./StyledMenu";
+import { FaReceipt, FaBuildingColumns, FaArrowRightFromBracket } from "react-icons/fa6";
 
 export const Menu = () => {
   const navigate = useNavigate();
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const location = useLocation();
 
-  const handleOnClick = (option) => {
-    setIsMenuOpen(!isMenuOpen);
+  // Hide on login and signup
+  if (location.pathname === "/login" || location.pathname === "/signup") {
+    return null;
+  }
 
-    if (option.text === "Sair da Conta") {
+  const handleNavigation = (url) => {
+    if (url === "/login") {
       localStorage.clear();
     }
-
-    goToPage(navigate, option.url);
+    goToPage(navigate, url);
   };
 
-  const options2 = [
-    { text: "Contas bancárias", url: "/accounts" },
-    // { text: "Conectar Conta", url: "/add-account" },
-    { text: "Transações por categoria", url: "/expenses" },
-    { text: "Sair da Conta", url: "/login" },
-  ];
+  const isExpensesActive =
+    location.pathname === "/" ||
+    location.pathname === "/expenses" ||
+    location.pathname.startsWith("/expenses/");
 
-  const MenuOptions = options2.map((option) => {
-    return (
-      <>
-        <StyledOptions onClick={() => handleOnClick(option)}>
-          {option.text}
-        </StyledOptions>
-        <StyledSeparator />
-      </>
-    );
-  });
+  const isAccountsActive = location.pathname === "/accounts";
 
   return (
-    <>
-      {location.pathname !== "/signup" && location.pathname !== "/login" && (
-        <StyledMenu isMenuOpen={isMenuOpen}>
-          <StyledArrow onClick={handleOnClick} isMenuOpen={isMenuOpen} />
-          {isMenuOpen && MenuOptions}
-        </StyledMenu>
-      )}
-    </>
+    <NavContainer>
+      <NavItem
+        isActive={isExpensesActive}
+        onClick={() => handleNavigation("/expenses")}
+      >
+        <FaReceipt />
+        <span>Despesas</span>
+      </NavItem>
+
+      <NavItem
+        isActive={isAccountsActive}
+        onClick={() => handleNavigation("/accounts")}
+      >
+        <FaBuildingColumns />
+        <span>Contas</span>
+      </NavItem>
+
+      <NavItem
+        isActive={false}
+        onClick={() => handleNavigation("/login")}
+        title="Encerrar sessão"
+      >
+        <FaArrowRightFromBracket />
+        <span>Sair</span>
+      </NavItem>
+    </NavContainer>
   );
 };

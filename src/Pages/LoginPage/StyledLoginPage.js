@@ -1,109 +1,135 @@
 import styled from "styled-components";
 
-const color = "#5e2129";
-
 export const StyledLoginPage = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-
+  min-height: 100vh;
+  padding: 1.5rem;
   opacity: ${(props) => (props.fade ? "1" : "0")};
-  transition: all 1s;
+  transition: opacity 0.4s ease;
 `;
 
-export const StyledTitle = styled.p`
+export const LoginCard = styled.div`
+  width: 100%;
+  max-width: 420px;
+  background: rgba(17, 24, 39, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 210, 180, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  font-size: 36px;
-  font-weight: 700;
-  font-family: "IBM Plex Sans", sans-serif;
-  color: white;
-  line-height: 47px;
-  margin: 10px;
+`;
+
+export const StyledTitle = styled.h1`
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #F8FAFC 40%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
 `;
 
 export const StyledSubTitle = styled.p`
-  font-size: 16px;
-  font-weight: 300;
-  font-family: "IBM Plex Sans", sans-serif;
-  color: white;
-  line-height: 21px;
-  margin: 0px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.4;
 `;
 
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 107px;
+  gap: 1rem;
+  width: 100%;
 `;
 
 export const StyledInput = styled.input`
-  width: 78vw;
-  max-width: 363px;
-  height: 60px;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
-  border: 1px #d5d8de solid;
-  border-radius: 4px;
-  padding-left: 16px;
+  width: 100%;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0 1.15rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+
+  &:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 14px rgba(0, 210, 180, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  &::placeholder {
+    color: var(--text-tertiary);
+  }
 `;
 
 export const StyledContinueButton = styled.button`
   cursor: pointer;
-  width: 78vw;
-  max-width: 365px;
-  height: 51px;
-  border-radius: 27px;
-  border: 1px solid white;
-  background-color: black;
-  font-family: "Noto Sans", sans-serif;
-  font-size: 18px;
-  line-height: 25px;
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #00D2B4, #00A389);
+  color: #0B0F17;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
   font-weight: 700;
-  color: white;
-  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 210, 180, 0.35);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: ${(props) => (props.isLoading ? "0.6" : "1")};
+  pointer-events: ${(props) => (props.isLoading ? "none" : "auto")};
 
-  opacity: ${(props) => (props.isLoading ? "0.5" : "1")};
-
-  transition: all 1s;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 210, 180, 0.5);
+  }
 `;
 
 export const StyledSignUpButton = styled.button`
   cursor: pointer;
-  width: 78vw;
-  max-width: 365px;
-  height: 51px;
-  border-radius: 27px;
-  border: 1px solid white;
-  background-color: white;
-  font-family: "Noto Sans", sans-serif;
-  font-size: 18px;
-  line-height: 25px;
-  font-weight: 700;
-  color: black;
-  margin-top: 18px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 1.25rem;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--primary);
+  }
 `;
 
 export const StyledDiv = styled.div`
-  background-color: ${color};
-  width: 78vw;
-  max-width: 363px;
+  width: 100%;
   height: 1px;
-  margin-top: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-top: 1.25rem;
 `;
 
-export const StyledErrorMessage = styled.p`
+export const StyledErrorMessage = styled.div`
+  width: 100%;
+  background: rgba(244, 63, 94, 0.12);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  color: #F43F5E;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  margin-top: 1rem;
   text-align: center;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 19px;
-
-  width: 78vw;
-  max-width: 363px;
-  color: red;
-  margin-bottom: ${(props) => (props.margin ? props.margin : "17px")};
 `;

@@ -1,12 +1,42 @@
 import styled from "styled-components";
-import { FaPlusCircle } from "react-icons/fa";
-
-export const StyledPlus = styled(FaPlusCircle)`
-  height: 2rem;
-  width: 2rem;
-  color: white;
-`;
+import { FaPlus } from "react-icons/fa6";
 
 export const StyledPlusDiv = styled.div`
-  margin-bottom: 20vh;
+  position: fixed;
+  bottom: 2.25rem;
+  right: 2.25rem;
+  z-index: 90;
+
+  @media (max-width: 640px) {
+    bottom: 5.5rem;
+    right: 1.25rem;
+  }
+`;
+
+export const StyledPlusButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  background: linear-gradient(135deg, #00D2B4, #00A389);
+  color: #0B0F17;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 8px 25px rgba(0, 210, 180, 0.35);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(0, 210, 180, 0.5);
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
 `;

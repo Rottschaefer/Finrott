@@ -1,67 +1,49 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
-  StyledContinueButton,
-  StyledLoginButton,
+  StyledSignUpPage,
+  SignUpCard,
+  StyledTitle,
+  StyledSubTitle,
   StyledSignUpForm,
   StyledSignUpInput,
-  StyledSignUpPage,
-  StyledTitle,
   StyledWarning,
+  StyledContinueButton,
+  StyledLoginButton,
 } from "./StyledSignUpPage.js";
 import { useNavigate } from "react-router-dom";
 import { signUp } from "../../Requests/userRequests.js";
-import {
-  goToLogInPage,
-  goToPage,
-  goToSummaryPage,
-} from "../../Routes/Coordinator.js";
+import { goToLogInPage, goToPage } from "../../Routes/Coordinator.js";
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
 
   const [fade, setFade] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [badRequest, setBadRequest] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    setFade(true);
-  }, []);
-  //Fade-in quando trocar pra esta página
-
-  const [isLoading, setIsLoading] = useState(false); //Estado que define a animação de carregando no botão
-
-  const [badRequest, setBadRequest] = useState(false); //Estado que define se aparecerá uma mensagem de erro ou não
-  const [errorMessage, setErrorMessage] = useState(""); //Mensagem de erro que irá aparecer
-
-  //Controle dos inputs abaixo
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleName = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleEmail = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
-  };
+  useEffect(() => {
+    setFade(true);
+  }, []);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const isFormValid = () => {
     if (!name || !password || !email) {
       setBadRequest(true);
-      setErrorMessage("É preciso preencher todos os campos para se cadastrar");
+      setErrorMessage("É preciso preencher todos os campos para se cadastrar.");
       return false;
     } else if (name.length < 2) {
       setBadRequest(true);
-      setErrorMessage("O seu apelido precisa ter no mínimo 2 caracteres");
+      setErrorMessage("O seu nome precisa ter no mínimo 2 caracteres.");
       return false;
     } else if (!emailRegex.test(email)) {
       setBadRequest(true);
-      setErrorMessage("Formato de e-mail inválido");
+      setErrorMessage("Formato de e-mail inválido.");
       return false;
     }
     return true;
@@ -83,72 +65,58 @@ export const SignUpPage = () => {
     } catch (error) {
       setBadRequest(true);
       setIsLoading(false);
-      setErrorMessage(error.message);
+      setErrorMessage(error.message || "Erro ao realizar cadastro.");
     }
   };
 
-  // const createNewUser = async () => {
-  //   try {
-  //     if (!name || !password || !email) {
-  //       setBadRequest(true);
-  //       setErrorMessage(
-  //         "É preciso preencher todos os campos para se cadastrar"
-  //       );
-  //     } else if (name.length < 2) {
-  //       setBadRequest(true);
-  //       setErrorMessage("O seu apelido precisa ter no mínimo 2 caracteres");
-  //     } else {
-  //       setBadRequest(false);
-  //       setIsLoading(true);
-  //       const body = { user: { name, password, email } };
-
-  //       await signUp(body);
-
-  //       goToSummaryPage(navigate);
-  //     }
-  //   } catch (error) {
-  //     setBadRequest(true);
-  //     setIsLoading(false);
-
-  //     setErrorMessage(error.message);
-  //   }
-  // };
-
   return (
     <StyledSignUpPage fade={fade}>
-      <StyledTitle>Olá, vamos fazer seu cadastro?</StyledTitle>
-      <StyledSignUpForm>
-        <StyledSignUpInput
-          onChange={handleName}
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Apelido"
-        />
-        <StyledSignUpInput
-          onChange={handleEmail}
-          type="text"
-          id="email"
-          name="email"
-          placeholder="E-mail"
-        />
-        <StyledSignUpInput
-          onChange={handlePassword}
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Senha"
-        />
-      </StyledSignUpForm>
-      {badRequest && (
-        <StyledWarning margin="-10px">{errorMessage}</StyledWarning>
-      )}
-      <StyledContinueButton onClick={createNewUser} isLoading={isLoading}>
-        {isLoading ? "Só um instante..." : "Cadastrar"}
-      </StyledContinueButton>
-      <StyledLoginButton onClick={() => goToLogInPage(navigate)}>
-        Já tenho uma conta :)
-      </StyledLoginButton>
+      <SignUpCard>
+        <StyledTitle>Finrott_</StyledTitle>
+        <StyledSubTitle>Crie sua conta e assuma o controle do seu dinheiro</StyledSubTitle>
+
+        <StyledSignUpForm onSubmit={(e) => { e.preventDefault(); createNewUser(); }}>
+          <StyledSignUpInput
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Nome ou Apelido"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+
+          <StyledSignUpInput
+            id="email"
+            name="email"
+            type="email"
+            placeholder="E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <StyledSignUpInput
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          {badRequest && <StyledWarning>{errorMessage}</StyledWarning>}
+
+          <StyledContinueButton
+            type="submit"
+            isLoading={isLoading}
+          >
+            {isLoading ? "Criando conta..." : "Criar Conta"}
+          </StyledContinueButton>
+        </StyledSignUpForm>
+
+        <StyledLoginButton onClick={() => goToLogInPage(navigate)}>
+          Já tem uma conta? Faça login!
+        </StyledLoginButton>
+      </SignUpCard>
     </StyledSignUpPage>
   );
 };
