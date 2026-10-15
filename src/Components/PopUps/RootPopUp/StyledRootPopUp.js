@@ -5,7 +5,7 @@ export const StyledRootPopUpBackground = styled.div`
   opacity: ${(props) => (props.showPopUp ? "1" : "0")};
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.82);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 1000;
@@ -29,10 +29,10 @@ export const StyledRootPopUp = styled.div`
         : "translate(-50%, -46%) scale(0.95)"};
     width: 90%;
     max-width: 460px;
-    background: #111827;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #1A070D;
+    border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 24px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 210, 180, 0.1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 175, 55, 0.12);
     padding: 2rem;
     max-height: 90vh;
     overflow-y: auto;
@@ -45,11 +45,11 @@ export const StyledRootPopUp = styled.div`
     right: 0;
     transform: ${(props) =>
       props.showPopUp ? "translateY(0)" : "translateY(100%)"};
-    background: #111827;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    background: #1A070D;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.85);
     padding: 1.75rem 1.25rem 2.5rem;
     max-height: 85vh;
     overflow-y: auto;

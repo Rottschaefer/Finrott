@@ -22,7 +22,7 @@ export const TopNavBar = styled.header`
   flex-wrap: wrap;
   margin-bottom: 2rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.12);
 `;
 
 export const BrandGroup = styled.div`
@@ -36,7 +36,7 @@ export const BrandLogo = styled.h1`
   font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #F8FAFC 40%, var(--primary) 100%);
+  background: linear-gradient(135deg, #FFF8F6 30%, #F5D38C 70%, #D4AF37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: flex;
@@ -49,9 +49,9 @@ export const BrandBadge = styled.span`
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 0.2rem 0.55rem;
-  background: rgba(0, 210, 180, 0.12);
+  background: rgba(185, 28, 28, 0.2);
   color: var(--primary);
-  border: 1px solid rgba(0, 210, 180, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 999px;
 `;
 
@@ -59,8 +59,8 @@ export const StyledMonthPicker = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(17, 24, 39, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(28, 9, 15, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.18);
   border-radius: 999px;
   padding: 0.35rem 0.75rem;
   backdrop-filter: blur(12px);
@@ -78,8 +78,8 @@ export const MonthArrowButton = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--text-primary);
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--primary);
   }
 
   svg {
@@ -102,14 +102,14 @@ export const CurrentMonthBadge = styled.button`
   font-weight: 600;
   padding: 0.25rem 0.6rem;
   border-radius: 999px;
-  background: rgba(0, 210, 180, 0.15);
+  background: rgba(212, 175, 55, 0.15);
   color: var(--primary);
-  border: 1px solid rgba(0, 210, 180, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    background: rgba(0, 210, 180, 0.25);
+    background: rgba(212, 175, 55, 0.25);
   }
 `;
 
@@ -123,25 +123,25 @@ export const PrimaryActionBtn = styled.button`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.15rem;
-  background: linear-gradient(135deg, #00D2B4, #00A389);
-  color: #0B0F17;
+  padding: 0.65rem 1.25rem;
+  background: var(--gold-btn-gradient);
+  color: #160408;
   font-family: 'Outfit', sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   border-radius: 999px;
-  box-shadow: 0 4px 14px rgba(0, 210, 180, 0.3);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
   transition: all 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 210, 180, 0.45);
+    box-shadow: 0 6px 22px rgba(212, 175, 55, 0.5);
   }
 `;
 
 export const HeroSummaryCard = styled.div`
-  background: radial-gradient(circle at 100% 0%, rgba(0, 210, 180, 0.12) 0%, rgba(17, 24, 39, 0.8) 50%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at 100% 0%, rgba(185, 28, 28, 0.32) 0%, rgba(30, 9, 16, 0.88) 55%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 24px;
   padding: 1.75rem;
   margin-bottom: 2rem;
@@ -149,6 +149,7 @@ export const HeroSummaryCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 30px rgba(185, 28, 28, 0.12);
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -245,14 +246,15 @@ export const CategoriesList = styled.div`
 `;
 
 export const ChartCard = styled.div`
-  background: rgba(17, 24, 39, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(28, 9, 15, 0.78);
+  border: 1px solid rgba(212, 175, 55, 0.14);
   border-radius: 20px;
   padding: 1.5rem;
   backdrop-filter: blur(14px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 `;
 
 export const RightSplitPanel = styled.div`
@@ -264,13 +266,14 @@ export const RightSplitPanel = styled.div`
     gap: 1.25rem;
     position: sticky;
     top: 2rem;
-    background: rgba(17, 24, 39, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(28, 9, 15, 0.85);
+    border: 1px solid rgba(212, 175, 55, 0.16);
     border-radius: 24px;
     padding: 1.75rem;
     backdrop-filter: blur(14px);
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
   }
 `;
 
@@ -307,7 +310,7 @@ export const SplitDetailHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.12);
 `;
 
 export const SplitDetailTitleGroup = styled.div`

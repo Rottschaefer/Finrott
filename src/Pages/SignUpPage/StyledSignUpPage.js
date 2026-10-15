@@ -14,11 +14,11 @@ export const StyledSignUpPage = styled.main`
 export const SignUpCard = styled.div`
   width: 100%;
   max-width: 440px;
-  background: rgba(17, 24, 39, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(28, 9, 15, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.18);
   border-radius: 24px;
   padding: 2.5rem 2rem;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 210, 180, 0.08);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(185, 28, 28, 0.15);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   display: flex;
@@ -32,7 +32,7 @@ export const StyledTitle = styled.h1`
   font-size: 2.2rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #F8FAFC 40%, var(--primary) 100%);
+  background: linear-gradient(135deg, #FFF8F6 30%, #F5D38C 70%, #D4AF37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.5rem;
@@ -56,7 +56,7 @@ export const StyledSignUpInput = styled.input`
   width: 100%;
   height: 48px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.15);
   border-radius: 12px;
   padding: 0 1.15rem;
   font-size: 0.95rem;
@@ -65,7 +65,7 @@ export const StyledSignUpInput = styled.input`
 
   &:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 14px rgba(0, 210, 180, 0.25);
+    box-shadow: 0 0 14px rgba(212, 175, 55, 0.3);
     background: rgba(255, 255, 255, 0.08);
   }
 
@@ -76,9 +76,9 @@ export const StyledSignUpInput = styled.input`
 
 export const StyledWarning = styled.div`
   width: 100%;
-  background: rgba(244, 63, 94, 0.12);
-  border: 1px solid rgba(244, 63, 94, 0.25);
-  color: #F43F5E;
+  background: rgba(225, 29, 72, 0.14);
+  border: 1px solid rgba(225, 29, 72, 0.3);
+  color: #FB7185;
   font-size: 0.85rem;
   font-weight: 500;
   padding: 0.6rem 0.75rem;
@@ -92,8 +92,8 @@ export const StyledContinueButton = styled.button`
   width: 100%;
   height: 48px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #00D2B4, #00A389);
-  color: #0B0F17;
+  background: linear-gradient(135deg, #ECC472, #C59828);
+  color: #160408;
   font-family: 'Outfit', sans-serif;
   font-size: 1rem;
   font-weight: 700;
@@ -101,14 +101,14 @@ export const StyledContinueButton = styled.button`
   align-items: center;
   justify-content: center;
   margin-top: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 210, 180, 0.35);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: ${(props) => (props.isLoading ? "0.6" : "1")};
   pointer-events: ${(props) => (props.isLoading ? "none" : "auto")};
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0, 210, 180, 0.5);
+    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.5);
   }
 `;
 

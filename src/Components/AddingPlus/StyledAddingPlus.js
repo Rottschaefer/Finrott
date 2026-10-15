@@ -19,20 +19,20 @@ export const StyledPlusButton = styled.button`
   justify-content: center;
   gap: 0.5rem;
   padding: 0.85rem 1.4rem;
-  background: linear-gradient(135deg, #00D2B4, #00A389);
-  color: #0B0F17;
+  background: linear-gradient(135deg, #ECC472, #C59828);
+  color: #160408;
   font-family: 'Outfit', sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   border: none;
   border-radius: 999px;
-  box-shadow: 0 8px 25px rgba(0, 210, 180, 0.35);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 12px 30px rgba(0, 210, 180, 0.5);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.55);
   }
 
   svg {

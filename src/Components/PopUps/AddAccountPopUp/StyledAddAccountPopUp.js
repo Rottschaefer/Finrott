@@ -12,7 +12,7 @@ export const StyledCloseButton = styled(AiOutlineClose)`
   transition: all 0.2s ease;
 
   &:hover {
-    color: var(--text-primary);
+    color: var(--primary);
     transform: scale(1.1);
   }
 `;
@@ -44,7 +44,7 @@ export const StyledInput = styled.input`
   width: 100%;
   height: 44px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.18);
   border-radius: 12px;
   padding: 0 1rem;
   color: var(--text-primary);
@@ -53,7 +53,7 @@ export const StyledInput = styled.input`
 
   &:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 12px rgba(0, 210, 180, 0.2);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.28);
     background: rgba(255, 255, 255, 0.08);
   }
 
@@ -75,8 +75,8 @@ export const ColorSwatch = styled.button`
   height: 32px;
   border-radius: 50%;
   background: ${(props) => props.color};
-  border: 2px solid ${(props) => (props.isSelected ? "#FFFFFF" : "transparent")};
-  box-shadow: ${(props) => (props.isSelected ? "0 0 8px #FFFFFF" : "none")};
+  border: 2px solid ${(props) => (props.isSelected ? "#FFF8F6" : "transparent")};
+  box-shadow: ${(props) => (props.isSelected ? "0 0 10px #D4AF37" : "none")};
   cursor: pointer;
   transition: transform 0.2s ease;
 
@@ -89,8 +89,8 @@ export const StyledAddButton = styled.button`
   width: 100%;
   height: 46px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #00D2B4, #00A389);
-  color: #0B0F17;
+  background: linear-gradient(135deg, #ECC472, #C59828);
+  color: #160408;
   font-family: 'Outfit', sans-serif;
   font-size: 1rem;
   font-weight: 700;
@@ -100,12 +100,12 @@ export const StyledAddButton = styled.button`
   gap: 0.5rem;
   margin-top: 0.75rem;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 16px rgba(0, 210, 180, 0.25);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
   opacity: ${(props) => (props.isLoading ? "0.6" : "1")};
   pointer-events: ${(props) => (props.isLoading ? "none" : "auto")};
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 210, 180, 0.35);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
   }
 `;

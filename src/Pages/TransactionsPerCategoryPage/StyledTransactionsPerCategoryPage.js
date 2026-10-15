@@ -14,8 +14,8 @@ export const StyledTransactionsPerCategoryPage = styled.div`
 `;
 
 export const CategoryHeaderCard = styled.div`
-  background: radial-gradient(circle at 100% 0%, rgba(0, 210, 180, 0.12) 0%, rgba(17, 24, 39, 0.8) 50%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at 100% 0%, rgba(185, 28, 28, 0.35) 0%, rgba(30, 9, 16, 0.88) 55%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 24px;
   padding: 1.5rem 1.75rem;
   margin-bottom: 2rem;
@@ -23,6 +23,7 @@ export const CategoryHeaderCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 30px rgba(185, 28, 28, 0.12);
 `;
 
 export const HeaderTopRow = styled.div`
@@ -38,7 +39,7 @@ export const BackButton = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.18);
   color: var(--text-primary);
   font-family: 'Outfit', sans-serif;
   font-size: 0.85rem;
@@ -47,8 +48,8 @@ export const BackButton = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(0, 210, 180, 0.3);
+    background: rgba(212, 175, 55, 0.12);
+    border-color: rgba(212, 175, 55, 0.4);
     color: var(--primary);
     transform: translateX(-2px);
   }
@@ -83,7 +84,7 @@ export const CategoryIconBox = styled.div`
   width: 52px;
   height: 52px;
   border-radius: 16px;
-  background: ${(props) => props.bg || "rgba(0, 210, 180, 0.12)"};
+  background: ${(props) => props.bg || "rgba(212, 175, 55, 0.12)"};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,8 +144,8 @@ export const EmptyTransactionsState = styled.div`
   padding: 4rem 1.5rem;
   text-align: center;
   gap: 1rem;
-  background: rgba(17, 24, 39, 0.5);
-  border: 1px dashed rgba(255, 255, 255, 0.1);
+  background: rgba(28, 9, 15, 0.5);
+  border: 1px dashed rgba(212, 175, 55, 0.15);
   border-radius: 20px;
   color: var(--text-tertiary);
 

@@ -20,7 +20,7 @@ export const StyledCloseButton = styled(AiOutlineClose)`
   transition: all 0.2s ease;
 
   &:hover {
-    color: var(--text-primary);
+    color: var(--primary);
     transform: scale(1.1);
   }
 `;
@@ -52,7 +52,7 @@ export const StyledInput = styled.input`
   width: 100%;
   height: 44px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.18);
   border-radius: 12px;
   padding: 0 1rem;
   color: var(--text-primary);
@@ -61,7 +61,7 @@ export const StyledInput = styled.input`
 
   &:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 12px rgba(0, 210, 180, 0.2);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.28);
     background: rgba(255, 255, 255, 0.08);
   }
 
@@ -73,8 +73,8 @@ export const StyledInput = styled.input`
 export const StyledSelect = styled.select`
   width: 100%;
   height: 44px;
-  background: #1F2937;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #240B13;
+  border: 1px solid rgba(212, 175, 55, 0.18);
   border-radius: 12px;
   padding: 0 1rem;
   color: var(--text-primary);
@@ -84,12 +84,12 @@ export const StyledSelect = styled.select`
 
   &:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 12px rgba(0, 210, 180, 0.2);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.28);
   }
 
   option {
-    background: #111827;
-    color: #F8FAFC;
+    background: #1A070D;
+    color: #FFF8F6;
     padding: 0.5rem;
   }
 `;
@@ -98,8 +98,8 @@ export const StyledAddButton = styled.button`
   width: 100%;
   height: 46px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #00D2B4, #00A389);
-  color: #0B0F17;
+  background: linear-gradient(135deg, #ECC472, #C59828);
+  color: #160408;
   font-family: 'Outfit', sans-serif;
   font-size: 1rem;
   font-weight: 700;
@@ -109,12 +109,12 @@ export const StyledAddButton = styled.button`
   gap: 0.5rem;
   margin-top: 0.75rem;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 16px rgba(0, 210, 180, 0.25);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
   opacity: ${(props) => (props.isLoading ? "0.6" : "1")};
   pointer-events: ${(props) => (props.isLoading ? "none" : "auto")};
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 210, 180, 0.35);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
   }
 `;

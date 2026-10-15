@@ -49,12 +49,12 @@ export const categoriesIcons = {
   "Táxi e transporte privado urbano": { svg: FaUber, color: "#EAB308", bg: "rgba(234, 179, 8, 0.15)" },
   Seguros: { svg: GiLifeJacket, color: "#64748B", bg: "rgba(100, 116, 139, 0.15)" },
   Lazer: { svg: IoIosHappy, color: "#EC4899", bg: "rgba(236, 72, 153, 0.15)" },
-  "Custos Fixos": { svg: FaClipboardList, color: "#00D2B4", bg: "rgba(0, 210, 180, 0.18)" },
+  "Custos Fixos": { svg: FaClipboardList, color: "#E5C07B", bg: "rgba(229, 192, 123, 0.18)" },
 };
 
 export const getCategoryMeta = (categoryName) => {
   if (categoryName && categoriesIcons[categoryName]) {
     return categoriesIcons[categoryName];
   }
-  return { svg: GrMoney, color: "#00D2B4", bg: "rgba(0, 210, 180, 0.15)" };
+  return { svg: GrMoney, color: "#E5C07B", bg: "rgba(229, 192, 123, 0.15)" };
 };

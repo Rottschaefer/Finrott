@@ -35,27 +35,27 @@ export const SideBase = styled.div`
   box-sizing: border-box;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 `;
 
 export const StyledFrontSide = styled(SideBase)`
-  background: rgba(17, 24, 39, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(28, 9, 15, 0.78);
+  border: 1px solid rgba(212, 175, 55, 0.12);
   justify-content: space-between;
 
   &:hover {
-    border-color: rgba(0, 210, 180, 0.3);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    border-color: rgba(212, 175, 55, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
   }
 `;
 
 export const StyledBackSide = styled(SideBase)`
-  background: linear-gradient(135deg, rgba(20, 30, 48, 0.95), rgba(15, 23, 42, 0.95));
-  border: 1px solid rgba(0, 210, 180, 0.3);
+  background: linear-gradient(135deg, rgba(50, 14, 25, 0.95), rgba(28, 9, 15, 0.95));
+  border: 1px solid rgba(212, 175, 55, 0.35);
   transform: rotateY(180deg);
   justify-content: space-between;
-  box-shadow: 0 0 20px rgba(0, 210, 180, 0.15);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.18);
 `;
 
 export const FrontLeft = styled.div`
@@ -70,7 +70,7 @@ export const IconBox = styled.div`
   height: 42px;
   min-width: 42px;
   border-radius: 12px;
-  background: ${(props) => props.bg || "rgba(0, 210, 180, 0.12)"};
+  background: ${(props) => props.bg || "rgba(212, 175, 55, 0.12)"};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,17 +153,17 @@ export const ActionButton = styled.button`
   height: 38px;
   border-radius: 10px;
   background: ${(props) =>
-    props.danger ? "rgba(244, 63, 94, 0.15)" : "rgba(0, 210, 180, 0.15)"};
+    props.danger ? "rgba(225, 29, 72, 0.18)" : "rgba(212, 175, 55, 0.15)"};
   border: 1px solid
     ${(props) =>
-      props.danger ? "rgba(244, 63, 94, 0.3)" : "rgba(0, 210, 180, 0.3)"};
-  color: ${(props) => (props.danger ? "#F43F5E" : "var(--primary)")};
+      props.danger ? "rgba(225, 29, 72, 0.35)" : "rgba(212, 175, 55, 0.35)"};
+  color: ${(props) => (props.danger ? "#FB7185" : "var(--primary)")};
   transition: all 0.2s ease;
 
   &:hover {
     transform: scale(1.06);
     background: ${(props) =>
-      props.danger ? "rgba(244, 63, 94, 0.25)" : "rgba(0, 210, 180, 0.25)"};
+      props.danger ? "rgba(225, 29, 72, 0.28)" : "rgba(212, 175, 55, 0.25)"};
   }
 
   svg {

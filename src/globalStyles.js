@@ -2,23 +2,34 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --bg-main: #0B0F17;
-    --bg-card: rgba(17, 24, 39, 0.75);
-    --bg-card-hover: rgba(26, 36, 56, 0.85);
-    --bg-surface: #111827;
-    --bg-surface-elevated: #162032;
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(0, 210, 180, 0.25);
-    --primary: #00D2B4;
-    --primary-dark: #00A389;
-    --primary-glow: rgba(0, 210, 180, 0.25);
-    --accent-purple: #8B5CF6;
-    --accent-blue: #3B82F6;
+    /* Deep Burgundy Velvet & Crimson Wine */
+    --bg-main: #0E0306;
+    --bg-card: rgba(28, 9, 15, 0.78);
+    --bg-card-hover: rgba(42, 14, 23, 0.88);
+    --bg-surface: #18060B;
+    --bg-surface-elevated: #260A13;
+    --border-subtle: rgba(212, 175, 55, 0.12);
+    --border-hover: rgba(212, 175, 55, 0.35);
+
+    /* Elegant Champagne Gold Accents */
+    --primary: #E5C07B;
+    --primary-dark: #C99726;
+    --primary-light: #F5D38C;
+    --primary-glow: rgba(229, 192, 123, 0.25);
+    --gold-gradient: linear-gradient(135deg, #F5D38C 0%, #D4AF37 50%, #B8860B 100%);
+    --gold-btn-gradient: linear-gradient(135deg, #ECC472, #C59828);
+
+    /* Velvet Crimson Accents */
+    --crimson-glow: rgba(185, 28, 28, 0.2);
+    --accent-wine: #881337;
+    --accent-ruby: #9F1239;
+    --accent-rose: #E11D48;
     --accent-amber: #F59E0B;
-    --accent-rose: #F43F5E;
-    --text-primary: #F8FAFC;
-    --text-secondary: #94A3B8;
-    --text-tertiary: #64748B;
+
+    /* Typography colors */
+    --text-primary: #FFF8F6;
+    --text-secondary: #C8A9AD;
+    --text-tertiary: #8F6D72;
     --glass-blur: blur(14px);
   }
 
@@ -39,7 +50,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     min-height: 100vh;
-    background: radial-gradient(circle at 50% 0%, #151f33 0%, #0B0F17 65%);
+    background: radial-gradient(circle at 50% -10%, #380C19 0%, #1A050B 45%, #0B0205 100%);
     background-attachment: fixed;
     color: var(--text-primary);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -74,11 +85,11 @@ const GlobalStyle = createGlobalStyle`
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(212, 175, 55, 0.2);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 210, 180, 0.4);
+    background: rgba(212, 175, 55, 0.45);
   }
 
   @keyframes fadeIn {

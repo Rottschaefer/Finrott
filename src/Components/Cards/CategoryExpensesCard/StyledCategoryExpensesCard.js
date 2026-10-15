@@ -5,15 +5,15 @@ export const StyledCategoryCard = styled.div`
   padding: 1rem 1.15rem;
   background: ${(props) =>
     props.isSelected
-      ? "linear-gradient(135deg, rgba(22, 33, 54, 0.95), rgba(17, 24, 39, 0.9))"
-      : "rgba(17, 24, 39, 0.7)"};
+      ? "linear-gradient(135deg, rgba(48, 14, 25, 0.95), rgba(28, 9, 15, 0.9))"
+      : "rgba(28, 9, 15, 0.75)"};
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid
     ${(props) =>
       props.isSelected
         ? "var(--primary)"
-        : "rgba(255, 255, 255, 0.07)"};
+        : "rgba(212, 175, 55, 0.12)"};
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -22,17 +22,17 @@ export const StyledCategoryCard = styled.div`
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: ${(props) =>
     props.isSelected
-      ? "0 0 20px rgba(0, 210, 180, 0.18)"
-      : "0 4px 20px rgba(0, 0, 0, 0.25)"};
+      ? "0 0 20px rgba(212, 175, 55, 0.22)"
+      : "0 4px 20px rgba(0, 0, 0, 0.35)"};
   position: relative;
   overflow: hidden;
 
   &:hover {
     transform: translateY(-2px);
     border-color: ${(props) =>
-      props.isSelected ? "var(--primary)" : "rgba(0, 210, 180, 0.3)"};
-    background: rgba(22, 32, 51, 0.85);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      props.isSelected ? "var(--primary)" : "rgba(212, 175, 55, 0.38)"};
+    background: rgba(38, 12, 20, 0.85);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
   }
 
   &::before {
@@ -59,7 +59,7 @@ export const StyledImgDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${(props) => props.bg || "rgba(0, 210, 180, 0.12)"};
+  background: ${(props) => props.bg || "rgba(212, 175, 55, 0.12)"};
   border: 1px solid ${(props) => props.borderColor || "transparent"};
   border-radius: 12px;
   width: 44px;
@@ -119,8 +119,8 @@ export const PercentageBadge = styled.span`
   font-size: 0.75rem;
   font-weight: 600;
   color: ${(props) => props.color || "var(--primary)"};
-  background: rgba(255, 255, 255, 0.04);
-  padding: 0.1rem 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.1rem 0.45rem;
   border-radius: 4px;
 `;
 
@@ -130,7 +130,7 @@ export const ProgressBarWrapper = styled.div`
   left: 0;
   right: 0;
   height: 2px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
 `;
 
 export const ProgressBarFill = styled.div`

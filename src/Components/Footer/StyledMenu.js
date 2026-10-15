@@ -9,13 +9,13 @@ export const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(24, 7, 13, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 999px;
   padding: 0.4rem 0.6rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 210, 180, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.12);
   transition: all 0.25s ease;
 
   @media (max-width: 480px) {
@@ -32,10 +32,10 @@ export const NavItem = styled.button`
   padding: 0.55rem 1rem;
   border-radius: 999px;
   background: ${(props) =>
-    props.isActive ? "rgba(0, 210, 180, 0.15)" : "transparent"};
+    props.isActive ? "rgba(212, 175, 55, 0.16)" : "transparent"};
   border: 1px solid
     ${(props) =>
-      props.isActive ? "rgba(0, 210, 180, 0.35)" : "transparent"};
+      props.isActive ? "rgba(212, 175, 55, 0.38)" : "transparent"};
   color: ${(props) =>
     props.isActive ? "var(--primary)" : "var(--text-secondary)"};
   font-family: 'Outfit', sans-serif;
@@ -48,7 +48,7 @@ export const NavItem = styled.button`
   &:hover {
     color: var(--text-primary);
     background: ${(props) =>
-      props.isActive ? "rgba(0, 210, 180, 0.2)" : "rgba(255, 255, 255, 0.06)"};
+      props.isActive ? "rgba(212, 175, 55, 0.24)" : "rgba(255, 255, 255, 0.06)"};
   }
 
   svg {

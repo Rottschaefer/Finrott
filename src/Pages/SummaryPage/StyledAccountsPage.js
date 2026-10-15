@@ -21,7 +21,7 @@ export const AccountsHeader = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
 `;
 
 export const AccountsTitle = styled.h1`
@@ -29,6 +29,9 @@ export const AccountsTitle = styled.h1`
   font-size: 1.75rem;
   font-weight: 800;
   color: var(--text-primary);
+  background: linear-gradient(135deg, #FFF8F6 30%, #F5D38C 70%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 export const AccountsSubtitle = styled.p`
@@ -51,8 +54,8 @@ export const EmptyAccountsState = styled.div`
   padding: 4rem 1.5rem;
   text-align: center;
   gap: 1rem;
-  background: rgba(17, 24, 39, 0.6);
-  border: 1px dashed rgba(255, 255, 255, 0.12);
+  background: rgba(28, 9, 15, 0.6);
+  border: 1px dashed rgba(212, 175, 55, 0.18);
   border-radius: 24px;
   color: var(--text-tertiary);
 
@@ -60,6 +63,7 @@ export const EmptyAccountsState = styled.div`
     width: 48px;
     height: 48px;
     opacity: 0.4;
+    color: var(--primary);
   }
 
   h4 {
