@@ -22,14 +22,16 @@ import { RootPopUp } from "../RootPopUp/RootPopUp.js";
 import styled from "styled-components";
 
 const ErrorText = styled.p`
-  color: #F43F5E;
-  font-size: 0.85rem;
-  font-weight: 500;
+  color: var(--bg-beige-light);
+  font-family: var(--font-pixel-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
   text-align: center;
-  background: rgba(244, 63, 94, 0.1);
+  background: #9F1239;
   padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid rgba(244, 63, 94, 0.2);
+  border-radius: 0;
+  border: 2px solid var(--border-beige);
+  box-shadow: 3px 3px 0px var(--pixel-ink);
 `;
 
 export const TransactionInfoPopUp = ({

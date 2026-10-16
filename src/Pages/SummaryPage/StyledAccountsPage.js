@@ -21,23 +21,23 @@ export const AccountsHeader = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  border-bottom: 3px solid var(--border-beige);
 `;
 
 export const AccountsTitle = styled.h1`
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  background: linear-gradient(135deg, #FFF8F6 30%, #F5D38C 70%, #D4AF37 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: var(--font-pixel-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--border-beige);
+  text-shadow: 2px 2px 0px #22050C;
+  letter-spacing: -0.02em;
 `;
 
 export const AccountsSubtitle = styled.p`
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-top: 0.25rem;
+  font-family: var(--font-pixel-mono);
+  font-size: 0.8rem;
+  color: var(--border-subtle);
+  margin-top: 0.35rem;
 `;
 
 export const AccountsGrid = styled.div`
@@ -54,25 +54,29 @@ export const EmptyAccountsState = styled.div`
   padding: 4rem 1.5rem;
   text-align: center;
   gap: 1rem;
-  background: rgba(28, 9, 15, 0.6);
-  border: 1px dashed rgba(212, 175, 55, 0.18);
-  border-radius: 24px;
+  background: var(--bg-card);
+  border: 3px dashed var(--border-subtle);
+  border-radius: 0px;
   color: var(--text-tertiary);
+  box-shadow: 4px 4px 0px #22050C;
 
   svg {
-    width: 48px;
-    height: 48px;
-    opacity: 0.4;
-    color: var(--primary);
+    width: 44px;
+    height: 44px;
+    opacity: 0.6;
+    color: var(--border-beige);
   }
 
   h4 {
-    font-size: 1.2rem;
+    font-family: var(--font-pixel-display);
+    font-size: 1.05rem;
     color: var(--text-secondary);
+    text-shadow: 1px 1px 0px #22050C;
   }
 
   p {
-    font-size: 0.9rem;
+    font-family: var(--font-pixel-mono);
+    font-size: 0.85rem;
     max-width: 340px;
   }
 `;

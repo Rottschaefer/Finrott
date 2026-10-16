@@ -14,13 +14,12 @@ export const StyledSignUpPage = styled.main`
 export const SignUpCard = styled.div`
   width: 100%;
   max-width: 440px;
-  background: rgba(28, 9, 15, 0.88);
-  border: 1px solid rgba(212, 175, 55, 0.18);
-  border-radius: 24px;
+  background: var(--bg-card);
+  border: 3px solid var(--border-beige);
+  outline: 3px solid #22050C;
+  border-radius: 0px;
   padding: 2.5rem 2rem;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(185, 28, 28, 0.15);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 8px 8px 0px #22050C, var(--pixel-inset);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,19 +27,19 @@ export const SignUpCard = styled.div`
 `;
 
 export const StyledTitle = styled.h1`
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.2rem;
-  font-weight: 800;
+  font-family: var(--font-pixel-display);
+  font-size: 1.85rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #FFF8F6 30%, #F5D38C 70%, #D4AF37 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--border-beige);
+  text-shadow: 3px 3px 0px #22050C;
   margin-bottom: 0.5rem;
 `;
 
 export const StyledSubTitle = styled.p`
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  font-family: var(--font-pixel-mono);
+  font-size: 0.85rem;
+  color: var(--border-subtle);
   margin-bottom: 2rem;
   line-height: 1.4;
 `;
@@ -55,74 +54,88 @@ export const StyledSignUpForm = styled.form`
 export const StyledSignUpInput = styled.input`
   width: 100%;
   height: 48px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(212, 175, 55, 0.15);
-  border-radius: 12px;
-  padding: 0 1.15rem;
-  font-size: 0.95rem;
+  background: #22050C;
+  border: 2px solid var(--border-subtle);
+  border-radius: 0px;
+  padding: 0 1rem;
+  font-family: var(--font-pixel-mono);
+  font-size: 0.9rem;
   color: var(--text-primary);
-  transition: all 0.2s ease;
+  transition: border-color 0.15s, box-shadow 0.15s;
 
   &:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 14px rgba(212, 175, 55, 0.3);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--border-beige);
+    outline: 2px solid var(--border-beige);
+    background: #380916;
+    box-shadow: 3px 3px 0px #22050C;
   }
 
   &::placeholder {
-    color: var(--text-tertiary);
+    color: var(--border-subtle);
+    opacity: 0.7;
   }
 `;
 
 export const StyledWarning = styled.div`
   width: 100%;
-  background: rgba(225, 29, 72, 0.14);
-  border: 1px solid rgba(225, 29, 72, 0.3);
-  color: #FB7185;
-  font-size: 0.85rem;
-  font-weight: 500;
+  background: #9F1239;
+  border: 2px solid #22050C;
+  color: #FFF8E7;
+  font-family: var(--font-pixel-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
   padding: 0.6rem 0.75rem;
-  border-radius: 10px;
+  border-radius: 0px;
   margin-top: 0.75rem;
   text-align: center;
+  box-shadow: 3px 3px 0px #22050C;
 `;
 
 export const StyledContinueButton = styled.button`
   cursor: pointer;
   width: 100%;
   height: 48px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #ECC472, #C59828);
-  color: #160408;
-  font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
+  border-radius: 0px;
+  background: var(--border-beige);
+  border: 3px solid #22050C;
+  outline: 2px solid var(--border-beige);
+  color: #22050C;
+  font-family: var(--font-pixel-display);
+  font-size: 0.95rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 1.5rem;
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 4px 4px 0px #22050C;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.1s;
   opacity: ${(props) => (props.isLoading ? "0.6" : "1")};
   pointer-events: ${(props) => (props.isLoading ? "none" : "auto")};
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.5);
+    background: #FFF6D6;
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #22050C;
   }
 `;
 
 export const StyledLoginButton = styled.button`
   cursor: pointer;
   background: transparent;
-  color: var(--text-secondary);
-  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: 0px;
+  color: var(--border-subtle);
+  font-family: var(--font-pixel-mono);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-top: 1.25rem;
-  transition: color 0.2s ease;
+  transition: color 0.15s ease;
 
   &:hover {
-    color: var(--primary);
+    color: var(--border-beige);
+    text-decoration: underline;
   }
 `;

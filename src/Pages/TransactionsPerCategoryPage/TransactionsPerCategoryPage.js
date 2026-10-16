@@ -185,12 +185,13 @@ export const TransactionsPerCategoryPage = () => {
           {/* Header Card */}
           <CategoryHeaderCard>
             <HeaderTopRow>
-              <BackButton onClick={handleBackOnClick}>
-                <FaArrowLeft />
-                <span>Voltar para Despesas</span>
-              </BackButton>
               <CategoryMetaBadge>{monthLabel}</CategoryMetaBadge>
             </HeaderTopRow>
+
+            <BackButton onClick={handleBackOnClick}>
+              <FaArrowLeft />
+              <span>Despesas</span>
+            </BackButton>
 
             <HeaderMainContent>
               <CategoryTitleGroup>

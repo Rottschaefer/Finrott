@@ -6,6 +6,11 @@ export default defineConfig({
   build: {
     outDir: 'build',
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.js',
+  },
   esbuild: {
     loader: 'jsx',
     include: /src\/.*\.jsx?$/,

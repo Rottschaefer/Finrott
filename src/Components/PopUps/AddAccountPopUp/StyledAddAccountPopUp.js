@@ -5,107 +5,153 @@ export const StyledCloseButton = styled(AiOutlineClose)`
   position: absolute;
   top: -0.5rem;
   right: -0.25rem;
-  height: 1.5rem;
-  width: 1.5rem;
-  color: var(--text-secondary);
+  height: 1.6rem;
+  width: 1.6rem;
+  color: var(--text-tertiary, #D6BC8B);
+  background: var(--bg-surface, #380916);
+  border: 2px solid var(--pixel-ink, #22050C);
+  box-shadow: 2px 2px 0px var(--pixel-ink, #22050C);
+  padding: 2px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.1s ease, background 0.1s ease, color 0.1s ease;
 
   &:hover {
-    color: var(--primary);
-    transform: scale(1.1);
+    color: var(--border-hover, #FFF6D6);
+    background: var(--accent-ruby, #9F1239);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--pixel-ink, #22050C);
+  }
+
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--pixel-ink, #22050C);
   }
 `;
 
 export const StyledTitle = styled.h3`
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.35rem;
+  font-family: var(--font-pixel-display, 'Silkscreen', monospace);
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text-primary, #F4E6C8);
   margin-bottom: 0.5rem;
   text-align: left;
+  letter-spacing: 0.02em;
+  text-shadow: 2px 2px 0px var(--pixel-ink, #22050C);
 `;
 
 export const FormRow = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.35rem;
   width: 100%;
 `;
 
 export const StyledLabel = styled.label`
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-secondary);
+  font-family: var(--font-pixel-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary, #E5C07B);
   text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 `;
 
 export const StyledInput = styled.input`
   width: 100%;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(212, 175, 55, 0.18);
-  border-radius: 12px;
-  padding: 0 1rem;
-  color: var(--text-primary);
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
+  height: 42px;
+  background: var(--bg-surface, #380916);
+  border: 2px solid var(--border-beige, #EAD7B3);
+  outline: 2px solid var(--pixel-ink, #22050C);
+  border-radius: 0px !important;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.45);
+  padding: 0 0.85rem;
+  color: var(--text-primary, #F4E6C8);
+  font-family: var(--font-pixel-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.9rem;
+  transition: border-color 0.1s ease, background 0.1s ease;
 
   &:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.28);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--border-gold, #E5C07B);
+    background: #4C0D1F;
+    box-shadow: 2px 2px 0px var(--pixel-ink, #22050C);
   }
 
   &::placeholder {
-    color: var(--text-tertiary);
+    color: var(--text-tertiary, #D6BC8B);
+    opacity: 0.6;
   }
 `;
 
 export const ColorPickerRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.25rem;
+  gap: 0.6rem;
+  margin-top: 0.35rem;
   flex-wrap: wrap;
 `;
 
 export const ColorSwatch = styled.button`
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: 0px !important;
   background: ${(props) => props.color};
-  border: 2px solid ${(props) => (props.isSelected ? "#FFF8F6" : "transparent")};
-  box-shadow: ${(props) => (props.isSelected ? "0 0 10px #D4AF37" : "none")};
+  border: 2px solid var(--pixel-ink, #22050C);
+  outline: ${(props) =>
+    props.isSelected ? "2px solid var(--border-hover, #FFF6D6)" : "2px solid transparent"};
+  box-shadow: ${(props) =>
+    props.isSelected
+      ? "3px 3px 0px var(--pixel-ink, #22050C), inset 2px 2px 0px rgba(255, 255, 255, 0.5)"
+      : "2px 2px 0px var(--pixel-ink, #22050C)"};
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transform: ${(props) => (props.isSelected ? "translate(-1px, -1px)" : "none")};
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 
   &:hover {
-    transform: scale(1.15);
+    outline: 2px solid var(--border-beige, #EAD7B3);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--pixel-ink, #22050C);
+  }
+
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--pixel-ink, #22050C);
   }
 `;
 
 export const StyledAddButton = styled.button`
   width: 100%;
-  height: 46px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #ECC472, #C59828);
-  color: #160408;
-  font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
+  height: 44px;
+  border-radius: 0px !important;
+  background: var(--bg-outer-beige, #EAD7B3);
+  color: var(--pixel-ink, #22050C);
+  font-family: var(--font-pixel-display, 'Silkscreen', monospace);
+  font-size: 0.85rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   margin-top: 0.75rem;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
+  border: 2px solid var(--pixel-ink, #22050C);
+  outline: 2px solid var(--border-gold, #E5C07B);
+  box-shadow: 4px 4px 0px 0px var(--pixel-ink, #22050C),
+    inset 2px 2px 0px 0px #FFF8E7,
+    inset -2px -2px 0px 0px #C59828;
+  letter-spacing: 0.02em;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
   opacity: ${(props) => (props.isLoading ? "0.6" : "1")};
   pointer-events: ${(props) => (props.isLoading ? "none" : "auto")};
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    background: var(--bg-beige-light, #F4E6C8);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px var(--pixel-ink, #22050C),
+      inset 2px 2px 0px 0px #FFF8E7,
+      inset -2px -2px 0px 0px #C59828;
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px var(--pixel-ink, #22050C);
   }
 `;

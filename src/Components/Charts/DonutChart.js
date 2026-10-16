@@ -40,11 +40,12 @@ const CenterInfo = styled.div`
 `;
 
 const CenterLabel = styled.span`
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-family: var(--font-pixel-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -52,25 +53,30 @@ const CenterLabel = styled.span`
 `;
 
 const CenterValue = styled.span`
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem;
+  font-family: var(--font-pixel-display);
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-primary);
+  text-shadow: 2px 2px 0px var(--pixel-ink);
   margin-top: 2px;
 `;
 
 const CenterSub = styled.span`
+  font-family: var(--font-pixel-mono);
   font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--primary);
-  margin-top: 2px;
+  font-weight: 700;
+  color: var(--bg-outer-beige);
+  background: var(--pixel-ink);
+  padding: 1px 6px;
+  border: 2px solid var(--border-beige);
+  margin-top: 4px;
 `;
 
 const LegendGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem 1rem;
+  gap: 0.5rem;
   max-width: 480px;
   width: 100%;
 `;
@@ -79,29 +85,34 @@ const LegendItem = styled.div`
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  font-family: var(--font-pixel-mono);
   font-size: 0.75rem;
-  color: ${(props) => (props.active ? "var(--text-primary)" : "var(--text-secondary)")};
+  font-weight: 600;
+  color: ${(props) => (props.active ? "var(--text-on-beige)" : "var(--text-primary)")};
   cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  background: ${(props) => (props.active ? "rgba(255, 255, 255, 0.08)" : "transparent")};
-  transition: all 0.2s ease;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0;
+  border: 2px solid var(--pixel-ink);
+  background: ${(props) => (props.active ? "var(--bg-outer-beige)" : "var(--bg-surface)")};
+  box-shadow: 2px 2px 0px var(--pixel-ink);
 
   &:hover {
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--bg-outer-beige);
+    color: var(--text-on-beige);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--pixel-ink);
   }
 `;
 
 const LegendDot = styled.span`
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 0;
+  border: 2px solid var(--pixel-ink);
   background: ${(props) => props.color};
-  box-shadow: 0 0 6px ${(props) => props.color};
 `;
 
-export const DonutChart = ({ data = [], totalAmount = 0, onSelectCategory }) => {
+export const DonutChart = ({ data = [], totalAmount = 0 }) => {
   const [hovered, setHovered] = useState(null);
 
   // Filter out zero/negative amounts
@@ -145,7 +156,7 @@ export const DonutChart = ({ data = [], totalAmount = 0, onSelectCategory }) => 
             cx="110"
             cy="110"
             r={radius}
-            fill="transparent"
+            fill="none"
             stroke="rgba(255, 255, 255, 0.04)"
             strokeWidth={strokeWidth}
           />
@@ -155,7 +166,7 @@ export const DonutChart = ({ data = [], totalAmount = 0, onSelectCategory }) => 
               cx="110"
               cy="110"
               r={radius}
-              fill="transparent"
+              fill="none"
               stroke="rgba(255, 255, 255, 0.08)"
               strokeWidth={strokeWidth}
               strokeDasharray="6 6"
@@ -169,23 +180,22 @@ export const DonutChart = ({ data = [], totalAmount = 0, onSelectCategory }) => 
                   cx="110"
                   cy="110"
                   r={radius}
-                  fill="transparent"
+                  fill="none"
                   stroke={slice.color}
                   strokeWidth={isHovered ? strokeWidth + 4 : strokeWidth}
                   strokeDasharray={slice.strokeDasharray}
                   strokeDashoffset={slice.strokeDashoffset}
-                  strokeLinecap="round"
+                  strokeLinecap="butt"
                   style={{
-                    cursor: "pointer",
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    cursor: "default",
+                    transition: "all 0.1s steps(2)",
                     filter: isHovered
-                      ? `drop-shadow(0 0 8px ${slice.color})`
+                      ? "drop-shadow(3px 3px 0px #22050C)"
                       : "none",
-                    opacity: activeItem && !isHovered ? 0.45 : 1,
+                    opacity: activeItem && !isHovered ? 0.55 : 1,
                   }}
                   onMouseEnter={() => setHovered(slice)}
                   onMouseLeave={() => setHovered(null)}
-                  onClick={() => onSelectCategory && onSelectCategory(slice.rawItem)}
                 />
               );
             })
@@ -231,7 +241,7 @@ export const DonutChart = ({ data = [], totalAmount = 0, onSelectCategory }) => 
               active={activeItem && activeItem.category === slice.category}
               onMouseEnter={() => setHovered(slice)}
               onMouseLeave={() => setHovered(null)}
-              onClick={() => onSelectCategory && onSelectCategory(slice.rawItem)}
+              style={{ cursor: "default" }}
             >
               <LegendDot color={slice.color} />
               <span>{slice.category}</span>

@@ -19,24 +19,26 @@ import { RootPopUp } from "../RootPopUp/RootPopUp.js";
 import styled from "styled-components";
 
 const ErrorText = styled.p`
-  color: #F43F5E;
-  font-size: 0.85rem;
-  font-weight: 500;
+  color: var(--bg-beige-light);
+  font-family: var(--font-pixel-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
   text-align: center;
-  background: rgba(244, 63, 94, 0.1);
+  background: #9F1239;
   padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid rgba(244, 63, 94, 0.2);
+  border-radius: 0;
+  border: 2px solid var(--border-beige);
+  box-shadow: 3px 3px 0px var(--pixel-ink);
 `;
 
 const CheckboxRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 0.25rem;
+  padding: 0.75rem 0.5rem;
   width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 2px dashed var(--border-beige);
+  border-bottom: 2px dashed var(--border-beige);
   margin: 0.25rem 0;
 `;
 
@@ -47,14 +49,16 @@ const CheckboxLabelGroup = styled.div`
 `;
 
 const CheckboxTitle = styled.span`
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-family: var(--font-pixel-display);
+  font-size: 0.8rem;
+  font-weight: 700;
   color: var(--text-primary);
 `;
 
 const CheckboxSubtitle = styled.span`
+  font-family: var(--font-pixel-mono);
   font-size: 0.75rem;
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
 `;
 
 export const AddTransactionPopUp = ({

@@ -396,7 +396,6 @@ export const ExpensesPage = () => {
                 <DonutChart
                   data={chartData}
                   totalAmount={numericTotal}
-                  onSelectCategory={handleCategoryClick}
                 />
               </ChartCard>
 

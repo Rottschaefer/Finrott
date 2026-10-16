@@ -6,32 +6,41 @@ export const StyledAccountCard = styled.div`
   flex-direction: column;
   justify-content: space-between;
   min-height: 170px;
-  border-radius: 20px;
-  padding: 1.5rem;
+  border-radius: 0px;
+  padding: 1.4rem;
   background: ${(props) =>
     props.color
-      ? `linear-gradient(135deg, #${props.color}dd, #${props.color}88), #111827`
-      : "linear-gradient(135deg, #1E293B, #0F172A)"};
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px ${(props) => (props.color ? `#${props.color}33` : "transparent")};
-  backdrop-filter: blur(12px);
+      ? `#${props.color}`
+      : "var(--bg-card, #631027)"};
+  border: 3px solid var(--border-beige, #EAD7B3);
+  outline: 2px solid var(--pixel-ink, #22050C);
+  box-shadow: 4px 4px 0px 0px var(--pixel-ink, #22050C),
+    inset 3px 3px 0px 0px rgba(255, 246, 214, 0.18),
+    inset -3px -3px 0px 0px rgba(34, 5, 12, 0.45);
   overflow: hidden;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    transform: translate(-2px, -2px);
+    border-color: var(--border-hover, #FFF6D6);
+    box-shadow: 6px 6px 0px 0px var(--pixel-ink, #22050C),
+      inset 3px 3px 0px 0px rgba(255, 246, 214, 0.28),
+      inset -3px -3px 0px 0px rgba(34, 5, 12, 0.45);
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px var(--pixel-ink, #22050C);
   }
 
   &::after {
     content: "";
     position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 70%);
+    top: 0;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, transparent 50%, rgba(234, 215, 179, 0.2) 50%);
     pointer-events: none;
   }
 `;
@@ -43,11 +52,12 @@ export const CardTop = styled.div`
 `;
 
 export const StyledCardTitle = styled.h3`
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.25rem;
+  font-family: var(--font-pixel-display, 'Silkscreen', monospace);
+  font-size: 1.15rem;
   font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: -0.01em;
+  color: var(--text-primary, #F4E6C8);
+  letter-spacing: 0.02em;
+  text-shadow: 2px 2px 0px var(--pixel-ink, #22050C);
 `;
 
 export const CardBottom = styled.div`
@@ -57,17 +67,19 @@ export const CardBottom = styled.div`
 `;
 
 export const BalanceLabel = styled.span`
-  font-size: 0.75rem;
+  font-family: var(--font-pixel-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary, #E5C07B);
+  font-weight: 600;
 `;
 
 export const StyledBalance = styled.span`
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #FFFFFF;
-  letter-spacing: -0.01em;
+  font-family: var(--font-pixel-mono, 'IBM Plex Mono', monospace);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-primary, #F4E6C8);
+  letter-spacing: 0.02em;
+  text-shadow: 2px 2px 0px var(--pixel-ink, #22050C);
 `;

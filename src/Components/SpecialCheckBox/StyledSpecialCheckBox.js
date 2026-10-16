@@ -3,42 +3,36 @@ import styled from "styled-components";
 export const StyledCheckBox = styled.div`
   display: flex;
   align-items: center;
-  width: 52px;
+  width: 56px;
   height: 30px;
-  min-width: 52px;
+  min-width: 56px;
   background: ${(props) =>
     props.isClicked
-      ? "linear-gradient(135deg, #ECC472, #C59828)"
-      : "rgba(255, 255, 255, 0.16)"};
-  border: 1px solid
-    ${(props) =>
-      props.isClicked
-        ? "rgba(212, 175, 55, 0.6)"
-        : "rgba(255, 255, 255, 0.14)"};
-  border-radius: 999px;
-  padding: 3px;
+      ? "#9F1239"
+      : "var(--pixel-ink)"};
+  border: 3px solid var(--border-beige);
+  border-radius: 0;
+  padding: 2px;
   box-sizing: border-box;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: ${(props) =>
-    props.isClicked ? "0 0 14px rgba(212, 175, 55, 0.45)" : "none"};
+  transition: all 0.08s steps(2);
+  box-shadow: 3px 3px 0px var(--pixel-ink);
 
   &:hover {
-    background: ${(props) =>
-      props.isClicked
-        ? "linear-gradient(135deg, #F5D38C, #B8860B)"
-        : "rgba(255, 255, 255, 0.24)"};
+    border-color: var(--primary-light);
   }
 `;
 
 export const StyledCircle = styled.div`
-  width: 22px;
-  height: 22px;
-  min-width: 22px;
-  background-color: #FFF8F6;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background-color: ${(props) =>
+    props.isClicked ? "var(--bg-outer-beige)" : "#881337"};
+  border: 2px solid var(--pixel-ink);
+  border-radius: 0;
   transform: ${(props) =>
-    props.isClicked ? "translateX(22px)" : "translateX(0px)"};
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    props.isClicked ? "translateX(26px)" : "translateX(0px)"};
+  transition: transform 0.08s steps(2);
 `;
+

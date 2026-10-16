@@ -8,8 +8,8 @@ export const StyledPlusDiv = styled.div`
   z-index: 90;
 
   @media (max-width: 640px) {
-    bottom: 5.5rem;
-    right: 1.25rem;
+    bottom: 5.25rem;
+    right: 0.9rem;
   }
 `;
 
@@ -17,26 +17,44 @@ export const StyledPlusButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.85rem 1.4rem;
-  background: linear-gradient(135deg, #ECC472, #C59828);
-  color: #160408;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
+  gap: 0.45rem;
+  padding: 0.7rem 0.95rem;
+  background: var(--bg-outer-beige, #EAD7B3);
+  color: var(--pixel-ink, #22050C);
+  font-family: var(--font-pixel-display, 'Silkscreen', monospace);
+  font-size: 0.75rem;
   font-weight: 700;
-  border: none;
-  border-radius: 999px;
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+  letter-spacing: 0.02em;
+  border: 3px solid var(--pixel-ink, #22050C);
+  outline: 2px solid var(--border-gold, #E5C07B);
+  border-radius: 0px !important;
+  box-shadow: 4px 4px 0px 0px var(--pixel-ink, #22050C),
+    inset 2px 2px 0px 0px #FFF8E7,
+    inset -2px -2px 0px 0px #C59828;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+
+  @media (max-width: 640px) {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.68rem;
+  }
 
   &:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.55);
+    background: var(--bg-beige-light, #F4E6C8);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px var(--pixel-ink, #22050C),
+      inset 2px 2px 0px 0px #FFF8E7,
+      inset -2px -2px 0px 0px #C59828;
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px var(--pixel-ink, #22050C);
   }
 
   svg {
     width: 14px;
     height: 14px;
+    filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.25));
   }
 `;

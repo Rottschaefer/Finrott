@@ -72,7 +72,7 @@ export const LoginPage = () => {
         if (!password || !email) {
           setBadRequest(true);
           setErrorMessage(
-            "É preciso preencher todos os campos para se cadastrar"
+            "É preciso preencher todos os campos para fazer login"
           );
         } else {
           setBadRequest(false);

@@ -2,37 +2,35 @@ import styled from "styled-components";
 
 export const StyledCategoryCard = styled.div`
   width: 100%;
-  padding: 1rem 1.15rem;
+  padding: 0.85rem 1rem;
   background: ${(props) =>
-    props.isSelected
-      ? "linear-gradient(135deg, rgba(48, 14, 25, 0.95), rgba(28, 9, 15, 0.9))"
-      : "rgba(28, 9, 15, 0.75)"};
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid
-    ${(props) =>
-      props.isSelected
-        ? "var(--primary)"
-        : "rgba(212, 175, 55, 0.12)"};
-  border-radius: 16px;
+    props.isSelected ? "var(--bg-card-hover, #7A1430)" : "var(--bg-card, #631027)"};
+  border: 3px solid ${(props) =>
+    props.isSelected ? "var(--border-gold, #E5C07B)" : "var(--border-beige, #EAD7B3)"};
+  outline: 2px solid var(--pixel-ink, #22050C);
+  border-radius: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
   box-shadow: ${(props) =>
     props.isSelected
-      ? "0 0 20px rgba(212, 175, 55, 0.22)"
-      : "0 4px 20px rgba(0, 0, 0, 0.35)"};
+      ? "6px 6px 0px 0px var(--pixel-ink, #22050C), inset 2px 2px 0px rgba(255, 246, 214, 0.25)"
+      : "4px 4px 0px 0px var(--pixel-ink, #22050C)"};
   position: relative;
   overflow: hidden;
 
   &:hover {
-    transform: translateY(-2px);
-    border-color: ${(props) =>
-      props.isSelected ? "var(--primary)" : "rgba(212, 175, 55, 0.38)"};
-    background: rgba(38, 12, 20, 0.85);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    transform: translate(-2px, -2px);
+    background: var(--bg-card-hover, #7A1430);
+    border-color: var(--border-hover, #FFF6D6);
+    box-shadow: 6px 6px 0px 0px var(--pixel-ink, #22050C);
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px var(--pixel-ink, #22050C);
   }
 
   &::before {
@@ -41,59 +39,77 @@ export const StyledCategoryCard = styled.div`
     left: 0;
     top: 0;
     bottom: 0;
-    width: 3px;
-    background: ${(props) => props.accentColor || "var(--primary)"};
-    opacity: ${(props) => (props.isSelected ? 1 : 0)};
-    transition: opacity 0.2s ease;
+    width: 6px;
+    background: ${(props) => props.accentColor || "var(--accent-ruby, #9F1239)"};
+    border-right: 2px solid var(--pixel-ink, #22050C);
+    opacity: ${(props) => (props.isSelected ? 1 : 0.8)};
   }
 `;
 
 export const LeftSection = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.65rem;
   min-width: 0;
+  flex: 1;
+  padding-left: 0.25rem;
+
+  @media (min-width: 768px) {
+    gap: 0.85rem;
+  }
 `;
 
 export const StyledImgDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${(props) => props.bg || "rgba(212, 175, 55, 0.12)"};
-  border: 1px solid ${(props) => props.borderColor || "transparent"};
-  border-radius: 12px;
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  transition: all 0.2s ease;
+  background: ${(props) => props.bg || "var(--bg-surface, #380916)"};
+  border: 2px solid var(--pixel-ink, #22050C);
+  border-radius: 0px;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  box-shadow: 2px 2px 0px var(--pixel-ink, #22050C);
+  transition: transform 0.1s ease;
+
+  @media (min-width: 768px) {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+  }
 
   svg {
-    width: 22px;
-    height: 22px;
-    color: ${(props) => props.iconColor || "var(--primary)"};
+    width: 18px;
+    height: 18px;
+    color: ${(props) => props.iconColor || "var(--border-gold, #E5C07B)"};
+    filter: drop-shadow(1px 1px 0px var(--pixel-ink, #22050C));
   }
 `;
 
 export const InfoColumn = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
   min-width: 0;
+  flex: 1;
 `;
 
 export const CategoryTitle = styled.h4`
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-family: var(--font-pixel-display, 'Silkscreen', monospace);
+  font-size: clamp(0.72rem, 3.2vw, 0.85rem);
+  font-weight: 700;
+  color: var(--text-primary, #F4E6C8);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 1px 1px 0px var(--pixel-ink, #22050C);
+  letter-spacing: 0.01em;
 `;
 
 export const CategorySubtitle = styled.span`
-  font-size: 0.75rem;
-  color: var(--text-tertiary);
+  font-family: var(--font-pixel-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.68rem;
+  color: var(--text-tertiary, #D6BC8B);
   display: flex;
   align-items: center;
   gap: 0.35rem;
@@ -104,24 +120,30 @@ export const RightSection = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 0.25rem;
-  padding-left: 0.75rem;
+  padding-left: 0.5rem;
+  flex-shrink: 0;
 `;
 
 export const FormattedAmount = styled.span`
-  font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
+  font-family: var(--font-pixel-mono, 'IBM Plex Mono', monospace);
+  font-size: clamp(0.82rem, 3.4vw, 0.95rem);
   font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
+  color: var(--text-primary, #F4E6C8);
+  letter-spacing: 0.01em;
+  text-shadow: 1px 1px 0px var(--pixel-ink, #22050C);
+  white-space: nowrap;
 `;
 
 export const PercentageBadge = styled.span`
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: ${(props) => props.color || "var(--primary)"};
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.1rem 0.45rem;
-  border-radius: 4px;
+  font-family: var(--font-pixel-display, 'Silkscreen', monospace);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: ${(props) => props.color || "var(--border-gold, #E5C07B)"};
+  background: var(--pixel-ink, #22050C);
+  padding: 0.12rem 0.4rem;
+  border-radius: 0px;
+  border: 1px solid var(--border-subtle, #D6BC8B);
+  box-shadow: 1px 1px 0px var(--pixel-ink, #22050C);
 `;
 
 export const ProgressBarWrapper = styled.div`
@@ -129,14 +151,15 @@ export const ProgressBarWrapper = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.05);
+  height: 5px;
+  background: var(--pixel-ink, #22050C);
+  border-top: 1px solid var(--border-beige, #EAD7B3);
 `;
 
 export const ProgressBarFill = styled.div`
   height: 100%;
   width: ${(props) => Math.min(props.percent, 100)}%;
-  background: ${(props) => props.color || "var(--primary)"};
-  box-shadow: 0 0 6px ${(props) => props.color || "var(--primary)"};
-  transition: width 0.4s ease;
+  background: ${(props) => props.color || "var(--accent-ruby, #9F1239)"};
+  box-shadow: none;
+  transition: width 0.3s ease;
 `;

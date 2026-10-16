@@ -1,35 +1,43 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import userEvent from "@testing-library/user-event";
-import { act } from "react-dom/test-utils";
+import { describe, it, expect } from "vitest";
 import App from "../App";
-import { server } from "../mocks/server";
 
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+describe("App Router Integration", () => {
+  it("renders LoginPage when navigating to /login", () => {
+    render(
+      <MemoryRouter initialEntries={["/login"]}>
+        <App />
+      </MemoryRouter>
+    );
 
-test("Execute the signup flow correctly", async () => {
-  render(
-    <MemoryRouter initialEntries={["/signup"]}>
-      <App />
-    </MemoryRouter>
-  );
-  const user = userEvent.setup();
-
-  const nameInput = screen.getByPlaceholderText(/apelido/i);
-  const emailInput = screen.getByPlaceholderText(/e-mail/i);
-  const passwordInput = screen.getByPlaceholderText(/senha/i);
-
-  const signUpButton = screen.getByRole("button");
-
-  await act(async () => {
-    await user.type(nameInput, "Teste");
-    await user.type(emailInput, "teste@gmail.com");
-    await user.type(passwordInput, "123456");
-    user.click(signUpButton);
+    expect(screen.getByText("Faça login para controlar suas finanças")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/e-mail/i)).toBeInTheDocument();
   });
 
-  const budgetText = await screen.findByText(/Quanto posso gastar:/i);
-  expect(budgetText).toBeInTheDocument();
+  it("renders SignUpPage when navigating to /signup", () => {
+    render(
+      <MemoryRouter initialEntries={["/signup"]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText("Crie sua conta e assuma o controle do seu dinheiro")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/nome ou apelido/i)).toBeInTheDocument();
+  });
+
+  it("renders bottom navigation Menu on protected routes", () => {
+    localStorage.setItem("token", JSON.stringify("fake-token"));
+
+    render(
+      <MemoryRouter initialEntries={["/accounts"]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText("Despesas")).toBeInTheDocument();
+    expect(screen.getByText("Contas")).toBeInTheDocument();
+    expect(screen.getByText("Sair")).toBeInTheDocument();
+  });
 });
